@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170615121747) do
+ActiveRecord::Schema.define(version: 20170615122647) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -29,6 +29,17 @@ ActiveRecord::Schema.define(version: 20170615121747) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "articles", force: :cascade do |t|
+    t.string "title"
+    t.integer "privace"
+    t.text "content"
+    t.string "url_title"
+    t.integer "author_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_articles_on_author_id"
+  end
+
   create_table "authors", force: :cascade do |t|
     t.string "name"
     t.integer "admin_id"
@@ -43,6 +54,15 @@ ActiveRecord::Schema.define(version: 20170615121747) do
     t.integer "privacy"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "categorizations", force: :cascade do |t|
+    t.integer "category_id"
+    t.integer "article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_categorizations_on_article_id"
+    t.index ["category_id"], name: "index_categorizations_on_category_id"
   end
 
   create_table "footer_sections", force: :cascade do |t|
