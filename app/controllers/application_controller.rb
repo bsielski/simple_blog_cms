@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   def set_header_and_footer
     @header_sections = HeaderSection.all
     @footer_sections = FooterSection.all
+    @categories = Category.order(:position)
   end
   
 end
