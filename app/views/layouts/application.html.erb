@@ -9,6 +9,20 @@
   </head>
 
   <body>
+    <header>
+      <% @header_sections.each do |section| %>
+      <%= section.content  %>
+      <% end %>
+    </header>
+    
     <%= yield %>
+
+    <footer>
+
+      <% @footer_sections.each do |section| %>
+      <%= section.content  %>
+      <% end %>
+
+    </footer>
   </body>
 </html>

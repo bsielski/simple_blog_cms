@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-
+  before_action :set_header_and_footer, only: [:show]
   def show
     if valid_page?
       render template: "pages/#{params[:page]}"
