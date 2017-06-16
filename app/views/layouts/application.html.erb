@@ -6,30 +6,34 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
   </head>
-
+  
   <body>
-    <header>
-      <% @header_sections.each do |section| %>
-      <%= section.content  %>
-      <% end %>
+    <div class="main_container">
+      <header>
+	<% @header_sections.each do |section| %>
+	<%= section.content  %>
+	<% end %>
     </header>
-
-    <nav>
-      <% @categories.each do |category| %>
-      <div><%= link_to category.name, category_articles_path(category)  %></div>
-      <% end %>
-    </nav>
-
-    
-    <%= yield %>
-
-    <footer>
-
-      <% @footer_sections.each do |section| %>
-      <%= section.content  %>
-      <% end %>
-
-    </footer>
+      
+      <nav>
+	<% @categories.each do |category| %>
+	<div><%= link_to category.name, category_articles_path(category)  %></div>
+	<% end %>
+      </nav>
+      
+      
+      <%= yield %>
+      
+      <footer>
+	
+	<% @footer_sections.each do |section| %>
+	<%= section.content  %>
+	<% end %>
+	
+      </footer>
+    </div>
   </body>
 </html>

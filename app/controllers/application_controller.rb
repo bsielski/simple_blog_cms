@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
     @header_sections = HeaderSection.all
     @footer_sections = FooterSection.all
     @categories = Category.order(:position)
+    @current_style = Site.first.stylesheet.content
   end
   
 end
