@@ -48,7 +48,7 @@ unless Admin.first
     title: "Welcome",
     privacy: 0,
     content: "# Hello, World!\nThis is the first article. It was generated automatically. Delete it if you want.",
-    url_title: "Welcome",
+    url_title: "welcome",
     author: author
   )
   puts "A default article created."
@@ -73,6 +73,21 @@ unless Admin.first
   )
   puts "Site atributes created."
   
+
+  # obejcts for tests. They will be deleted
+  # begin testing
+  Article.create!(
+    title: "The Second",
+    privacy: 0,
+    content: "# Hello again!\nThis is the second article. It was generated for tests.",
+    url_title: "test-article",
+    author: author
+  )
+  Article.last.categories << Category.first
+  puts "A test article created."
+  # end testing
+  
+
   
 else
   puts "The database is not empty. Nothing was seeded."
