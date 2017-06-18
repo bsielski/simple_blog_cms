@@ -6,31 +6,30 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-
   </head>
   
   <body>
-    <div class="main_container">
-      <header>
+    <div class="page_container">
+      <header class="page_header">
 	<% @header_sections.each do |section| %>
-	<%= section.content  %>
+	<section class="js_markdown page_header__section"><%= raw section.content %></section>
 	<% end %>
-    </header>
+      </header>
       
       <nav>
 	<% @categories.each do |category| %>
-	<div><%= link_to category.name, category_articles_path(category)  %></div>
+	<div><%= link_to category.name, category_articles_path(category) %></div>
 	<% end %>
       </nav>
-      
-      
+
+      <main>
       <%= yield %>
-      
-      <footer>
+      </main>
+
+      <footer class="page_footer">
 	
 	<% @footer_sections.each do |section| %>
-	<%= section.content  %>
+	<section class="js_markdown page_footer__section"><%= raw section.content %></section>
 	<% end %>
 	
       </footer>
