@@ -55,3 +55,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # My gems
 gem 'devise', '~> 4.3'
+gem 'markdown'
+gem 'reverse_markdown'
