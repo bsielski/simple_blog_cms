@@ -82,6 +82,10 @@ unless Admin.first
   margin: 0 0;
   border-top: 2px solid rgba(150, 150, 100, 0.2);
 }
+.article_body > h1 {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 16px;
+}
 body {
   background-color: #050500;
 }
@@ -143,7 +147,7 @@ pre > code {
 .page_header__section > h2 {
   margin-top: 0;
   padding-top: 0;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   font-family: 'Ubuntu', sans-serif;
   font-size: 14px;
 }
@@ -151,7 +155,7 @@ pre > code {
 .page_header__section > h1 {
   margin: 0;
   padding: 0;
-  border: 1px solid orange;
+  /* border: 1px solid orange; */
   font-family: 'Ubuntu', sans-serif;
   font-size: 28px;
 }
