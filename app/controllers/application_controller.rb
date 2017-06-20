@@ -11,5 +11,4 @@ class ApplicationController < ActionController::Base
     @current_style = Site.first.stylesheet.content
     @category = Category.default
   end
-  
 end
