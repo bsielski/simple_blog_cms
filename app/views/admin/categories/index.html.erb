@@ -11,7 +11,7 @@
       <td><%= category.name %></td>
       <td><%= category.description %></td>
       <td>Edit<%=  %></td>
-      <td>Delete<%=  %></td>
+      <td><%= link_to 'Delete', delete_admin_category_path(category) %></td>
     </tr>
   <% end %>
     </table>
