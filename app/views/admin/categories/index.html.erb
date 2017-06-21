@@ -10,7 +10,7 @@
       <td><%= category.position %></td>
       <td><%= category.name %></td>
       <td><%= category.description %></td>
-      <td>Edit<%=  %></td>
+      <td><%= link_to 'Edit', edit_admin_category_path(category) %></td>
       <td><%= link_to 'Delete', delete_admin_category_path(category) %></td>
     </tr>
   <% end %>

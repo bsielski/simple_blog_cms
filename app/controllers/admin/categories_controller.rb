@@ -19,6 +19,12 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def update
+    if @category.update(category_params)
+      redirect_to admin_categories_path, notice: 'Category was successfully updated.'
+    else
+      render :edit
+    end
+
   end
 
   def delete

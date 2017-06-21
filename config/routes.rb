@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :admins
   
   namespace :admin do
-    resources :categories, only: [:index, :new, :create, :edit, :delete, :destroy] do
+    resources :categories, only: [:index, :new, :create, :edit, :update, :delete, :destroy] do
       member do
         get 'delete'
       end
