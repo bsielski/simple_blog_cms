@@ -1,0 +1,5 @@
+<header class="current_page_header"><h1><%= @category.name %></h1></header>
+
+<% @articles.each do |article| %>
+<%= render article %>
+<% end %>
