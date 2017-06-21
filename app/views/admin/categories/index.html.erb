@@ -1,9 +1,8 @@
-<h1>Categories#index</h1>
-
+<h1>Admin::Categories#index</h1>
 <% if @categories %>
   <table>
     <tr>
-      <th>Id</th><th>Position</th><th>Name</th><th>Description</th>
+      <th>Id</th><th>Position</th><th>Name</th><th>Description</th><th></th><th></th>
     </tr>
   <% @categories.each do |category| %>
     <tr>
@@ -11,6 +10,8 @@
       <td><%= category.position %></td>
       <td><%= category.name %></td>
       <td><%= category.description %></td>
+      <td>Edit<%=  %></td>
+      <td>Delete<%=  %></td>
     </tr>
   <% end %>
     </table>

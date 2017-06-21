@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
   
   devise_for :admins
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
-#  get "/pages/:page" => "pages#show"
-#  resources :categories
-
-  resources :categories do
+  
+  namespace :admin do
+    resources :categories, only: [:index, :new, :edit] do
+      resources :articles
+    end
+  end
+  
+  resources :categories, only: [:index] do
     resources :articles
   end
 
