@@ -1,0 +1,30 @@
+<div>
+  <article class="article">
+    <header class="article_header">
+      <h1>
+	Admin panel
+      </h1>
+    </header>
+
+    <div>
+      <p>
+	<%= link_to 'Manage categories', admin_categories_path %>
+      </p>
+      <p>
+	<%= link_to 'Manage articles', admin_articles_path %>
+      </p>
+    </div>
+    
+    <footer class="article_footer">
+      <p>
+	<%= link_to 'Root page', root_path %>
+      </p>
+      <p>
+	<%= link_to 'Logout', destroy_admin_session_path, method: :delete %>
+      </p>
+    </footer>
+    
+  </article>
+  
+</div>
+      

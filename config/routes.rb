@@ -15,7 +15,9 @@ Rails.application.routes.draw do
       end
     end
   end
-  
+
+  get 'admin', to: 'admin_pages#show', page: "home"
+
   resources :categories, only: [:index] do
     resources :articles
   end
