@@ -1,2 +1,16 @@
-<h1>Admin::Articles#delete</h1>
-<p>Find me in app/views/admin/articles/delete.html.erb</p>
+<div>
+  <article class="article">
+    <header class="article_header"><h1>Deleting "<%= @article.title %>" article</h1></header>
+    <div class="article_body">Are you sure?</div>
+    <footer class="article_footer">
+      <p>
+	<%= link_to 'Delete', admin_article_path(@article), method: :delete %>
+      </p>
+      <p>
+	<%= link_to 'Back', admin_article_path %>
+      </p>
+    </footer>
+  </article>
+  
+</div>
+      

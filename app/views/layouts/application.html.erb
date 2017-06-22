@@ -31,7 +31,11 @@
 	<% @footer_sections.each do |section| %>
 	<section class="js_markdown page_footer__section"><%= raw section.content %></section>
 	<% end %>
-	<%= link_to 'Manage categories', admin_categories_path %>
+	<div>
+	  <%= link_to 'Manage categories', admin_categories_path %>
+	  <br>
+	  <%= link_to 'Manage articles', admin_articles_path %>
+	</div>
       </footer>
     </div>
   </body>
