@@ -6,6 +6,10 @@ class Article < ApplicationRecord
 
 
 
+  def convert_content_to_markdown
+    self.content = Convert.to_markdown self.content
+  end
+
   private
 
   def convert_content_to_html

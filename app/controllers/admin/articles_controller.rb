@@ -1,7 +1,7 @@
 class Admin::ArticlesController < ApplicationController
 
   before_action :set_article, only: [:edit, :update, :delete, :destroy]
-
+  before_action :content_to_markdown, only: :edit 
   def index
     @articles = Article.all.reverse
   end
@@ -44,6 +44,10 @@ class Admin::ArticlesController < ApplicationController
 
   def set_article
     @article = Article.find(params[:id])
+  end
+
+  def content_to_markdown
+    @article.convert_content_to_markdown
   end
     
   def article_params
