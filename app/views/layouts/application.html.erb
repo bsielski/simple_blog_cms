@@ -31,12 +31,14 @@
 	<% @footer_sections.each do |section| %>
 	<section class="js_markdown page_footer__section"><%= raw section.content %></section>
 	<% end %>
-	<div>
-	  <%= link_to 'Manage categories', admin_categories_path %>
-	  <br>
-	  <%= link_to 'Manage articles', admin_articles_path %>
-	</div>
       </footer>
+
+      <% if admin_signed_in? %>
+      <div class="admin_footer">
+	<%= link_to 'Admin panel', admin_path %>
+      </div>
+      <% end %>
+      
     </div>
   </body>
 </html>
