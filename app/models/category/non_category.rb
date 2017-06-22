@@ -1,4 +1,4 @@
-class NonCategory
+class Category::NonCategory
   attr_reader :name, :description
   
   def initialize
