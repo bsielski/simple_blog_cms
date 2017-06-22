@@ -1,7 +1,9 @@
 class Admin::ArticlesController < ApplicationController
 
   before_action :set_article, only: [:edit, :update, :delete, :destroy]
-  before_action :content_to_markdown, only: :edit 
+  before_action :content_to_markdown, only: :edit
+  before_action :authenticate_admin!
+
   def index
     @articles = Article.all.reverse
   end
