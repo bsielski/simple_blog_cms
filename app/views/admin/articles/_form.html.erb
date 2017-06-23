@@ -51,4 +51,7 @@
 
 <% end %>
 <div>
+  <% unless @article.new_record? %>
   <%= link_to 'Delete this article', delete_admin_article_path(@article) %>
+  <% end %>
+</div>

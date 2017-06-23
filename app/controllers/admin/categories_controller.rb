@@ -11,7 +11,7 @@ class Admin::CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
-      redirect_to edit_admin_category_path, notice: 'Category was successfully created.'
+      redirect_to edit_admin_category_path(@category), notice: 'Category was successfully created.'
     else
       render :new
     end
@@ -22,7 +22,7 @@ class Admin::CategoriesController < ApplicationController
 
   def update
     if @category.update(category_params)
-      redirect_to edit_admin_category_path, notice: 'Category was successfully updated.'
+      redirect_to edit_admin_category_path(@category), notice: 'Category was successfully updated.'
     else
       render :edit
     end
