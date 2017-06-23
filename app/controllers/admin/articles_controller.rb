@@ -15,7 +15,7 @@ class Admin::ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     if @article.save
-      redirect_to admin_articles_path, notice: 'Article was successfully created.'
+      redirect_to edit_admin_article_path, notice: 'Article was successfully created.'
     else
       render :new
     end
@@ -26,7 +26,7 @@ class Admin::ArticlesController < ApplicationController
 
   def update
     if @article.update(article_params)
-      redirect_to admin_articles_path, notice: 'Article was successfully updated.'
+      redirect_to edit_admin_article_path, notice: 'Article was successfully updated.'
     else
       render :edit
     end

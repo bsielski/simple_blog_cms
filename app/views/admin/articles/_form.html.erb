@@ -44,11 +44,11 @@
     </span>
     <% end %>
   </div>
-  
-
     
   <div class="actions">
-    <%= f.submit(class: "") %>
+    <%= f.submit("Save", class: "") %>
   </div>
 
 <% end %>
+<div>
+  <%= link_to 'Delete this article', delete_admin_article_path(@article) %>
