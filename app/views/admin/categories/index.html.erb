@@ -5,7 +5,7 @@
 <% if @categories %>
   <table>
     <tr>
-      <th>Id</th><th>Position</th><th>Name</th><th>Description</th><th>Articles</th><th></th><th></th>
+      <th>Id</th><th>Position</th><th>Name</th><th>Description</th><th>Privacy</th><th>Articles</th><th></th><th></th>
     </tr>
   <% @categories.each do |category| %>
     <tr>
@@ -13,6 +13,7 @@
       <td><%= category.position %></td>
       <td><%= category.name %></td>
       <td><%= category.description %></td>
+      <td><%= category.privacy.titleize %></td>
       <td><%= link_to category.articles.size, admin_category_articles_path(category) %></td>
       <td><%= link_to 'Edit', edit_admin_category_path(category) %></td>
       <td><%= link_to 'Delete', delete_admin_category_path(category) %></td>

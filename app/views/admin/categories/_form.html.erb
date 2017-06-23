@@ -22,6 +22,11 @@
   </div>
 
   <div class="">
+    <%= f.label :privacy %><br />
+    <%= f.select :privacy, Category.privacies.keys.map {|priv| [priv.titleize, priv]} %>
+  </div>
+  
+  <div class="">
     <%= f.label :position %><br />
     <%= f.select :position, 1..Category.all.size %>
   </div>

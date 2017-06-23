@@ -3,6 +3,9 @@ class Admin::CategoriesController < ApplicationController
   before_action :set_category, only: [:edit, :update, :delete, :destroy]
   before_action :authenticate_admin!
 
+  def index
+    @categories = Category.order :position
+  end
   
   def new
     @category = Category.new
@@ -45,7 +48,7 @@ class Admin::CategoriesController < ApplicationController
   end
     
   def category_params
-    params.require(:category).permit(:name, :description, :position)
+    params.require(:category).permit(:name, :privacy, :description, :position)
   end
 
 end

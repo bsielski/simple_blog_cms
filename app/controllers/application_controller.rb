@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   def set_everything
     @header_sections = HeaderSection.all
     @footer_sections = FooterSection.all
-    @categories = Category.order(:position)
+    @visible_categories = Category.visible.order(:position)
     @current_style = Site.first.stylesheet.content
     @category = Category.default
   end
