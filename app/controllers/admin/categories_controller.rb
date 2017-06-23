@@ -22,7 +22,7 @@ class Admin::CategoriesController < ApplicationController
 
   def update
     if @category.update(category_params)
-      redirect_to admin_categories_path, notice: 'Category was successfully updated.'
+      redirect_to edit_admin_category_path, notice: 'Category was successfully updated.'
     else
       render :edit
     end
