@@ -21,6 +21,11 @@
     <%= f.text_field :description, class: '' %>
   </div>
 
+  <div class="">
+    <%= f.label :position %><br />
+    <%= f.select :position, 1..Category.all.size %>
+  </div>
+  
   <div class="actions">
     <%= f.submit("Save", class: "") %>
   </div>
