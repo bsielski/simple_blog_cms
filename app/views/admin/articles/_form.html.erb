@@ -18,7 +18,7 @@
 
   <div class="">
     <%= f.label :privacy %><br />
-    <%= f.number_field :privacy, class: '' %>
+    <%= f.select :privacy, Article.privacies.keys.map {|priv| [priv.titleize, priv]} %>
   </div>
 
   <div class="">

@@ -2,10 +2,10 @@ class ArticlesController < ApplicationController
   def index
     if params[:category_id]
       @category = Category.find(params[:category_id].to_i)
-      @articles = @category.articles
+      @visible_articles = @category.articles.visible
  
     else
-      @articles = Article.all
+      @visible_articles = Article.visible
     end
     
   end
