@@ -5,7 +5,8 @@ class Admin::ArticlesController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @articles = Article.all.reverse
+    @articles = Article.paginate(:page => params[:page], :per_page => 1)
+    #one per page for testing 
   end
   
   def new
