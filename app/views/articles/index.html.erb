@@ -1,6 +1,6 @@
 <header class="current_page_header"><h1><%= @category.name %></h1></header>
-
+<%= will_paginate @visible_articles %>
 <% @visible_articles.each do |article| %>
 <%= render article %>
 <% end %>
-
+<%= will_paginate @visible_articles %>
