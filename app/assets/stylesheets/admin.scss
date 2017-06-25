@@ -1,0 +1,29 @@
+
+.form_group__input--article_content {
+  width: 100%;
+  height: 200px;
+}
+
+.form_group__input--article_title {
+  width: 100%;
+}
+
+.form_group {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.form_group__input--article_submit {
+  width: 70px;
+  height: 40px;
+}
+
+.chexbox_group--article_categories {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.form_group__checkbox_group {
+  margin-right: 10px;
+  
+}

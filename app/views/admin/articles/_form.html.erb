@@ -11,46 +11,48 @@
     </div>
   <% end %>
 
-  <div class="">
+  <div class="form_group form_group--article_title">
     <%= f.label :title %><br />
-    <%= f.text_field :title, autofocus: true, class: '' %>
+    <%= f.text_field :title, autofocus: true, class: "form_group__input form_group__input--article_title" %>
   </div>
 
-  <div class="">
+  <div class="form_group form_group--article_privacy">
     <%= f.label :privacy %><br />
     <%= f.select :privacy, Article.privacies.keys.map {|priv| [priv.titleize, priv]} %>
   </div>
 
-  <div class="">
+  <div class="form_group form_group--article_author">
     <%= f.label :author %><br />
     <%= f.collection_select(:author_id, Author.all, :id, :name) %>
   </div>
   
-  <div class="">
-    <%= f.label :content %><br />
-    <%= f.text_area :content, class: '' %>
+  <div class="form_group form_group--article_content">
+    <%= f.label :content %>
+    <%= f.text_area :content, class: "form_group__input form_group__input--article_content" %>
   </div>
 
-  <div class="">
-    <%= label_tag :categories %><br />
-    <%= hidden_field_tag "article[category_ids][]", nil %>
-    <% Category.all.each do |category| %>
-    <span class=''>
-      <%= check_box_tag "article[category_ids][]",
-	  category.id,
-	  @article.category_ids.include?(category.id),
-	  id: dom_id(category) %>
-      <%= label_tag dom_id(category), category.name %>
-    </span>
-    <% end %>
+  <div class="form_group form_group--article_categories">
+    <%= label_tag :categories, nil, class: "form_group__label form_group__label--article_categories" %><br />
+    <div class="checkbox_group chexbox_group--article_categories">
+      <%= hidden_field_tag "article[category_ids][]", nil %>
+      <% Category.all.each do |category| %>
+      <span class="form_group__checkbox_group form_group__checkbox_group--article_categories">
+	<%= check_box_tag "article[category_ids][]",
+	    category.id,
+	    @article.category_ids.include?(category.id),
+	    id: dom_id(category) %><%= label_tag dom_id(category), category.name %>
+      </span>
+      <% end %>
+    </div>
   </div>
     
-  <div class="actions">
-    <%= f.submit("Save", class: "") %>
+  <div class="form_group form_group--article_submit">
+    <%= f.submit("Save", class: "form_group__input form_group__input--article_submit") %>
   </div>
 
-<% end %>
-<div>
+  <% end %>
+  
+<div class="form_group form_group--article_submit_delete">
   <% unless @article.new_record? %>
   <%= link_to 'Delete this article', delete_admin_article_path(@article) %>
   <% end %>
