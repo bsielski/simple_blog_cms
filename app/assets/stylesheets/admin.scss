@@ -18,6 +18,11 @@
   height: 40px;
 }
 
+.form_group__input--category_submit {
+  width: 70px;
+  height: 40px;
+}
+
 .chexbox_group--article_categories {
   display: flex;
   flex-flow: row wrap;
@@ -26,4 +31,9 @@
 .form_group__checkbox_group {
   margin-right: 10px;
   
+}
+
+.form_group__input--category_name {
+  min-width: 200px;
+  max-width: 50%;
 }

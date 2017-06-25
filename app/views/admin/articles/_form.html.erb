@@ -52,7 +52,7 @@
 
   <% end %>
   
-<div class="form_group form_group--article_submit_delete">
+<div class="form_group form_group--article_delete">
   <% unless @article.new_record? %>
   <%= link_to 'Delete this article', delete_admin_article_path(@article) %>
   <% end %>

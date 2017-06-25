@@ -11,33 +11,33 @@
     </div>
   <% end %>
 
-  <div class="">
+  <div class="form_group form_group--category_name">
     <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, class: '' %>
+    <%= f.text_field :name, autofocus: true, class: "form_group__input form_group__input--category_name" %>
   </div>
 
-  <div class="">
+  <div class="form_group form_group--category_description">
     <%= f.label :description %><br />
-    <%= f.text_field :description, class: '' %>
+    <%= f.text_field :description, class: "form_group__input form_group__input--category_description" %>
   </div>
 
-  <div class="">
+  <div class="form_group form_group--category_privacy">
     <%= f.label :privacy %><br />
     <%= f.select :privacy, Category.privacies.keys.map {|priv| [priv.titleize, priv]} %>
   </div>
   
-  <div class="">
+  <div class="form_group form_group--category_position">
     <%= f.label :position %><br />
     <%= f.select :position, 1..Category.all.size %>
   </div>
   
-  <div class="actions">
-    <%= f.submit("Save", class: "") %>
+  <div class="form_group form_group--category_submit">
+    <%= f.submit("Save", class: "form_group__input form_group__input--category_submit") %>
   </div>
   
 <% end %>
 
-<div>
+<div class="form_group form_group--category_delete">
   <% unless @category.new_record? %>
   <%= link_to 'Delete this category', delete_admin_category_path(@category) %>
   <% end %>
