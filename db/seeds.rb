@@ -62,10 +62,12 @@ unless Admin.first
   
   Stylesheet.create!(
     content: <<-THESTRING
+/*
 * {
   padding: 0;
   margin: 0;
 }
+*/
 .page_header > h1 {
   margin-bottom: 10px;
 }
@@ -90,6 +92,7 @@ unless Admin.first
 body {
   background-color: #050500;
 }
+/*
 li {
    list-style-position: inside;
 }
@@ -97,6 +100,7 @@ a {
   text-decoration: inherit;
   color: inherit;
 }
+*/
 figcaption {
   font-size: small;
   font-style: italic;
