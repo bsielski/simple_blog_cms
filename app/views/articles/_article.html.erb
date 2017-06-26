@@ -4,8 +4,13 @@
       <h1 class="article_header__title"><%= link_to article.title, article %></h1>
       <footer>
 	<p class="article_header__tags">
-	  <%= pluralize(article.categories.count, "Category") %>: <% article.categories.each do |category| %>
-	  <%= category.name %>
+	  <%= pluralize(article.categories.count, "Category") %>:
+	  <% article.categories.each do |category| %>
+	    <% if category.id == article.categories.last.id %>
+	      <%= link_to category.name, category_articles_path(category) %>
+	    <% else %>
+	      <%= link_to category.name, category_articles_path(category) %>,
+	    <% end %>
 	  <% end %>
 	</p>
       </footer>

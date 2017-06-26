@@ -5,7 +5,11 @@
       <footer>
 	<p class="article_header__tags">
 	  <%= pluralize(@article.categories.count, "Category") %>: <% @article.categories.each do |category| %>
-	  <%= category.name %>
+	    <% if category.id == @article.categories.last.id %>
+	      <%= link_to category.name, category_articles_path(category) %>
+	    <% else %>
+	      <%= link_to category.name, category_articles_path(category) %>,
+	    <% end %>
 	  <% end %>
 	</p>
       </footer>
