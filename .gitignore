@@ -27,6 +27,8 @@
 
 # Ignore Emacs garbage
 *~
+\#*.*#
+.#*.*
 
 # Ignore design docs
 *.org
