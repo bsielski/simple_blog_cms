@@ -74,6 +74,19 @@ unless Admin.first
 .article_header {
   margin-bottom: 15px;
 }
+.article_header__title {
+  margin-bottom: 5px;
+  color: black;
+}
+.article_header__tags {
+  font-size: 13px;
+  margin: 0;
+}
+.article_footer {
+  font-size: 13px;
+  margin: 0;
+}
+
 .article_body {
   padding: 15px 0;
   margin: 0 0;
@@ -84,6 +97,18 @@ unless Admin.first
   margin-bottom: 10px;
   font-family: 'Ubuntu', sans-serif;
   font-size: 16px;
+}
+.article_body > h2 {
+  margin-top: 10px ;
+  margin-bottom: 10px;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 14px;
+}
+.article_body > h3 {
+  margin-top: 10px ;
+  margin-bottom: 10px;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 12px;
 }
 .article_body > p {
   margin-top: 10px;

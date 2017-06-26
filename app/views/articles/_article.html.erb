@@ -1,9 +1,22 @@
 <div>
   <article class="article">
-    <header class="article_header"><h1><%= article.title %></h1></header>
+    <header class="article_header">
+      <h1 class="article_header__title"><%= article.title %></h1>
+      <footer>
+	<p class="article_header__tags">
+	  <%= pluralize(article.categories.count, "Category") %>: <% article.categories.each do |category| %>
+	  <%= category.name %>
+	  <% end %>
+	</p>
+      </footer>
+    </header>
+    
     <div class="js_markdown article_body"><%= raw article.content %></div>
-    <footer class="article_footer"><p><%= article.author.name %></p></footer>
+
+    <footer class="article_footer">
+      <p>at: <%= article.created_at %></p>
+      <p>by: <%= article.author.name %></p>
+    </footer>
   </article>
   
 </div>
-      
