@@ -1,0 +1,25 @@
+<header class="current_page_header"><h1>Manage stylesheets</h1></header>
+<p>
+  <%= link_to 'Create a new stylesheet', new_admin_stylesheet_path %>
+</p>
+<% if @stylesheets %>
+<table>
+  <tr>
+    <th>Id</th><th>Created at</th><th>Updated at</th><th>Active?</th><th></th><th></th>
+  </tr>
+  <%= will_paginate @stylesheets %>
+  <% @stylesheets.each do |stylesheet| %>
+  <tr>
+    <td><%= stylesheet.id %></td>
+    <td><%= stylesheet.created_at %></td>
+    <td><%= stylesheet.updated_at %></td>
+    <td><%= "yes" if Site.first.stylesheet_id == stylesheet.id %></td>
+    <td><%= link_to 'Edit', edit_admin_stylesheet_path(stylesheet) %></td>
+    <td><%= link_to 'Delete', delete_admin_stylesheet_path(stylesheet) %></td>
+  </tr>
+  <% end %>
+</table>
+<%= will_paginate @stylesheets %>
+<% else %>
+<p>No stylesheets (how is it possible?)</p>
+<% end %>
