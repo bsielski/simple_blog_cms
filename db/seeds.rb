@@ -62,12 +62,6 @@ unless Admin.first
   
   Stylesheet.create!(
     content: <<-THESTRING
-/*
-* {
-  padding: 0;
-  margin: 0;
-}
-*/
 .page_header > h1 {
   margin-bottom: 10px;
 }
@@ -86,30 +80,22 @@ unless Admin.first
   border-top: 2px solid rgba(150, 150, 100, 0.2);
 }
 .article_body > h1 {
+  margin-top: 10px ;
+  margin-bottom: 10px;
   font-family: 'Ubuntu', sans-serif;
   font-size: 16px;
+}
+.article_body > p {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-family: 'Noticia Text', serif;
 }
 body {
   background-color: #050500;
 }
-/*
-li {
-   list-style-position: inside;
-}
-a {
-  text-decoration: inherit;
-  color: inherit;
-}
-*/
 figcaption {
   font-size: small;
   font-style: italic;
-}
-p {
-  font-family: 'Noticia Text', serif;
-  margin-top: 1px;
-  margin-bottom: 1px;
-  padding: 1px 0;
 }
 code {
   /*background-color: lightgrey;*/
