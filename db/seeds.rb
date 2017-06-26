@@ -121,6 +121,7 @@ unless Admin.first
 }
 body {
   background-color: #050500;
+  margin: 0;
 }
 figcaption {
   font-size: small;
