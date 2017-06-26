@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   resources :categories, only: [:index] do
     resources :articles
   end
-
+  
+  resources :articles, only: [:index, :show]
+  
   root "articles#index"
 end
