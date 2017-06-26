@@ -62,6 +62,10 @@ unless Admin.first
   
   Stylesheet.create!(
     content: <<-THESTRING
+.page_header {
+  display: flex;
+  flex-flow: row wrap;
+}
 .page_header > h1 {
   margin-bottom: 10px;
 }
