@@ -1,0 +1,29 @@
+<%= form_for [:admin, @stylesheet] do |f| %>
+
+  <% if @stylesheet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@stylesheet.errors.count, "error") %> prohibited this stylesheet from being saved:</h2>
+      <ul>
+        <% @stylesheet.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form_group form_group--stylesheet_content">
+    <%= f.label :content %>
+    <%= f.text_area :content, class: "form_group__input form_group__input--stylesheet_content" %>
+  </div>
+    
+  <div class="form_group form_group--stylesheet_submit">
+    <%= f.submit("Save", class: "form_group__input form_group__input--stylesheet_submit") %>
+  </div>
+
+  <% end %>
+  
+<div class="form_group form_group--stylesheet_delete">
+  <% unless @stylesheet.new_record? %>
+  <%= link_to 'Delete this stylesheet', delete_admin_stylesheet_path(@stylesheet) %>
+  <% end %>
+</div>
