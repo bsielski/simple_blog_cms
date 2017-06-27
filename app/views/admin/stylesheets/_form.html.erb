@@ -21,6 +21,12 @@
   </div>
 
   <% end %>
+
+<div class="form_group form_group--stylesheet_activate">
+  <% unless @stylesheet.id == Site.first.stylesheet_id %>
+  <%= button_to "Make active", activate_admin_stylesheet_path(@stylesheet), method: :get %>
+  <% end %>
+</div>
   
 <div class="form_group form_group--stylesheet_delete">
   <% unless @stylesheet.new_record? %>

@@ -1,6 +1,6 @@
 class Admin::StylesheetsController < ApplicationController
   
-  before_action :set_stylesheet, only: [:edit, :update, :delete, :destroy]
+  before_action :set_stylesheet, only: [:edit, :update, :delete, :destroy, :activate]
   before_action :authenticate_admin!
 
   def index
@@ -32,6 +32,11 @@ class Admin::StylesheetsController < ApplicationController
 
   end
 
+  def activate
+    @stylesheet.activate
+    redirect_back(fallback_location: admin_stylesheets_path)
+  end
+  
   def delete
 
   end
