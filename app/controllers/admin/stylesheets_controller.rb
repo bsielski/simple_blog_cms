@@ -25,6 +25,9 @@ class Admin::StylesheetsController < ApplicationController
 
   def update
     if @stylesheet.update(stylesheet_params)
+      if params[:commit] == 'Save and make active'
+        @stylesheet.activate
+      end
       redirect_to edit_admin_stylesheet_path, notice: 'Stylesheet was successfully updated.'
     else
       render :edit
@@ -32,11 +35,6 @@ class Admin::StylesheetsController < ApplicationController
 
   end
 
-  def activate
-    @stylesheet.activate
-    redirect_back(fallback_location: admin_stylesheets_path)
-  end
-  
   def delete
 
   end
