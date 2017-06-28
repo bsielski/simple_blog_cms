@@ -5,7 +5,13 @@ class Admin::ArticlesController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @articles = Article.includes(:author, :categories).reverse_order.paginate(:page => params[:page], :per_page => 100)
+    if params[:category_id]
+      @category = Category.find(params[:category_id].to_i)
+      @articles = @category.articles.includes(:author, :categories).visible.reverse_order 
+    else
+      @articles = Article.includes(:author, :categories).visible.reverse_order
+    end
+    @articles = @articles.paginate(:page => params[:page], :per_page => 100)
   end
   
   def new
