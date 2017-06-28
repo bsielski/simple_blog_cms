@@ -5,9 +5,9 @@ class ArticlesController < ApplicationController
   def index
     if params[:category_id]
       @category = Category.find(params[:category_id].to_i)
-      @visible_articles = @category.articles.includes(:author, :categories).visible 
+      @visible_articles = @category.articles.includes(:author, :categories).visible.reverse_order 
     else
-      @visible_articles = Article.includes(:author, :categories).visible
+      @visible_articles = Article.includes(:author, :categories).visible.reverse_order
     end
     @visible_articles = @visible_articles.paginate(:page => params[:page], :per_page => 10)
 
