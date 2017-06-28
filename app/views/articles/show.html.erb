@@ -4,7 +4,7 @@
       <h1 class="current_page_header"><%= @article.title %></h1>
       <footer>
 	<p class="article_header__tags">
-	  <%= "Category".pluralize(@article.categories.count) %>:
+	  <%= "Category".pluralize(@article.categories.size) %>:
 	  <%= @article.categories.map{ |c| link_to(c.name, category_articles_path(c)) }.to_sentence(two_words_connector: ", ", last_word_connector: ", ").html_safe %>
 	</p>
       </footer>
