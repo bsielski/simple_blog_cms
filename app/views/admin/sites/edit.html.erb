@@ -1,2 +1,47 @@
-<h1>Admin::Sites#edit</h1>
-<p>Find me in app/views/admin/sites/edit.html.erb</p>
+<header class="current_page_header"><h1>Edit site settings</h1></header>
+<div>
+<%= form_for [:admin, @site] do |f| %>
+
+  <% if @site.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@site.errors.count, "error") %> prohibited this site from being saved:</h2>
+      <ul>
+        <% @site.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form_group form_group--site_title">
+    <%= f.label :title %><br />
+    <%= f.text_field :title, autofocus: true, class: "form_group__input form_group__input--site_title" %>
+  </div>
+
+  <div class="form_group form_group--site_author">
+    <%= f.label :author %><br />
+    <%= f.text_field :author, class: "form_group__input form_group__input--site_author" %>
+  </div>
+
+    <div class="form_group form_group--site_keywords">
+    <%= f.label :keywords %><br />
+    <%= f.text_field :keywords, class: "form_group__input form_group__input--site_keywords" %>
+  </div>
+
+  <div class="form_group form_group--site_description">
+    <%= f.label :description %>
+    <%= f.text_area :description, class: "form_group__input form_group__input--site_description" %>
+  </div>
+    
+  <div class="form_group form_group--site_submit">
+    <%= f.submit("Save", class: "form_group__input form_group__input--site_submit") %>
+  </div>
+
+  <% end %>
+
+</div>
+
+<div class="form_group">
+  <%= link_to 'Back to manage admin panel', admin_path %>
+</div>
+

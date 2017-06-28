@@ -22,7 +22,7 @@ class Admin::SitesController < ApplicationController
   end
     
   def site_params
-    params.require(:site).permit(:title, :author, :keywords, :description, :stylesheet_id)
+    params.require(:site).permit(:title, :author, :keywords, :description)
   end
 
 end
