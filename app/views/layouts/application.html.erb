@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SimpleSiteCms</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8"/>
+    <title><%= Site::Settings.title %></title>
+    <meta name="description" content="<%= Site::Settings.description %>"/>
+    <meta name="keywords" content="<%= Site::Settings.keywords %>"/>
     <%= csrf_meta_tags %>
+    <meta name="author" content="<%= Site::Settings.author %>">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
