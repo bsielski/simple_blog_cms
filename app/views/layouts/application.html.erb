@@ -15,18 +15,18 @@
   
   <body>
     <div class="page_container">
-      <header class="page_header">
-	<a href="<%= root_path  %>">
+      <header>
+	<a href="<%= root_path  %>" class="page_header">
 	  <% @header_sections.each do |section| %>
-	  <section class="js_markdown page_header__section"><%= raw section.content %></section>
+	  <section class="js_markdown page_header_section"><%= raw section.content %></section>
 	  <% end %>
 	</a>
       </header>
       
-      <nav>
+      <nav class="main_navigation">
 	<% @visible_categories.each do |category| %>
-	<div>
-	  <%= active_link_to category.name, category_articles_path(category), class_active: 'current', active: :inclusive %>
+	<div class="main_navigation__item">
+	  <%= active_link_to category.name, category_articles_path(category), class: "main_navigation__link", class_active: "main_navigation__link--active", active: :inclusive %>
 
 	</div>
 	<% end %>

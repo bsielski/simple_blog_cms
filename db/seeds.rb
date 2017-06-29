@@ -118,9 +118,10 @@ unless Admin.first
   margin-top: 10px;
   margin-bottom: 10px;
   font-family: 'Noticia Text', serif;
+  text-align: justify;
 }
 body {
-  background-color: #050500;
+  background-color: black;
   margin: 0;
 }
 figcaption {
@@ -180,39 +181,45 @@ pre > code {
   font-family: 'Ubuntu', sans-serif;
   font-size: 28px;
 }
-body > div > nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 0 1px;
-  /*border: 1px solid orange;
-  border-radius: 0;*/
+
+/* MAIN NAVIGATION */
+
+.main_navigation {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 1px;
+    padding: 0;
+    font-size: 14px;
 }
-body > div > nav > div {
-  min-width: 150px;
-  max-width: 100px;
-  flex: auto;
-  border: 1px solid red;
-  border-radius: 0;
-  text-align: center;
-  margin: 2px;
-  font-family: 'Ubuntu', sans-serif;
+.main_navigation__item {
+    min-width: 150px;
+    max-width: 100px;
+    flex: auto;
+    border: 1px solid red;
+    border-radius: 0;
+    margin: 2px;
+    font-family: 'Ubuntu', sans-serif;
+    padding: 0;
+    display: flex;
+    align-items: stretch;
+    font-size: 14px;
 }
-body > div > nav > div > a {
-  padding: 5px 3px;
-  display: block;
+.main_navigation__link {
+    padding: 5px 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 auto;
+    text-decoration: inherit;
+    color: inherit;
+    margin: 0;
+    cursor: auto;
 }
-body > div > nav > div > a > em, body > div > nav > div a:active {
+.main_navigation__link--active {
   background-color: darkred;
   color: white;
   font-weight: bold;
-}
-
-body > div > nav > div > small {
-  background-color: grey;
-  color: #aaaaaa;
-  pointer-events: none;
-  cursor: default;
 }
 
 .page_footer {
@@ -225,6 +232,7 @@ body > div > nav > div > small {
 .current_page_header {
   text-align: center;
 }
+
 THESTRING
              
   )
