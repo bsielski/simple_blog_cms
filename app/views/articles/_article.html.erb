@@ -15,7 +15,7 @@
 
     <footer class="article_footer">
       <%= time_tag article.created_at, class:"article_footer__created" %>
-      <%= link_to article.author.name, "author_articles_path(article.author)", rel:"author", class:"article_footer__author" %>
+      <%= link_to article.author.name, article.author, rel:"author", class:"article_footer__author" %>
     </footer>
   </article>
   
