@@ -20,6 +20,11 @@ Rails.application.routes.draw do
       end
     end
     resources :sites, only: [:edit, :update]
+    resources :authors, only: [:index, :new, :create, :edit, :update, :delete, :destroy] do
+      member do
+        get 'delete'
+      end
+    end
   end
 
   get 'admin', to: 'admin_pages#show', page: "home"
@@ -29,6 +34,11 @@ Rails.application.routes.draw do
   end
   
   resources :articles, only: [:index, :show]
+
+  resources :authors, only: [:index, :show] do
+    resources :articles, only: [:index]
+  end
+  
   
   root "articles#index"
 end
