@@ -11,6 +11,11 @@
     </div>
   <% end %>
 
+  <div class="form_group form_group--stylesheet_name">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form_group__input form_group__input--stylesheet_name" %>
+  </div>
+
   <div class="form_group form_group--stylesheet_content">
     <%= f.label :content %>
     <%= f.text_area :content, class: "form_group__input form_group__input--stylesheet_content" %>
