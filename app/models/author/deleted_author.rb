@@ -1,5 +1,8 @@
 class Author::DeletedAuthor
 
+  class FakeAdmin < Struct.new(:email)
+  end
+
   def initialize(id)
     @id = id
   end
@@ -8,6 +11,10 @@ class Author::DeletedAuthor
     "Unknown"
   end
 
+  def admin
+    FakeAdmin.new("no email")
+  end
+  
   def description
     "This author was probably deleted."
   end
