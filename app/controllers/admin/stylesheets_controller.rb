@@ -51,7 +51,7 @@ class Admin::StylesheetsController < ApplicationController
   end
     
   def stylesheet_params
-    params.require(:stylesheet).permit(:content)
+    params.require(:stylesheet).permit(:name, :content)
   end
 
 end
