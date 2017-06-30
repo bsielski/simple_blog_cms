@@ -12,7 +12,7 @@ class Admin::AuthorsController < ApplicationController
   end
 
   def create
-    @author = Author.new(author_params)
+    @author = current_admin.authors.new(author_params)
     if @author.save
       redirect_to admin_authors_path(@author), notice: 'Author was successfully created.'
     else
