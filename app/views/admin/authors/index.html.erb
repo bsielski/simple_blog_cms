@@ -1,2 +1,26 @@
-<h1>Admin::Authors#index</h1>
-<p>Find me in app/views/admin/authors/index.html.erb</p>
+<header class="current_page_header"><h1>Manage authors</h1></header>
+<p>
+  <%= link_to 'Create a new author', new_admin_author_path %>
+</p>
+<% if @authors %>
+<table>
+  <tr>
+    <th>Id</th><th>Name</th><th>Admin id</th><th>Admin email</th><th>Description</th><th></th><th></th>
+  </tr>
+  <%= will_paginate @authors %>
+  <% @authors.each do |author| %>
+  <tr>
+    <td><%= author.id %></td>
+    <td><%= author.name %></td>
+    <td><%= author.admin.id %></td>
+    <td><%= author.admin.email %></td>
+    <td><%= "author.description" %></td>
+    <td><%= link_to 'Edit', edit_admin_author_path(author) %></td>
+    <td><%= link_to 'Delete', delete_admin_author_path(author) %></td>
+  </tr>
+  <% end %>
+</table>
+<%= will_paginate @authors %>
+<% else %>
+<p>No authors (how it is even possible?).</p>
+<% end %>
