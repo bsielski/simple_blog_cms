@@ -1,2 +1,9 @@
-<h1>Admin::Authors#edit</h1>
-<p>Find me in app/views/admin/authors/edit.html.erb</p>
+<header class="current_page_header"><h1>Edit author</h1></header>
+<div>
+  <%= render 'form' %>
+</div>
+
+<div class="form_group">
+  <%= link_to 'Back to manage authors', admin_authors_path %>
+</div>
+
