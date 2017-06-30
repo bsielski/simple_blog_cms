@@ -4,8 +4,7 @@ class Admin::AuthorsController < ApplicationController
   before_action :authenticate_admin!
   
   def index
-    @authors = Author.includes(:author, :categories).visible.reverse_order
-    @authors = @authors.paginate(:page => params[:page], :per_page => 100)
+    @authors = Author.includes(:admin, :articles).paginate(:page => params[:page], :per_page => 100)
   end
   
   def new
@@ -15,7 +14,7 @@ class Admin::AuthorsController < ApplicationController
   def create
     @author = Author.new(author_params)
     if @author.save
-      redirect_to edit_admin_author_path(@author), notice: 'Author was successfully created.'
+      redirect_to admin_authors_path(@author), notice: 'Author was successfully created.'
     else
       render :new
     end
@@ -23,7 +22,7 @@ class Admin::AuthorsController < ApplicationController
 
   def update
     if @author.update(author_params)
-      redirect_to edit_admin_author_path, notice: 'Author was successfully updated.'
+      redirect_to admin_authors_path, notice: 'Author was successfully updated.'
     else
       render :edit
     end
