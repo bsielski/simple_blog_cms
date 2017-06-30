@@ -15,12 +15,12 @@
   
   <body>
     <div class="page_container">
-      <header>
-	<a href="<%= root_path  %>" class="page_header">
+      <header class="page_header" >
 	  <% @header_sections.each do |section| %>
-	  <section class="js_markdown page_header_section"><%= raw section.content %></section>
+	  <a href="<%= root_path  %>" class="page_header__section">
+	    <%= section.content.html_safe %>
+	  </a>
 	  <% end %>
-	</a>
       </header>
       
       <nav class="main_navigation">
@@ -39,16 +39,15 @@
       <footer class="page_footer">
 	
 	<% @footer_sections.each do |section| %>
-	<section class="js_markdown page_footer__section"><%= raw section.content %></section>
+	<section class="page_footer__section"><%= section.content.html_safe %></section>
 	<% end %>
-      </footer>
+      </footer>      
 
-      <% if admin_signed_in? %>
-      <div class="admin_footer">
-	<%= link_to 'Admin panel', admin_path %>
-      </div>
-      <% end %>
-      
     </div>
+          
+    <% if admin_signed_in? %>
+    <%= link_to 'Admin panel', admin_path, class: "link_to_admin_panel" %>
+    <% end %>
+     
   </body>
 </html>

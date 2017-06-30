@@ -27,7 +27,7 @@ unless Admin.first
 
   HeaderSection.create!(
     position: 0,
-    content: Convert.to_html("# My Site\n\n## will be awsome soon")
+    content: Convert.to_html("# My Site\n\nwill be awsome soon")
   )
   puts "A default header created."
 
@@ -62,39 +62,155 @@ unless Admin.first
   
   Stylesheet.create!(
     content: <<-THESTRING
+/* PAGE */
+
+body {
+  background-color: black;
+  margin: 0;
+}
+.page_container {
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 5px 20px;
+  /*border: 2px solid blue;
+  border-radius: 0;*/
+  background-color: #ffffee;
+}
+
+/* PAGE_HEADER */
+
 .page_header {
   display: flex;
   flex-flow: row wrap;
 }
-.page_header > h1 {
-  margin-bottom: 10px;
-}
-.page_footer {
-  margin-top: 10px;
-}
-.article {
-  margin: 30px 0;
-}
-.article_header {
-  margin-bottom: 15px;
-}
-.article_header__title {
-  margin-bottom: 5px;
+.page_header__section {
+  padding: 0;
+  margin: 0;
+  display: block;
+  text-decoration: none;
   color: black;
 }
-.article_header__tags {
-  font-size: 13px;
+.page_header__section > h1 {
+  display: block;
+  font-size: 2em;
+  font-weight: bold;
   margin: 0;
+  padding: 0;
+  font-family: 'Ubuntu', sans-serif;
 }
-.article_footer {
-  font-size: 13px;
+.page_header__section > p {
+  margin-top: 0;
+  padding-top: 0;
+  font-family: 'Ubuntu', sans-serif;
+  margin-bottom: 1px;
+  padding: 1px 0;
+  margin: 0;
+  display: block;
+  font-size: 14px;
+}
+
+/* MAIN NAVIGATION */
+
+.main_navigation {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 1px;
+  padding: 0;
+  font-size: 14px;
+}
+.main_navigation__item {
+  min-width: 150px;
+  max-width: 100px;
+  flex: auto;
+  border: 1px solid red;
+  border-radius: 0;
+  margin: 2px;
+  font-family: 'Ubuntu', sans-serif;
+  padding: 0;
+  display: flex;
+  align-items: stretch;
+  font-size: 14px;
+}
+.main_navigation__link {
+  padding: 5px 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 auto;
+  text-decoration: inherit;
+  color: inherit;
+  margin: 0;
+  cursor: auto;
+  text-align: center
+}
+.main_navigation__link--active {
+  background-color: darkred;
+  color: white;
+  font-weight: bold;
+}
+
+/* PAGE_TITLE */
+
+.current_page_header {
+  text-align: center;
+}
+.current_page_header > h1 {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 28px;
+}
+
+/* ARTICLE */
+
+.article {
+  margin: 30px 0;
+  border-bottom: 2px solid rgba(150, 150, 100, 0.2);
+}
+
+/* ARTICLE_TITLE */
+
+.article_title {
+  margin-bottom: 5px;
+}
+.article_title__link {
+  text-decoration: none;
+  color: black;
+  font-size: 28px;
+  font-family: 'Ubuntu', sans-serif;
   margin: 0;
 }
 
+/* ARTICLE_CATEGORIES */
+
+.article_categories {
+
+}
+.article_categories__title {
+  font-size: 13px;
+  color: #111111;
+}
+.article_categories__list {
+  display: inline;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.article_categories__item {
+  display: inline;
+  margin-left: 1px;
+  font-size: 13px;
+}
+.article_categories__link {
+  text-decoration: underline;
+  text-decoration-style: solid;
+  color: #111111;
+}
+
+/* ARTICLE_BODY */
+
 .article_body {
-  padding: 15px 0;
-  margin: 0 0;
-  border-top: 2px solid rgba(150, 150, 100, 0.2);
+  padding: 0;
+  margin: 15px 0;
 }
 .article_body > h1 {
   margin-top: 10px ;
@@ -120,10 +236,7 @@ unless Admin.first
   font-family: 'Noticia Text', serif;
   text-align: justify;
 }
-body {
-  background-color: black;
-  margin: 0;
-}
+
 figcaption {
   font-size: small;
   font-style: italic;
@@ -152,85 +265,56 @@ pre > code {
   background-color: #282c34;
   color: #92a5b1;
 }
-.page_container {
-  max-width: 750px;
-  margin: 0 auto;
-  padding: 5px 20px;
-  /*border: 2px solid blue;
-  border-radius: 0;*/
-  background-color: #ffffee;
+
+/* ARTICLE_FOOTER */
+
+.article_footer {
+  font-size: 13px;
+  margin: 13px 0 13px 0;
 }
-/* PAGE TITLE */
-.current_page_header > h1 {
-  font-family: 'Ubuntu', sans-serif;
-  font-size: 28px;
+.article_footer__created {
+  margin: 3px 0 3px 0;
+  display: block;
+  color: #111111;
 }
-/* SITE SUBTITLE */
-.page_header__section > h2 {
-  margin-top: 0;
-  padding-top: 0;
-  /* border: 1px solid red; */
-  font-family: 'Ubuntu', sans-serif;
-  font-size: 14px;
-}
-/* SITE TITLE */
-.page_header__section > h1 {
-  margin: 0;
-  padding: 0;
-  /* border: 1px solid orange; */
-  font-family: 'Ubuntu', sans-serif;
-  font-size: 28px;
+.article_footer__author {
+  margin: 3px 0 3px 0;
+  display: block;
+  color: #111111;
 }
 
-/* MAIN NAVIGATION */
 
-.main_navigation {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 0 1px;
-    padding: 0;
-    font-size: 14px;
-}
-.main_navigation__item {
-    min-width: 150px;
-    max-width: 100px;
-    flex: auto;
-    border: 1px solid red;
-    border-radius: 0;
-    margin: 2px;
-    font-family: 'Ubuntu', sans-serif;
-    padding: 0;
-    display: flex;
-    align-items: stretch;
-    font-size: 14px;
-}
-.main_navigation__link {
-    padding: 5px 3px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 1 1 auto;
-    text-decoration: inherit;
-    color: inherit;
-    margin: 0;
-    cursor: auto;
-}
-.main_navigation__link--active {
-  background-color: darkred;
-  color: white;
-  font-weight: bold;
-}
+/* PAGE_FOOTER */
 
 .page_footer {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+.page_footer__section {
+  margin-top: 10px;
   text-align: center;
   font-style: italic;
-  /*border: 1px solid red;
-  border-radius: 0;*/
   font-family: 'Ubuntu', sans-serif;
 }
-.current_page_header {
+.page_footer__section > p {
+  font-family: 'Noticia Text', serif;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  padding: 1px 0;
+  display: block;
   text-align: center;
+  font-style: italic;
+  font-size: 14px;
+}
+.link_to_admin_panel {
+  display: block;
+  background-color: black;
+  color: #ffffee;
+  max-width: 750px;
+  margin: 0 auto;
 }
 
 THESTRING
