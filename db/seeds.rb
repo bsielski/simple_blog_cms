@@ -61,6 +61,7 @@ unless Admin.first
   puts "Categorization done."
   
   Stylesheet.create!(
+    name: "Default style",
     content: <<-THESTRING
 /* PAGE */
 
