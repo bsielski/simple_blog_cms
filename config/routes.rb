@@ -25,6 +25,12 @@ Rails.application.routes.draw do
         get 'delete'
       end
     end
+    resources :header_sections, only: [:index, :new, :create, :edit, :update, :delete, :destroy] do
+      member do
+        get 'delete'
+      end
+    end
+
   end
 
   get 'admin', to: 'admin_pages#show', page: "home"
