@@ -15,7 +15,9 @@
 
     <footer class="article_footer">
       <%= time_tag article.created_at, class:"article_footer__created" %>
-      <%= link_to article.author.name, article.author, rel:"author", class:"article_footer__author" %>
+      <%= link_to_if article.author.not_deleted?, article.author.name, article.author, rel:"author", class:"article_footer__author" do %>
+      <div class="article_footer__author"><%= article.author.name %></div>
+      <% end %>
     </footer>
   </article>
   
