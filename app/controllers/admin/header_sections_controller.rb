@@ -15,7 +15,7 @@ class Admin::HeaderSectionsController < ApplicationController
   def create
     @header_section = HeaderSection.new(header_section_params)
     if @header_section.save
-      redirect_to edit_admin_header_section_path(@header_section), notice: 'Header section was successfully created.'
+      redirect_to admin_header_sections_path, notice: 'Header section was successfully created.'
     else
       render :new
     end
@@ -26,7 +26,7 @@ class Admin::HeaderSectionsController < ApplicationController
 
   def update
     if @header_section.update(header_section_params)
-      redirect_to edit_admin_header_section_path, notice: 'Header section was successfully updated.'
+      redirect_to admin_header_sections_path, notice: 'Header section was successfully updated.'
     else
       render :edit
     end
