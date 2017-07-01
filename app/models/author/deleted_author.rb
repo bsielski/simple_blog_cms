@@ -7,6 +7,11 @@ class Author::DeletedAuthor
     @id = id
   end
 
+  def not_deleted?
+    false
+  end
+
+  
   def name
     "Unknown"
   end
