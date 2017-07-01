@@ -1,2 +1,21 @@
-<h1>Admin::HeaderSections#delete</h1>
-<p>Find me in app/views/admin/header_sections/delete.html.erb</p>
+<div>
+  <article class="article">
+    <header class="article_header"><h1>Deleting header section</h1></header>
+    
+    <div class="article_body">
+      <p>
+	Are you sure?
+      </p>
+    </div>
+    
+    <div class="form_group">
+      <%= link_to 'Delete', admin_header_section_path(@header_section), method: :delete %>
+    </div>
+    <div class="form_group">
+      <%= link_to 'Back', admin_header_sections_path %>
+      </div>
+
+  </article>
+  
+</div>
+      
