@@ -5,7 +5,7 @@ class Admin::HeaderSectionsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @header_sections = HeaderSection.all.paginate(:page => params[:page], :per_page => 100)
+    @header_sections = HeaderSection.order(:position).paginate(:page => params[:page], :per_page => 100)
   end
   
   def new
