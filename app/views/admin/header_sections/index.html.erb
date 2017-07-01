@@ -1,2 +1,23 @@
-<h1>Admin::HeaderSections#index</h1>
-<p>Find me in app/views/admin/header_sections/index.html.erb</p>
+<header class="current_page_header"><h1>Manage header sections</h1></header>
+<p>
+  <%= link_to 'Create a new header section', new_admin_header_section_path %>
+</p>
+<% if @header_sections %>
+<table>
+  <tr>
+    <th>Id</th><th>Position</th><th></th><th></th>
+  </tr>
+  <%= will_paginate @header_sections %>
+  <% @header_sections.each do |header_section| %>
+  <tr>
+    <td><%= header_section.id %></td>
+    <td><%= header_section.position %></td>
+    <td><%= link_to 'Edit', edit_admin_header_section_path(header_section) %></td>
+    <td><%= link_to 'Delete', delete_admin_header_section_path(header_section) %></td>
+  </tr>
+  <% end %>
+</table>
+<%= will_paginate @header_sections %>
+<% else %>
+<p>No header sections</p>
+<% end %>
