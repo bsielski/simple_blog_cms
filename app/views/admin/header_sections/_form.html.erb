@@ -1,0 +1,34 @@
+<%= form_for [:admin, @header_section] do |f| %>
+
+  <% if @header_section.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@header_section.errors.count, "error") %> prohibited this header_section from being saved:</h2>
+      <ul>
+        <% @header_section.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form_group form_group--header_section_position">
+    <%= f.label :position %><br />
+    <%= f.select :position, 1..HeaderSection.all.size %>
+  </div>
+  
+  <div class="form_group form_group--header_section_content">
+    <%= f.label :content %>
+    <%= f.text_area :content, class: "form_group__input form_group__input--header_section_content" %>
+  </div>
+    
+  <div class="form_group form_group--header_section_submit">
+    <%= f.submit("Save", class: "form_group__input form_group__input--header_section_submit") %>
+  </div>
+
+  <% end %>
+  
+<div class="form_group form_group--header_section_delete">
+  <% unless @header_section.new_record? %>
+  <%= link_to 'Delete this header section', delete_admin_header_section_path(@header_section) %>
+  <% end %>
+</div>

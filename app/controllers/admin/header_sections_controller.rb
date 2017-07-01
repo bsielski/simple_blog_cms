@@ -13,7 +13,7 @@ class Admin::HeaderSectionsController < ApplicationController
   end
 
   def create
-    @header_section = Header_Section.new(header_section_params)
+    @header_section = HeaderSection.new(header_section_params)
     if @header_section.save
       redirect_to edit_admin_header_section_path(@header_section), notice: 'Header section was successfully created.'
     else

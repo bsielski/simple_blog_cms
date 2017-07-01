@@ -1,2 +1,8 @@
-<h1>Admin::HeaderSections#edit</h1>
-<p>Find me in app/views/admin/header_sections/edit.html.erb</p>
+<header class="current_page_header"><h1>Edit header section</h1></header>
+<div>
+  <%= render 'form' %>
+</div>
+
+<div class="form_group">
+  <%= link_to 'Back to manage header sections', admin_header_sections_path %>
+</div>
