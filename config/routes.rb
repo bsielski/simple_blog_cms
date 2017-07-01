@@ -30,6 +30,11 @@ Rails.application.routes.draw do
         get 'delete'
       end
     end
+    resources :footer_sections, only: [:index, :new, :create, :edit, :update, :delete, :destroy] do
+      member do
+        get 'delete'
+      end
+    end
 
   end
 

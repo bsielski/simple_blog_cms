@@ -1,0 +1,28 @@
+<div>
+  <article class="article">
+    <header class="article_header"><h1>Deleting footer section</h1></header>
+    
+    <div class="article_body">
+      <p>
+	Are you sure?
+      </p>
+      <p>
+	Are you sure? The content of deleting section is:
+      </p>
+      <pre><code>
+<%= @footer_section.convert_content_to_markdown %> 	  
+      </code></pre>
+	
+    </div>
+    
+    <div class="form_group">
+      <%= link_to 'Delete', admin_footer_section_path(@footer_section), method: :delete %>
+    </div>
+    <div class="form_group">
+      <%= link_to 'Back', admin_footer_sections_path %>
+      </div>
+
+  </article>
+  
+</div>
+      

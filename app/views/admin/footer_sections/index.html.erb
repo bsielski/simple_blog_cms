@@ -1,0 +1,23 @@
+<header class="current_page_header"><h1>Manage footer sections</h1></header>
+<p>
+  <%= link_to 'Create a new footer section', new_admin_footer_section_path %>
+</p>
+<% if @footer_sections %>
+<table>
+  <tr>
+    <th>Id</th><th>Position</th><th></th><th></th>
+  </tr>
+  <%= will_paginate @footer_sections %>
+  <% @footer_sections.each do |footer_section| %>
+  <tr>
+    <td><%= footer_section.id %></td>
+    <td><%= footer_section.position %></td>
+    <td><%= link_to 'Edit', edit_admin_footer_section_path(footer_section) %></td>
+    <td><%= link_to 'Delete', delete_admin_footer_section_path(footer_section) %></td>
+  </tr>
+  <% end %>
+</table>
+<%= will_paginate @footer_sections %>
+<% else %>
+<p>No footer sections</p>
+<% end %>
