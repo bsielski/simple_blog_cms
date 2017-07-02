@@ -60,3 +60,4 @@ gem 'markdown'
 gem 'reverse_markdown'
 gem 'acts_as_list'
 gem 'active_link_to'
+gem "rolify"
