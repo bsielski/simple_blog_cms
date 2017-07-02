@@ -19,6 +19,8 @@ unless Admin.first
   )
   puts "A default Admin created. Login: #{default_login}, password: #{default_password}"
 
+  admin.add_role :super_admin
+  
   author = Author.create!(
     name: "Admin",
     admin: admin
