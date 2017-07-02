@@ -35,6 +35,8 @@ Rails.application.routes.draw do
         get 'delete'
       end
     end
+    resources :admins, only: [:index, :show]
+    end
 
   end
 
@@ -43,13 +45,12 @@ Rails.application.routes.draw do
   resources :categories, only: [:index] do
     resources :articles, only: [:index]
   end
-  
+ 
   resources :articles, only: [:index, :show]
 
   resources :authors, only: [:index, :show] do
     resources :articles, only: [:index]
   end
-  
-  
+
   root "articles#index"
 end
