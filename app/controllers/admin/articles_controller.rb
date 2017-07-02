@@ -4,7 +4,7 @@ class Admin::ArticlesController < ApplicationController
   before_action :content_to_markdown, only: :edit
   before_action :authenticate_admin!
 
-  before_action :check_author, only: [:create, :update]
+  before_action :check_author, only: [:create]
 
   def index
     if params[:category_id]
