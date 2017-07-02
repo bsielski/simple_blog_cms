@@ -36,7 +36,6 @@ Rails.application.routes.draw do
       end
     end
     resources :admins, only: [:index, :show]
-    end
 
   end
 
