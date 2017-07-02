@@ -4,6 +4,8 @@ class Admin::ArticlesController < ApplicationController
   before_action :content_to_markdown, only: :edit
   before_action :authenticate_admin!
 
+  before_action :check_author, only: [:create, :update]
+
   def index
     if params[:category_id]
       @category = Category.find(params[:category_id].to_i)
@@ -52,6 +54,12 @@ class Admin::ArticlesController < ApplicationController
 
   def set_article
     @article = Article.find(params[:id])
+  end
+
+  def check_author
+    unless Author.find(article_params[:author_id]).admin == current_admin
+      redirect_to admin_articles_path
+    end
   end
 
   def content_to_markdown
