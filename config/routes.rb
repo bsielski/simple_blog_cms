@@ -35,8 +35,11 @@ Rails.application.routes.draw do
         get 'delete'
       end
     end
-    resources :admins, only: [:index, :show]
-
+    resources :admins, only: [:index, :edit, :update, :delete, :destroy] do
+      member do
+        get 'delete'
+      end
+    end
   end
 
   get 'admin', to: 'admin_pages#show', page: "home"
