@@ -23,7 +23,7 @@
 
   <div class="form_group form_group--article_author">
     <%= f.label :author %><br />
-    <%= f.collection_select(:author_id, Author.all, :id, :name) %>
+    <%= f.collection_select(:author_id, Author.all, :id, :name_with_id) %>
   </div>
   
   <div class="form_group form_group--article_content">
