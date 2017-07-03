@@ -33,17 +33,20 @@
 <div>
   <article class="article">
     <header class="article_header">
-      <h1>Your account</h1>
+      <h1>Accounts</h1>
     </header>
     <div>
       <p>
-	<%= link_to 'Account options', edit_admin_registration_path %>
+	<%= link_to 'My account options', edit_admin_registration_path %>
       </p>
       <p>
-	<%= link_to 'Manage authors', admin_authors_path %>
+	<%= link_to 'My authors', admin_authors_path %>
       </p>
       <p>
 	<%= link_to 'Logout', destroy_admin_session_path, method: :delete %>
+      </p>
+      <p>
+	<%= link_to 'All accounts', admin_admins_path %>
       </p>
     </div>
   </article>
