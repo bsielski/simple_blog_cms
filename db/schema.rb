@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170704135447) do
+ActiveRecord::Schema.define(version: 20170704140022) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20170704135447) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
-    t.integer "privacy"
+    t.integer "status"
     t.text "content"
     t.string "url_title"
     t.integer "author_id"
