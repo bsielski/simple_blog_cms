@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
   def index
     if params[:category_id]
       @category = Category.find(params[:category_id])
-      @published_articles = @category.articles.includes(:author, :categories).published.reverse_order
+      @published_articles = @category.articles.includes(:author, :categories).published.order(:published_at).reverse_order
     elsif params[:author_id]
       @author = Author.find(params[:author_id])
       @published_articles = @author.articles.includes(:author, :categories).published.reverse_order
