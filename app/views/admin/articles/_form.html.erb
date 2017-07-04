@@ -18,7 +18,13 @@
 
   <div class="form_group form_group--article_status">
     <%= f.label :status %><br />
-    <%= f.select :status, Article.privacies.keys.map {|priv| [priv.titleize, priv]} %>
+    <%= f.select :status, Article.statuses.keys.map {|status| [status.titleize, status]} %>
+  </div>
+
+  <div class="form_group form_group--article_published_at">
+    <%= f.label :published_at %><br />
+    <%= f.datetime_select :published_at, :ampm => false, :minute_step => 1 %>
+    <%#= f.select :status, Article.privacies.keys.map {|priv| [priv.titleize, priv]} %>
   </div>
 
   <div class="form_group form_group--article_author">
