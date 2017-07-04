@@ -12,7 +12,7 @@
   <tr>
     <td><%= article.id %></td>
     <td><%= article.title %></td>
-    <td><%= article.status.titleize %></td>
+    <td><%= article.substatus.titleize %></td>
     <td><%= article.author.admin.email %></td>
     <td><%= article.author.name %></td>
     <td><%= article.categories.map{|category| category.name}.join(", ") %></td>

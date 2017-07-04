@@ -33,7 +33,7 @@ class Admin::ArticlesController < ApplicationController
   end
 
   def update
-    if @article.update(article_params)
+    if @article.update(article_edit_params)
       redirect_to edit_admin_article_path, notice: 'Article was successfully updated.'
     else
       render :edit
@@ -68,6 +68,10 @@ class Admin::ArticlesController < ApplicationController
 
   def article_params
     params.require(:article).permit(:title, :status, :content, :author_id, category_ids: [])
+  end
+
+  def article_edit_params
+    params.require(:article).permit(:title, :status, :content, :published_at, :author_id, category_ids: [])
   end
 
 end

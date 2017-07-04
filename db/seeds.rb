@@ -540,12 +540,13 @@ THESTRING
 
     article = Article.create!(
       title: article_title,
-      status: [1,1,1,1,2].sample(random: rng),
+      status: [0,1,1,1,1].sample(random: rng),
       content: Convert.to_html(article_content),
       url_title: article_title.parameterize,
       author: author
     )
     puts "An #{i}'th random article created."
+    puts "status is #{Article.find(i+1).status}."
 
     how_many_categories = [1,1,1,2,3].sample(random: rng)
     article_categories = Category.all.sample(how_many_categories, random: rng)
