@@ -37,7 +37,7 @@ class Admin::AdminsController < ApplicationController
   end
     
   def admin_params
-    params.require(:admin).permit(:email)
+    params.require(:admin).permit(:email, role_ids: [])
   end
 
 end
