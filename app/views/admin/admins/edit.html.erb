@@ -1,0 +1,53 @@
+<header class="current_page_header"><h1>Edit admin</h1></header>
+<div>
+  
+  <%= form_for [:admin, @admin] do |f| %>
+  
+  <% if @admin.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@admin.errors.count, "error") %> prohibited this admin from being saved:</h2>
+    <ul>
+      <% @admin.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+  
+  <div class="form_group form_group--admin_email">
+    <%= f.label :email %><br />
+    <%= f.text_field :email, autofocus: true, class: "form_group__input form_group__input--admin_email" %>
+  </div>
+
+  <div class="form_group form_group--admin_roles">
+    <%= label_tag :roles, nil, class: "form_group__label form_group__label--admin_roles" %><br />
+    <div class="checkbox_group chexbox_group--admin_roles">
+      <%= hidden_field_tag "admin[role_ids][]", nil %>
+      <% Role.all.each do |role| %>
+      <span class="form_group__checkbox_group form_group__checkbox_group--admin_roles">
+	<%= check_box_tag "admin[role_ids][]",
+	    role.id,
+	    @admin.role_ids.include?(role.id),
+	    id: dom_id(role) %><%= label_tag dom_id(role), role.name %>
+      </span>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="form_group form_group--admin_submit">
+    <%= f.submit("Save", class: "form_group__input form_group__input--admin_submit") %>
+  </div>
+  
+  <% end %>
+  
+  <div class="form_group form_group--admin_delete">
+    <% unless @admin.new_record? %>
+    <%= link_to 'Delete this admin', delete_admin_admin_path(@admin) %>
+    <% end %>
+  </div>
+
+</div>
+
+<div class="form_group">
+  <%= link_to 'Back to manage admins', admin_admins_path %>
+</div>
