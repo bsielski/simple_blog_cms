@@ -49,7 +49,7 @@ unless Admin.first
 
   Article.create!(
     title: "Welcome",
-    status: 0,
+    status: 1,
     content: Convert.to_html("# Hello, World!\nThis is the first article. It was generated automatically. Delete it if you want."),
     url_title: "welcome",
     author: author
@@ -339,7 +339,7 @@ THESTRING
   # begin testing
   Article.create!(
     title: "The Second",
-    status: 0,
+    status: 1,
     content: Convert.to_html("# Hello again!\nThis is the second article. It was generated for tests."),
     url_title: "test-article",
     author: author
@@ -540,7 +540,7 @@ THESTRING
 
     article = Article.create!(
       title: article_title,
-      status: [0,0,0,2,1].sample(random: rng),
+      status: [1,1,1,1,2].sample(random: rng),
       content: Convert.to_html(article_content),
       url_title: article_title.parameterize,
       author: author
