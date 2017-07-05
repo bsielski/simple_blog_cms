@@ -12,6 +12,22 @@ default_password = "qwerty"
 
 unless Admin.first
 
+  Role.create! name: "super_admin"
+  Role.create! name: "can_create_stylesheets"
+  Role.create! name: "can_edit_stylesheets"
+  Role.create! name: "can_delete_stylesheets"
+  Role.create! name: "can_create_header_sections"
+  Role.create! name: "can_edit_header_sections"
+  Role.create! name: "can_delete_header_sections"
+  Role.create! name: "can_create_footer_sections"
+  Role.create! name: "can_edit_footer_sections"
+  Role.create! name: "can_delete_footer_sections"
+  Role.create! name: "can_create_categories"
+  Role.create! name: "can_edit_categories"
+  Role.create! name: "can_delete_categories"
+  Role.create! name: "can_give_roles"
+  Role.create! name: "can_take_away_roles"
+
   admin = Admin.create!(
     email: default_login,
     password: default_password,
