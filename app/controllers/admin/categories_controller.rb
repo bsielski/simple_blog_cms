@@ -13,7 +13,7 @@ class Admin::CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
-    authorize @category
+    authorize [:admin, @category]
     if @category.save
       redirect_to edit_admin_category_path(@category), notice: 'Category was successfully created.'
     else
@@ -25,6 +25,7 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def update
+    authorize [:admin, @category]
     if @category.update(category_params)
       redirect_to edit_admin_category_path(@category), notice: 'Category was successfully updated.'
     else
@@ -38,6 +39,7 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def destroy
+    authorize [:admin, @category]
     @category.destroy
     redirect_to admin_categories_path, notice: 'Category was successfully destroyed.'
   end
