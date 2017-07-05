@@ -6,13 +6,14 @@ class Admin::CategoriesController < ApplicationController
   def index
     @categories = Category.order :position
   end
-  
+
   def new
     @category = Category.new
   end
 
   def create
     @category = Category.new(category_params)
+    authorize @category
     if @category.save
       redirect_to edit_admin_category_path(@category), notice: 'Category was successfully created.'
     else
@@ -35,18 +36,18 @@ class Admin::CategoriesController < ApplicationController
   def delete
 
   end
-  
+
   def destroy
     @category.destroy
     redirect_to admin_categories_path, notice: 'Category was successfully destroyed.'
   end
-  
+
   private
 
   def set_category
     @category = Category.find(params[:id])
   end
-    
+
   def category_params
     params.require(:category).permit(:name, :privacy, :description, :position)
   end

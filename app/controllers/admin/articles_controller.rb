@@ -22,6 +22,7 @@ class Admin::ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    authorize [:admin, @article]
     if @article.save
       redirect_to edit_admin_article_path(@article), notice: 'Article was successfully created.'
     else
@@ -33,6 +34,7 @@ class Admin::ArticlesController < ApplicationController
   end
 
   def update
+    authorize @article
     if @article.update(article_edit_params)
       redirect_to edit_admin_article_path, notice: 'Article was successfully updated.'
     else
@@ -46,6 +48,7 @@ class Admin::ArticlesController < ApplicationController
   end
 
   def destroy
+    authorize @article
     @article.destroy
     redirect_to admin_articles_path, notice: 'Article was successfully destroyed.'
   end
