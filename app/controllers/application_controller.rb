@@ -16,6 +16,5 @@ class ApplicationController < ActionController::Base
     @footer_sections = FooterSection.all
     @visible_categories = Category.visible.order(:position)
     @current_style = Site.first.stylesheet.content
-    @category = Category.default
   end
 end

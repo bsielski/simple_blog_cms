@@ -1,4 +1,4 @@
-<header class="current_page_header"><h1><%= @category.name %></h1></header>
+<header class="current_page_header"><h1><%= @header %></h1></header>
 <%= will_paginate @published_articles %>
 <% @published_articles.each do |article| %>
 <%= render article %>
