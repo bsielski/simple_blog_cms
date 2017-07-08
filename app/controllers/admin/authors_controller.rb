@@ -1,12 +1,12 @@
 class Admin::AuthorsController < ApplicationController
-  
+
   before_action :set_author, only: [:edit, :update, :delete, :destroy]
   before_action :authenticate_admin!
-  
+
   def index
     @authors = Author.includes(:admin, :articles).paginate(:page => params[:page], :per_page => 100)
   end
-  
+
   def new
     @author = Author.new
   end
@@ -31,7 +31,7 @@ class Admin::AuthorsController < ApplicationController
 
   def delete
   end
-  
+
   def destroy
     @author.destroy
     redirect_to admin_authors_path, notice: 'Author was successfully destroyed.'
@@ -44,7 +44,7 @@ class Admin::AuthorsController < ApplicationController
   end
 
   def author_params
-    params.require(:author).permit(:name, :admin_id)
+    params.require(:author).permit(:name, :description, :admin_id)
   end
-  
+
 end
