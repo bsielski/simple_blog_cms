@@ -1,8 +1,8 @@
 <header class="current_page_header"><h1>Edit admin</h1></header>
 <div>
-  
+
   <%= form_for [:admin, @admin] do |f| %>
-  
+
   <% if @admin.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@admin.errors.count, "error") %> prohibited this admin from being saved:</h2>
@@ -13,7 +13,7 @@
     </ul>
   </div>
   <% end %>
-  
+
   <div class="form_group form_group--admin_email">
     <%= f.label :email %><br />
     <%= f.text_field :email, autofocus: true, class: "form_group__input form_group__input--admin_email" %>
@@ -33,13 +33,13 @@
       <% end %>
     </div>
   </div>
-  
+
   <div class="form_group form_group--admin_submit">
     <%= f.submit("Save", class: "form_group__input form_group__input--admin_submit") %>
   </div>
-  
+
   <% end %>
-  
+
   <div class="form_group form_group--admin_delete">
     <% unless @admin.new_record? %>
     <%= link_to 'Delete this admin', delete_admin_admin_path(@admin) %>
