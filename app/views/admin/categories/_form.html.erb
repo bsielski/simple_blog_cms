@@ -18,23 +18,23 @@
 
   <div class="form_group form_group--category_description">
     <%= f.label :description %><br />
-    <%= f.text_field :description, class: "form_group__input form_group__input--category_description" %>
+    <%= f.text_area :description, class: "form_group__input form_group__input--category_description" %>
   </div>
 
   <div class="form_group form_group--category_privacy">
     <%= f.label :privacy %><br />
     <%= f.select :privacy, Category.privacies.keys.map {|priv| [priv.titleize, priv]} %>
   </div>
-  
+
   <div class="form_group form_group--category_position">
     <%= f.label :position %><br />
     <%= f.select :position, 1..Category.all.size %>
   </div>
-  
+
   <div class="form_group form_group--category_submit">
     <%= f.submit("Save", class: "form_group__input form_group__input--category_submit") %>
   </div>
-  
+
 <% end %>
 
 <div class="form_group form_group--category_delete">
