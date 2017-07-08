@@ -1,6 +1,7 @@
 class Admin::AuthorsController < ApplicationController
 
   before_action :set_author, only: [:edit, :update, :delete, :destroy]
+  before_action :description_to_markdown, only: :edit
   before_action :authenticate_admin!
 
   def index
@@ -41,6 +42,10 @@ class Admin::AuthorsController < ApplicationController
 
   def set_author
     @author = Author.find(params[:id])
+  end
+
+  def description_to_markdown
+    @author.convert_description_to_markdown
   end
 
   def author_params

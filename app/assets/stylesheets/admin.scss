@@ -1,49 +1,42 @@
-
-.form_group__input--article_content {
-  width: 100%;
-  height: 200px;
-}
-
-.form_group__input--site_description {
-  width: 100%;
-  height: 50px;
-}
-
-.form_group__input--stylesheet_content {
-  width: 100%;
-  height: 400px;
-}
-
-.form_group__input--article_title {
-  width: 100%;
-}
-
 .form_group {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-
+.form_group__checkbox_group {
+  margin-right: 10px;
+}
+.form_group__input--article_title {
+  width: 100%;
+}
 .form_group__input--article_submit {
   width: 70px;
   height: 40px;
 }
-
-.form_group__input--category_submit {
-  width: 70px;
-  height: 40px;
+.form_group__input--article_content {
+  width: 100%;
+  height: 200px;
 }
-
 .chexbox_group--article_categories {
   display: flex;
   flex-flow: row wrap;
 }
-
-.form_group__checkbox_group {
-  margin-right: 10px;
-  
+.form_group__input--author_description {
+  width: 100%;
+  height: 50px;
 }
-
+.form_group__input--category_submit {
+  width: 70px;
+  height: 40px;
+}
 .form_group__input--category_name {
   min-width: 200px;
   max-width: 50%;
+}
+.form_group__input--site_description {
+  width: 100%;
+  height: 50px;
+}
+.form_group__input--stylesheet_content {
+  width: 100%;
+  height: 400px;
 }

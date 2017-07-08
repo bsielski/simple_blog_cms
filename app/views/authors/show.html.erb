@@ -3,12 +3,12 @@
     <header class="article_header">
       <h1 class="current_page_header"><%= @author.name %></h1>
     </header>
-    
-    <div class="js_markdown article_body"><%= "PLACEHOLDER @author.desctiption.html_safe" %></div>
+
+    <div class="js_markdown article_body"><%= @author.description.html_safe %></div>
 
     <footer class="article_footer">
       <p><%= link_to "All articles writed by: #{@author.name}", author_articles_path(@author) %></p>
     </footer>
   </article>
-  
+
 </div>
