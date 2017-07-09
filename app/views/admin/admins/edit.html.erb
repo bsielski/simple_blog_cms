@@ -24,12 +24,14 @@
     <div class="checkbox_group chexbox_group--admin_roles">
       <%= hidden_field_tag "admin[role_ids][]", nil %>
       <% Role.all.each do |role| %>
-      <span class="form_group__checkbox_group form_group__checkbox_group--admin_roles">
-	<%= check_box_tag "admin[role_ids][]",
-	    role.id,
-	    @admin.role_ids.include?(role.id),
-	    id: dom_id(role) %><%= label_tag dom_id(role), role.name %>
-      </span>
+        <span class="form_group__checkbox_group form_group__checkbox_group--admin_roles">
+	         <%= check_box_tag "admin[role_ids][]",
+	                           role.id,
+	                           @admin.role_ids.include?(role.id),
+	                           id: dom_id(role)
+           %>
+           <%= label_tag dom_id(role), role.name %>
+         </span>
       <% end %>
     </div>
   </div>

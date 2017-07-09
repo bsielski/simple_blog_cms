@@ -32,8 +32,10 @@ unless Admin.first
   Role.create! name: "can_give_roles"
   Role.create! name: "can_take_away_roles"
 
-  Role.create! name: "can_edit_all_authors"
-  Role.create! name: "can_delete_all_authors"
+  Role.create! name: "can_edit_own_authors"
+  Role.create! name: "can_delete_own_authors"
+  Role.create! name: "can_edit_others'_authors"
+  Role.create! name: "can_delete_others'_authors"
 
   admin = Admin.create!(
     email: default_login,
@@ -58,6 +60,9 @@ unless Admin.first
   )
   puts "A second Admin created."
 
+  second.add_role :can_edit_own_authors
+  second.add_role :can_delete_own_authors
+
   second_author = Author.create!(
     name: "Second",
     admin: second
@@ -77,7 +82,9 @@ unless Admin.first
     name: "Author Editor",
     admin: author_editor
   )
-  author_editor.add_role :can_edit_all_authors
+  author_editor.add_role :can_edit_own_authors
+  author_editor.add_role :can_delete_own_authors
+  author_editor.add_role :"can_edit_others'_authors"
 
   puts "A Author Editor author for the author_editor admin created."
 #############################

@@ -1,5 +1,5 @@
 class Admin < ApplicationRecord
-  rolify after_add: :remove_role_if_super_admin
+  rolify #after_add: :remove_role_if_super_admin
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
