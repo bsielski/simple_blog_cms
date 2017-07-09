@@ -13,20 +13,27 @@ default_password = "qwerty"
 unless Admin.first
 
   Role.create! name: "super_admin"
+
   Role.create! name: "can_create_stylesheets"
   Role.create! name: "can_edit_stylesheets"
   Role.create! name: "can_delete_stylesheets"
+
   Role.create! name: "can_create_header_sections"
   Role.create! name: "can_edit_header_sections"
   Role.create! name: "can_delete_header_sections"
   Role.create! name: "can_create_footer_sections"
   Role.create! name: "can_edit_footer_sections"
   Role.create! name: "can_delete_footer_sections"
+
   Role.create! name: "can_create_categories"
   Role.create! name: "can_edit_categories"
   Role.create! name: "can_delete_categories"
+
   Role.create! name: "can_give_roles"
   Role.create! name: "can_take_away_roles"
+
+  Role.create! name: "can_edit_all_authors"
+  Role.create! name: "can_delete_all_authors"
 
   admin = Admin.create!(
     email: default_login,
@@ -42,6 +49,38 @@ unless Admin.first
     admin: admin
   )
   puts "A default author for the admin created."
+
+## SECOND ADMIN FOR TESTS ONLY
+  second = Admin.create!(
+    email: "second@example.com",
+    password: "qwerty",
+    password_confirmation: "qwerty"
+  )
+  puts "A second Admin created."
+
+  second_author = Author.create!(
+    name: "Second",
+    admin: second
+  )
+  puts "A second author for the second admin created."
+#############################
+
+## Author Editor ADMIN FOR TESTS ONLY
+  author_editor = Admin.create!(
+    email: "author_editor@example.com",
+    password: "qwerty",
+    password_confirmation: "qwerty"
+  )
+  puts "A author_editor Admin created."
+
+  Author.create!(
+    name: "Author Editor",
+    admin: author_editor
+  )
+  author_editor.add_role :can_edit_all_authors
+
+  puts "A Author Editor author for the author_editor admin created."
+#############################
 
   HeaderSection.create!(
     position: 0,

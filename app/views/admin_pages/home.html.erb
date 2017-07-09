@@ -40,13 +40,13 @@
 	<%= link_to 'My account options', edit_admin_registration_path %>
       </p>
       <p>
-	<%= link_to 'My authors', admin_authors_path %>
-      </p>
-      <p>
 	<%= link_to 'Logout', destroy_admin_session_path, method: :delete %>
       </p>
       <p>
 	<%= link_to 'All accounts', admin_admins_path %>
+      </p>
+      <p>
+	       <%= link_to 'All authors', admin_authors_path %>
       </p>
     </div>
   </article>
@@ -74,6 +74,3 @@
     </div>
   </article>
 </div>
-
-
-

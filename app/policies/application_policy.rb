@@ -4,7 +4,7 @@ class ApplicationPolicy
 
   def initialize(admin, record)
     @admin   = admin
-    @record = record
+    @record = record.is_a?(Array) ? record.last : record
   end
 
 end

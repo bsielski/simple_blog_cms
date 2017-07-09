@@ -15,8 +15,8 @@
     <td><%= author.admin.id %></td>
     <td><%= author.admin.email %></td>
     <td><%= "author.description" %></td>
-    <td><%= link_to 'Edit', edit_admin_author_path(author) %></td>
-    <td><%= link_to 'Delete', delete_admin_author_path(author) %></td>
+    <td><%= link_to('Edit', edit_admin_author_path(author)) if policy([:admin, author]).update? %></td>
+    <td><%= link_to('Delete', delete_admin_author_path(author)) if policy([:admin, author]).destroy? %></td>
   </tr>
   <% end %>
 </table>

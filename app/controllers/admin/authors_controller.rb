@@ -14,6 +14,7 @@ class Admin::AuthorsController < ApplicationController
 
   def create
     @author = current_admin.authors.new(author_params)
+    authorize [:admin, @author]
     if @author.save
       redirect_to admin_authors_path(@author), notice: 'Author was successfully created.'
     else
@@ -21,7 +22,11 @@ class Admin::AuthorsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   def update
+    authorize [:admin, @author]
     if @author.update(author_params)
       redirect_to admin_authors_path, notice: 'Author was successfully updated.'
     else
@@ -34,6 +39,7 @@ class Admin::AuthorsController < ApplicationController
   end
 
   def destroy
+    authorize [:admin, @author]
     @author.destroy
     redirect_to admin_authors_path, notice: 'Author was successfully destroyed.'
   end
