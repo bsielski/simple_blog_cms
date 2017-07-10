@@ -1,6 +1,6 @@
 <header class="current_page_header"><h1>Manage stylesheets</h1></header>
 <p>
-  <%= link_to 'Create a new stylesheet', new_admin_stylesheet_path %>
+  <%= link_to 'Create a new stylesheet', new_admin_stylesheet_path if policy([:admin, :stylesheet]).create?%>
 </p>
 <% if @stylesheets %>
 <table>
@@ -14,8 +14,8 @@
     <td><%= stylesheet.name %></td>
     <td><%= stylesheet.updated_at %></td>
     <td><%= "yes" if Site.first.stylesheet_id == stylesheet.id %></td>
-    <td><%= link_to 'Edit', edit_admin_stylesheet_path(stylesheet) %></td>
-    <td><%= link_to 'Delete', delete_admin_stylesheet_path(stylesheet) %></td>
+    <td><%= link_to 'Edit', edit_admin_stylesheet_path(stylesheet)if policy([:admin, stylesheet]).update? %></td>
+    <td><%= link_to 'Delete', delete_admin_stylesheet_path(stylesheet) if policy([:admin, stylesheet]).destroy?%></td>
   </tr>
   <% end %>
 </table>
