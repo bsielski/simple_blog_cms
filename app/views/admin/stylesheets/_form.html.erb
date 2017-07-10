@@ -20,7 +20,7 @@
     <%= f.label :content %>
     <%= f.text_area :content, class: "form_group__input form_group__input--stylesheet_content" %>
   </div>
-    
+
   <div class="form_group form_group--stylesheet_submit">
     <%= f.submit("Save", class: "form_group__input form_group__input--stylesheet_submit") %>
   </div>
@@ -32,11 +32,11 @@
     <p>This style is active.</p>
   <% end %>
   </div>
-  
+
 <% end %>
 
 <div class="form_group form_group--stylesheet_delete">
   <% unless @stylesheet.new_record? %>
-  <%= link_to 'Delete this stylesheet', delete_admin_stylesheet_path(@stylesheet) %>
+  <%= link_to 'Delete this stylesheet', delete_admin_stylesheet_path(@stylesheet) if policy([:admin, @stylesheet]).destroy? %>
   <% end %>
 </div>
