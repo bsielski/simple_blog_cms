@@ -7,6 +7,7 @@ class Admin::SitesController < ApplicationController
   end
 
   def update
+    authorize [:admin, @site]
     if @site.update(site_params)
       redirect_to edit_admin_site_path, notice: 'Site was successfully updated.'
     else
@@ -14,13 +15,13 @@ class Admin::SitesController < ApplicationController
     end
 
   end
-  
+
   private
 
   def set_site
     @site = Site.first
   end
-    
+
   def site_params
     params.require(:site).permit(:title, :author, :keywords, :description)
   end

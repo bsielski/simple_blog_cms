@@ -65,7 +65,7 @@
 	<%= link_to 'Manage styles', admin_stylesheets_path %>
       </p>
       <p>
-	<%= link_to 'Site settings', edit_admin_site_path(Site.first) %>
+	<%= link_to 'Site settings', edit_admin_site_path(Site.first) if policy([:admin, :site]).update? %>
       </p>
       <p>
 	<%= link_to 'Page header', admin_header_sections_path %>

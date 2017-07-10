@@ -14,6 +14,8 @@ unless Admin.first
 
   Role.create! name: "super_admin"
 
+  Role.create! name: "can_edit_site_settings"
+
   Role.create! name: "can_create_stylesheets"
   Role.create! name: "can_edit_stylesheets"
   Role.create! name: "can_delete_stylesheets"
@@ -70,23 +72,24 @@ unless Admin.first
   puts "A second author for the second admin created."
 #############################
 
-## Author Editor ADMIN FOR TESTS ONLY
-  author_editor = Admin.create!(
-    email: "author_editor@example.com",
+## Editor ADMIN FOR TESTS ONLY
+  editor = Admin.create!(
+    email: "editor@example.com",
     password: "qwerty",
     password_confirmation: "qwerty"
   )
-  puts "A author_editor Admin created."
+  puts "A editor Admin created."
 
   Author.create!(
-    name: "Author Editor",
-    admin: author_editor
+    name: "Editor",
+    admin: editor
   )
-  author_editor.add_role :can_edit_own_authors
-  author_editor.add_role :can_delete_own_authors
-  author_editor.add_role :"can_edit_others'_authors"
+  editor.add_role :can_edit_own_authors
+  editor.add_role :can_delete_own_authors
+  editor.add_role :"can_edit_others'_authors"
+  editor.add_role :"can_edit_site_settings"
 
-  puts "A Author Editor author for the author_editor admin created."
+  puts "A Editor author for the editor admin created."
 #############################
 
   HeaderSection.create!(

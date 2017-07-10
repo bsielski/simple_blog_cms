@@ -12,7 +12,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  
+
   <body>
     <div class="page_container">
       <header class="page_header" >
@@ -22,7 +22,7 @@
 	  </a>
 	  <% end %>
       </header>
-      
+
       <nav class="main_navigation">
 	<% @visible_categories.each do |category| %>
 	<div class="main_navigation__item">
@@ -37,17 +37,18 @@
       </main>
 
       <footer class="page_footer">
-	
+
 	<% @footer_sections.each do |section| %>
 	<section class="page_footer__section"><%= section.content.html_safe %></section>
 	<% end %>
-      </footer>      
+      </footer>
 
     </div>
-          
+
     <% if admin_signed_in? %>
     <%= link_to 'Admin panel', admin_path, class: "link_to_admin_panel" %>
+    <p>loged as: <%= current_admin.email %></p>
     <% end %>
-     
+
   </body>
 </html>
