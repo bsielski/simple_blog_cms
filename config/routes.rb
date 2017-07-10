@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  
+
   devise_for :admins
-  
+
   namespace :admin do
     resources :categories, only: [:index, :new, :create, :edit, :update, :delete, :destroy] do
       member do
@@ -39,6 +39,7 @@ Rails.application.routes.draw do
       member do
         get 'delete'
       end
+      resources :authors, only: [:index]
     end
   end
 
@@ -47,7 +48,7 @@ Rails.application.routes.draw do
   resources :categories, only: [:index] do
     resources :articles, only: [:index]
   end
- 
+
   resources :articles, only: [:index, :show]
 
   resources :authors, only: [:index, :show] do
