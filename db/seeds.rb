@@ -437,7 +437,7 @@ unless Admin.first
 THESTRING
 
   )
-  puts "An empty stylesheet created."
+  puts "A stylesheet created."
 
   Site.create!(
     title: "My Site",
@@ -659,8 +659,7 @@ THESTRING
       url_title: article_title.parameterize,
       author: author
     )
-    puts "An #{i}'th random article created."
-    puts "status is #{Article.find(i+1).status}."
+    puts "An #{i}'th random article created. The status is #{Article.find(i+1).status}."
 
     how_many_categories = [1,1,1,2,3].sample(random: rng)
     article_categories = Category.all.sample(how_many_categories, random: rng)
