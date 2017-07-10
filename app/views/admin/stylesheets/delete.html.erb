@@ -1,13 +1,13 @@
 <div>
   <stylesheet class="stylesheet">
-    <header class="stylesheet_header"><h1>Deleting "<%= @stylesheet.title %>" stylesheet</h1></header>
-    
+    <header class="stylesheet_header"><h1>Deleting "<%= @stylesheet.name %>" stylesheet</h1></header>
+
     <div class="stylesheet_body">
       <p>
 	Are you sure?
       </p>
     </div>
-    
+
     <div class="form_group">
       <%= link_to 'Delete', admin_stylesheet_path(@stylesheet), method: :delete %>
     </div>
@@ -16,6 +16,5 @@
       </div>
 
   </stylesheet>
-  
+
 </div>
-      
