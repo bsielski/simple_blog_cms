@@ -5,7 +5,16 @@ class Admin::AuthorsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @authors = Author.includes(:admin, :articles).paginate(:page => params[:page], :per_page => 100)
+
+    if params[:admin_id]
+      @admin = Admin.find(params[:admin_id])
+      @header = "My authors"
+      @authors = @admin.authors.includes(:admin, :articles)
+    else
+      @header = "All authors"
+      @authors = Author.includes(:admin, :articles)
+    end
+    @authors = @authors.paginate(:page => params[:page], :per_page => 100)
   end
 
   def new
