@@ -12,5 +12,4 @@ class Admin::CategoryPolicy < ApplicationPolicy
     admin.has_role? :super_admin or admin.has_role? :can_delete_categories
   end
 
-
 end

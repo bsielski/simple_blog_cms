@@ -39,6 +39,6 @@
 
 <div class="form_group form_group--category_delete">
   <% unless @category.new_record? %>
-  <%= link_to 'Delete this category', delete_admin_category_path(@category) %>
+  <%= link_to 'Delete this category', delete_admin_category_path(@category) if policy([:admin, @category]).destroy? %>
   <% end %>
 </div>

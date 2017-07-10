@@ -1,6 +1,6 @@
 <header class="current_page_header"><h1>Manage categories</h1></header>
 <p>
-  <%= link_to 'Create a new category', new_admin_category_path %>
+  <%= link_to 'Create a new category', new_admin_category_path if policy([:admin, :category]).create? %>
 </p>
 <% if @categories %>
   <table>
@@ -15,8 +15,8 @@
       <td><%= category.description %></td>
       <td><%= category.privacy.titleize %></td>
       <td><%= link_to category.articles.size, admin_category_articles_path(category) %></td>
-      <td><%= link_to 'Edit', edit_admin_category_path(category) %></td>
-      <td><%= link_to 'Delete', delete_admin_category_path(category) %></td>
+      <td><%= link_to 'Edit', edit_admin_category_path(category) if policy([:admin, category]).update? %></td>
+      <td><%= link_to 'Delete', delete_admin_category_path(category) if policy([:admin, category]).destroy? %></td>
     </tr>
   <% end %>
     </table>
