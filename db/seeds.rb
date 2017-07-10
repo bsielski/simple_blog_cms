@@ -87,7 +87,15 @@ unless Admin.first
   editor.add_role :can_edit_own_authors
   editor.add_role :can_delete_own_authors
   editor.add_role :"can_edit_others'_authors"
+
   editor.add_role :"can_edit_site_settings"
+
+  editor.add_role :"can_create_header_sections"
+  editor.add_role :"can_edit_header_sections"
+  editor.add_role :"can_delete_header_sections"
+  editor.add_role :"can_create_footer_sections"
+  editor.add_role :"can_edit_footer_sections"
+  editor.add_role :"can_delete_footer_sections"
 
   puts "A Editor author for the editor admin created."
 #############################

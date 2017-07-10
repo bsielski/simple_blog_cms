@@ -13,22 +13,26 @@
 
   <div class="form_group form_group--header_section_position">
     <%= f.label :position %><br />
-    <%= f.select :position, 1..HeaderSection.all.size %>
+    <% if @header_section.new_record? %>
+      <%= f.select :position, 1..HeaderSection.all.size + 1 %>
+    <% else %>
+      <%= f.select :position, 1..HeaderSection.all.size %>
+    <% end %>
   </div>
-  
+
   <div class="form_group form_group--header_section_content">
     <%= f.label :content %>
     <%= f.text_area :content, class: "form_group__input form_group__input--header_section_content" %>
   </div>
-    
+
   <div class="form_group form_group--header_section_submit">
     <%= f.submit("Save", class: "form_group__input form_group__input--header_section_submit") %>
   </div>
 
   <% end %>
-  
+
 <div class="form_group form_group--header_section_delete">
   <% unless @header_section.new_record? %>
-  <%= link_to 'Delete this header section', delete_admin_header_section_path(@header_section) %>
+  <%= link_to 'Delete this header section', delete_admin_header_section_path(@header_section) if policy([:admin, @header_section]).destroy? %>
   <% end %>
 </div>
