@@ -9,13 +9,19 @@
 	</p>
       </footer>
     </header>
-    
+
     <div class="js_markdown article_body"><%= raw @article.content %></div>
 
     <footer class="article_footer">
-      <p>at: <%= @article.created_at %></p>
-      <p>by: <%= @article.author.name %></p>
+      <% if @article.published? %>
+        <%= time_tag @article.published_at, class:"article_footer__published" %>
+      <% else %>
+        <%= div_tag @article.get_not_published_description, class:"article_footer__published" %>
+      <% end %>
+      <%= link_to_if @article.author.not_deleted?, @article.author.name, @article.author, rel:"author", class:"article_footer__author" do %>
+      <div class="article_footer__author"><%= @article.author.name %></div>
+      <% end %>
     </footer>
   </article>
-  
+
 </div>
