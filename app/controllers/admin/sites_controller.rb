@@ -7,11 +7,22 @@ class Admin::SitesController < ApplicationController
   end
 
   def update
-    authorize [:admin, @site]
-    if @site.update(site_params)
-      redirect_to edit_admin_site_path, notice: 'Site was successfully updated.'
+    puts "PPPAARRAAMMSS #{params.inspect}"
+    if params[:stylesheet]
+      authorize [:admin, :site], :change_stylesheet
+      if @site.update(stylesheet_id: params[:stylesheet])
+        redirect_back(fallback_location: (request.referer || root_path), notice: "The styleshhet was successfully activated.")
+        #redirect_to edit_admin_stylesheet_path(params[:id]), notice: 'The styleshhet was successfully activated.'
+      else
+        render controller: :stylesheets, action: :edit
+      end
     else
-      render :edit
+      authorize [:admin, @site]
+      if @site.update(site_params)
+        redirect_to edit_admin_site_path, notice: 'Site was successfully updated.'
+      else
+        render :edit
+      end
     end
 
   end

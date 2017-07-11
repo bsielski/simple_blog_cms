@@ -16,6 +16,8 @@ unless Admin.first
 
   Role.create! name: "can_edit_site_settings"
 
+  Role.create! name: "can_activate_stylesheets"
+
   Role.create! name: "can_create_stylesheets"
   Role.create! name: "can_edit_stylesheets"
   Role.create! name: "can_delete_stylesheets"
@@ -88,7 +90,7 @@ unless Admin.first
   editor.add_role :can_delete_own_authors
   editor.add_role :"can_edit_others'_authors"
 
-  editor.add_role :"can_edit_site_settings"
+  editor.add_role :"can_activate_stylesheets"
 
   editor.add_role :"can_create_header_sections"
   editor.add_role :"can_edit_header_sections"

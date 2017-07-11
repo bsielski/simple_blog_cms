@@ -25,15 +25,15 @@
     <%= f.submit("Save", class: "form_group__input form_group__input--stylesheet_submit") %>
   </div>
 
-  <div class="form_group form_group--stylesheet_activate">
-    <% unless @stylesheet.id == Site.first.stylesheet_id %>
-    <%= f.submit "Save and make active" %>
-    <% else %>
-    <p>This style is active.</p>
-  <% end %>
-  </div>
-
 <% end %>
+
+<div class="form_group form_group--stylesheet_activate">
+  <% unless @stylesheet.id == Site.first.stylesheet_id %>
+  <%= link_to('Make this stylesheet active', admin_site_path(Site.first, stylesheet: @stylesheet), method: :patch)  if policy([:admin, :site]).change_stylesheet %>
+  <% else %>
+  <p>This style is active.</p>
+<% end %>
+</div>
 
 <div class="form_group form_group--stylesheet_delete">
   <% unless @stylesheet.new_record? %>
