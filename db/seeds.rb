@@ -103,10 +103,16 @@ unless Admin.first
 #############################
 
   HeaderSection.create!(
-    position: 0,
-    content: Convert.to_html("# My Site\n\nwill be awsome soon")
+    position: 1,
+    content: Convert.to_html("![](https://dummyimage.com/60x55/000000/ffffff.png&text=Logo)")
   )
-  puts "A default header created."
+  puts "A header section with logo created."
+
+  HeaderSection.create!(
+    position: 2,
+    content: Convert.to_html("# My Site\n\nwill be awesome soon")
+  )
+  puts "A header section with the site's title created."
 
   FooterSection.create!(
     position: 0,
@@ -161,7 +167,7 @@ unless Admin.first
     }
     .page_header__section {
       padding: 0;
-      margin: 0;
+      margin: 0 10px 0 0;
       display: block;
       text-decoration: none;
       color: black;
@@ -448,7 +454,6 @@ unless Admin.first
     }
 
 THESTRING
-
   )
   puts "A stylesheet created."
 
