@@ -15,12 +15,18 @@
     <td><%= stylesheet.updated_at %></td>
     <td>
         <% if policy([:admin, :site]).change_stylesheet and not Site.first.stylesheet_id == stylesheet.id%>
-          <%= link_to('Make this stylesheet active', admin_site_path(Site.first, stylesheet: stylesheet), method: :patch) %>
+          <%= link_to('Make active', admin_site_path(Site.first, stylesheet: stylesheet), method: :patch) %>
         <% elsif Site.first.stylesheet_id == stylesheet.id %>
           <%= "Active" %>
         <% end %>
     </td>
-    <td><%= link_to 'Edit', edit_admin_stylesheet_path(stylesheet)if policy([:admin, stylesheet]).update? %></td>
+    <td>
+      <% if policy([:admin, stylesheet]).update? %>
+        <%= link_to 'Edit', edit_admin_stylesheet_path(stylesheet) %>
+      <% else %>
+        <%= link_to 'Show', admin_stylesheet_path(stylesheet) %>
+      <% end %>
+    </td>
     <td><%= link_to 'Delete', delete_admin_stylesheet_path(stylesheet) if policy([:admin, stylesheet]).destroy?%></td>
   </tr>
   <% end %>

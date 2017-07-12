@@ -1,10 +1,14 @@
 class Admin::StylesheetsController < ApplicationController
 
-  before_action :set_stylesheet, only: [:edit, :update, :delete, :destroy, :activate]
+  before_action :set_stylesheet, only: [:show, :edit, :update, :delete, :destroy, :activate]
   before_action :authenticate_admin!
 
   def index
     @stylesheets = Stylesheet.paginate(:page => params[:page], :per_page => 100)
+  end
+
+  def show
+
   end
 
   def new

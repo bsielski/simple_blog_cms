@@ -14,7 +14,7 @@ Rails.application.routes.draw do
         get 'delete'
       end
     end
-    resources :stylesheets, only: [:index, :new, :create, :edit, :update, :delete, :destroy] do
+    resources :stylesheets, only: [:index, :show, :new, :create, :edit, :update, :delete, :destroy] do
       member do
         get 'delete'
       end
