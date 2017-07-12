@@ -16,7 +16,9 @@
       <% if @article.published? %>
         <%= time_tag @article.published_at, class:"article_footer__published" %>
       <% else %>
-        <%= div_tag @article.get_not_published_description, class:"article_footer__published" %>
+        <div class="article_footer__published">
+          <%= @article.get_not_published_description %>
+        </div>
       <% end %>
       <%= link_to_if @article.author.not_deleted?, @article.author.name, @article.author, rel:"author", class:"article_footer__author" do %>
       <div class="article_footer__author"><%= @article.author.name %></div>

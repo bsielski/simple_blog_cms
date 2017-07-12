@@ -11,7 +11,7 @@
   <% @articles.each do |article| %>
   <tr>
     <td><%= article.id %></td>
-    <td><%= article.title %></td>
+    <td><%= link_to article.title, article %></td>
     <td><%= article.substatus.titleize %></td>
     <td><%= article.author.admin.email %></td>
     <td><%= article.author.name %></td>
