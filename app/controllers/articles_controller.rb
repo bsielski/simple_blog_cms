@@ -21,7 +21,7 @@ class ArticlesController < ApplicationController
 
 
   def show
-
+    authorize @article
   end
 
   private

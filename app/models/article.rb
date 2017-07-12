@@ -18,7 +18,7 @@ class Article < ApplicationRecord
     if self.published_at
       "withdrawn"
     else
-      "unpublished"
+      "never published"
     end
   end
 

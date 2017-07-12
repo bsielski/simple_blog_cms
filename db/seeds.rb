@@ -29,6 +29,8 @@ unless Admin.first
   Role.create! name: "can_edit_footer_sections"
   Role.create! name: "can_delete_footer_sections"
 
+  Role.create! name: "can_read_others'_unpublished_articles"
+
   Role.create! name: "can_create_categories"
   Role.create! name: "can_edit_categories"
   Role.create! name: "can_delete_categories"
