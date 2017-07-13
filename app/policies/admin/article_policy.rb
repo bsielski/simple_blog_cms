@@ -12,4 +12,8 @@ class Admin::ArticlePolicy < ApplicationPolicy
     admin.has_role? :super_admin
   end
 
+  def change_status?
+    true
+  end
+
 end

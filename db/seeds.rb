@@ -31,6 +31,12 @@ unless Admin.first
 
   Role.create! name: "can_read_others'_unpublished_articles"
 
+  Role.create! name: "can_publish_own_articles"
+  Role.create! name: "can_unpublish_own_articles"
+  Role.create! name: "can_publish_others'_articles"
+  Role.create! name: "can_unpublish_others'_articles"
+
+
   Role.create! name: "can_create_categories"
   Role.create! name: "can_edit_categories"
   Role.create! name: "can_delete_categories"

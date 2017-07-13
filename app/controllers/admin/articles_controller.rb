@@ -34,11 +34,21 @@ class Admin::ArticlesController < ApplicationController
   end
 
   def update
-    authorize [:admin, @article]
-    if @article.update(article_edit_params)
-      redirect_to edit_admin_article_path, notice: 'Article was successfully updated.'
+
+    if params[:status]
+      authorize [:admin, @article], :change_status?
+      if @article.update(status: params[:status])
+        redirect_back(fallback_location: (request.referer || root_path), notice: "The article was successfully #{@article.status}.")
+      else
+        render controller: :articles, action: :edit
+      end
     else
-      render :edit
+      authorize [:admin, @article]
+      if @article.update(article_params)
+        redirect_to edit_admin_article_path, notice: 'The article was successfully updated.'
+      else
+        render :edit
+      end
     end
 
   end
@@ -70,11 +80,7 @@ class Admin::ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :status, :content, :author_id, category_ids: [])
-  end
-
-  def article_edit_params
-    params.require(:article).permit(:title, :status, :content, :published_at, :author_id, category_ids: [])
+    params.require(:article).permit(:title, :content, :published_at, :author_id, category_ids: [])
   end
 
 end

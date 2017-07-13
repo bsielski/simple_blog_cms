@@ -16,13 +16,8 @@
     <%= f.text_field :title, autofocus: true, class: "form_group__input form_group__input--article_title" %>
   </div>
 
-  <div class="form_group form_group--article_status">
-    <%= f.label :status %><br />
-    <%= f.select :status, Article.statuses.keys.map {|status| [status.titleize, status]} %>
-  </div>
-
   <div class="form_group form_group--article_published_at">
-    <% unless @article.new_record? %>
+    <% if @article.published_at %>
       <%= f.label :published_at %><br />
       <%= f.datetime_select :published_at, :ampm => false, :minute_step => 1 %>
     <% end %>
@@ -58,6 +53,19 @@
   </div>
 
   <% end %>
+
+  <div class="form_group form_group--article_change_status">
+    <% unless @article.new_record? %>
+      <p>This article is <%= @article.substatus %>.</p>
+      <% if @article.unpublished? %>
+        <%= link_to('Publish this article', admin_article_path(@article, status: :published), method: :patch)  if policy([:admin, @article]).change_status? %>
+      <% elsif @article.published? %>
+        <%= link_to('Unpublish (withdraw) this article', admin_article_path(@article, status: :unpublished), method: :patch)  if policy([:admin, @article]).change_status? %>
+      <% end %>
+    <% else %>
+      <p>This article is not created yet.</p>
+    <% end %>
+  </div>
 
 <div class="form_group form_group--article_delete">
   <% unless @article.new_record? %>
