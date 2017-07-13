@@ -31,11 +31,12 @@ unless Admin.first
 
   Role.create! name: "can_read_others'_unpublished_articles"
 
+  Role.create! name: "can_create_articles"
+
   Role.create! name: "can_publish_own_articles"
   Role.create! name: "can_unpublish_own_articles"
   Role.create! name: "can_publish_others'_articles"
   Role.create! name: "can_unpublish_others'_articles"
-
 
   Role.create! name: "can_create_categories"
   Role.create! name: "can_edit_categories"
@@ -661,7 +662,7 @@ THESTRING
     puts "A default category created."
   end
 
-  400.times do |i|
+  250.times do |i|
     article_content = ""
     how_long_article = [3,4,5,6,7,8,9,5,6,7,10].sample(random: rng)
     old_what = nil
@@ -685,6 +686,7 @@ THESTRING
       url_title: article_title.parameterize,
       author: author
     )
+    article.update(status: [0,1,1,1,1].sample(random: rng), created_at: Time.at(rng.rand(1.year.ago.to_i..Time.now.to_i)))
     puts "An #{i}'th random article created. The status is #{Article.find(i+1).status}."
 
     how_many_categories = [1,1,1,2,3].sample(random: rng)
