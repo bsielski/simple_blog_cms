@@ -441,13 +441,14 @@ unless Admin.first
       padding: 0;
       display: flex;
       flex-flow: row wrap;
-      justify-content: center;
+      justify-content: space-around;
     }
     .page_footer__section {
       margin-top: 10px;
       text-align: center;
       font-style: italic;
       font-family: 'Ubuntu', sans-serif;
+      width: 50%;
     }
     .page_footer__section > p {
       font-family: 'Noticia Text', serif;
