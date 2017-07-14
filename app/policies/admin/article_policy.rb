@@ -5,11 +5,23 @@ class Admin::ArticlePolicy < ApplicationPolicy
   end
 
   def update?
-    admin.has_role? :super_admin
+    if admin.has_role? :super_admin
+      return true
+    elsif record.author.admin == admin
+      admin.has_role? :can_edit_own_articles
+    else
+      admin.has_role? :"can_edit_others'_articles"
+    end
   end
 
   def destroy?
-    admin.has_role? :super_admin
+    if admin.has_role? :super_admin
+      return true
+    elsif record.author.admin == admin
+      admin.has_role? :can_delete_own_articles
+    else
+      admin.has_role? :"can_delete_others'_articles"
+    end
   end
 
   def change_status?

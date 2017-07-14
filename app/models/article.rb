@@ -42,9 +42,7 @@ class Article < ApplicationRecord
   def handle_publishing_stuff
     old_status = Article.find(self.id).status
     yield
-    if old_status == "unpublished" and self.status == "published"
-      puts "AAAAD PUBLISHED AT #{self.published_at}"
-      puts "OLD STATUS: #{old_status}"
+    if (old_status == "unpublished" or old_status == nil) and self.status == "published"
       self.published_at = self.updated_at
       self.save!
     end

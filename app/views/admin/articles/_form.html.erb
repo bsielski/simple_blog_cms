@@ -58,9 +58,9 @@
     <% unless @article.new_record? %>
       <p>This article is <%= @article.substatus %>.</p>
       <% if @article.unpublished? %>
-        <%= link_to('Publish this article', admin_article_path(@article, status: :published), method: :patch)  if policy([:admin, @article]).change_status? %>
+        <%= link_to('Publish this article', admin_article_path(@article, status: :published), method: :patch) if policy([:admin, @article]).change_status? %>
       <% elsif @article.published? %>
-        <%= link_to('Unpublish (withdraw) this article', admin_article_path(@article, status: :unpublished), method: :patch)  if policy([:admin, @article]).change_status? %>
+        <%= link_to('Unpublish (withdraw) this article', admin_article_path(@article, status: :unpublished), method: :patch) if policy([:admin, @article]).change_status? %>
       <% end %>
     <% else %>
       <p>This article is not created yet.</p>
