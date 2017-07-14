@@ -38,6 +38,11 @@ unless Admin.first
   Role.create! name: "can_publish_others'_articles"
   Role.create! name: "can_unpublish_others'_articles"
 
+  Role.create! name: "can_edit_own_articlers"
+  Role.create! name: "can_delete_own_articlers"
+  Role.create! name: "can_edit_others'_articlers"
+  Role.create! name: "can_delete_others'_articlers"
+
   Role.create! name: "can_create_categories"
   Role.create! name: "can_edit_categories"
   Role.create! name: "can_delete_categories"
@@ -506,31 +511,29 @@ THESTRING
     "The Unexposed Secret Of Computers",
     "The Meaning Of Swords",
     "Top Tips Of Swords",
-    "Top Swords Secrets",
+    "Top Aliens Secrets",
     "Swords Can Be Fun For Everyone",
     "Swords Options",
     "Swords Secrets",
     "What Does Swords Mean?",
-    "Why Almost EveRything You'Ve Learned About Summer Is Wrong And What You Should Know",
-    "Unbiased Article Reveals 5 New Things About Summer That Nobody Is Talking About",
-    "Short Article Reveals The Undeniable Facts About Summer And How It Can Affect You",
-    "New Ideas Into Summer Never Before Revealed",
-    "What You Should Do To Find Out About Summer Before You'Re Left Behind",
-    "Unusual Article Uncovers The Deceptive Practices Of Summer",
-    "Up In Arms About Summer?",
-    "7 Ways To Guard Against Generators",
-    "The Battle Over Generators And How To Win It",
-    "A Startling Fact About Generators Uncovered",
-    "The Foolproof Generators Strategy",
+    "Why Almost EveRything You'Ve Learned About Anti-Personnel Mines Is Wrong And What You Should Know",
+    "Unbiased Article Reveals 5 New Things About Nuclear Warheads That Nobody Is Talking About",
+    "Short Article Reveals The Undeniable Facts About Aliens And How It Can Affect You",
+    "New Ideas Into Swords Never Before Revealed",
+    "What You Should Do To Find Out About Guns Before You'Re Left Behind",
+    "Unusual Article Uncovers The Deceptive Practices Of Aliens",
+    "7 Ways To Guard Against AI",
+    "The Battle Over AI Rebellion And How To Win It",
+    "A Startling Fact About Tanks Uncovered",
+    "The Foolproof Nuclear Warheads",
     "Things You Won'T Like About Generators And Things You Will",
-    "The Ulitmate Generators Trick",
+    "The Ulitmate Strategy Trick",
     "The Tried And True Method For Generators In Step By Step Detail",
     "The Honest To Goodness Truth On Generators",
     "The Number One Question You Must Ask For Generators",
-    "Generators - Dead Or Alive?",
+    "Robots - Dead Or Alive?",
     "Who Else Wants To Learn About Generators?",
-    "The Number One Article On Generators",
-    "The Chronicles Of GeneraTors",
+    "The Chronicles Of Robots",
     "Understanding Universe",
     "Universe Help!",
     "Discover What Universe Is",
@@ -662,7 +665,9 @@ THESTRING
     puts "A default category created."
   end
 
-  250.times do |i|
+  articles = []
+
+  50.times do |i|
     article_content = ""
     how_long_article = [3,4,5,6,7,8,9,5,6,7,10].sample(random: rng)
     old_what = nil
@@ -679,28 +684,37 @@ THESTRING
 
     article_title = titles.sample(random: rng)
 
-    article = Article.create!(
-      title: article_title,
-      status: [0,1,1,1,1].sample(random: rng),
-      content: Convert.to_html(article_content),
-      url_title: article_title.parameterize,
-      author: author
-    )
-    article.update(status: [0,1,1,1,1].sample(random: rng), created_at: Time.at(rng.rand(1.year.ago.to_i..Time.now.to_i)))
-    puts "An #{i}'th random article created. The status is #{Article.find(i+1).status}."
+    article = { title: article_title,
+                content: Convert.to_html(article_content),
+                url_title: article_title.parameterize,
+                author: author
+              }
 
+    articles << article
+
+  end
+  Article.create! articles
+  puts "Articles created"
+
+  categorizations = []
+
+  Article.all.each do |article|
     how_many_categories = [1,1,1,2,3].sample(random: rng)
     article_categories = Category.all.sample(how_many_categories, random: rng)
     article_categories.each do |category|
-      Categorization.create!(
-        category: category,
-        article: article
-      )
+      categorizations << {category: category, article: article}
     end
-
-
-
   end
+  Categorization.create! categorizations
+
+  Article.all.each do |article|
+    fake_time = Time.at(rng.rand(1.year.ago.to_i..Time.now.to_i))
+    article.update_columns created_at: fake_time, status: [0,1,1,1,1].sample(random: rng)
+    if article.published?
+      article.update_columns published_at: fake_time + 10.minutes
+    end
+  end
+
 
   # end testing
 
