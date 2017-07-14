@@ -180,8 +180,8 @@ unless Admin.first
       flex-flow: row wrap;
     }
     .page_header__section {
-      padding: 0;
-      margin: 0 10px 0 0;
+      margin: 0;
+      padding: 0 10px 0 0;
       display: block;
       text-decoration: none;
       color: black;
