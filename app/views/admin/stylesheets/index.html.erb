@@ -15,7 +15,7 @@ To make a stylesheet that is based on <strong><%= @stylesheets.first.name %></st
   <tr>
     <td><%= stylesheet.id %></td>
     <td><%= stylesheet.name %></td>
-    <td><%= stylesheet.updated_at %></td>
+    <td class="table_cell table_cell--date"><%= stylesheet.updated_at %></td>
     <td>
         <% if policy([:admin, :site]).change_stylesheet and not Site.first.stylesheet_id == stylesheet.id%>
           <%= link_to('Make active', admin_site_path(Site.first, stylesheet: stylesheet), method: :patch) %>
