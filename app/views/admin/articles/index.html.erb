@@ -1,6 +1,6 @@
 <header class="current_page_header"><h1>Manage articles</h1></header>
 <p>
-  <%= link_to 'Create a new article', new_admin_article_path if policy([:admin, :article]).create?%>
+  <%= link_to 'Create a new article', new_admin_article_path if policy([:admin, :article]).create? %>
 </p>
 <% if @articles %>
 <table>
@@ -16,8 +16,8 @@
     <td><%= article.author.admin.email %></td>
     <td><%= article.author.name %></td>
     <td><%= article.categories.map{|category| category.name}.join(", ") %></td>
-    <td><%= link_to 'Edit', edit_admin_article_path(article) %></td>
-    <td><%= link_to 'Delete', delete_admin_article_path(article) %></td>
+    <td><%= link_to 'Edit', edit_admin_article_path(article) if policy([:admin, article]).update? %></td>
+    <td><%= link_to 'Delete', delete_admin_article_path(article) if policy([:admin, article]).destroy? %></td>
   </tr>
   <% end %>
 </table>
