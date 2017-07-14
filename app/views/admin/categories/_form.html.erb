@@ -21,9 +21,9 @@
     <%= f.text_area :description, class: "form_group__input form_group__input--category_description" %>
   </div>
 
-  <div class="form_group form_group--category_privacy">
-    <%= f.label :privacy %><br />
-    <%= f.select :privacy, Category.privacies.keys.map {|priv| [priv.titleize, priv]} %>
+  <div class="form_group form_group--category_visibility">
+    <%= f.label :visibility %><br />
+    <%= f.select :visibility, Category.visibilities.keys.map {|priv| [priv.titleize, priv]} %>
   </div>
 
   <div class="form_group form_group--category_position">

@@ -137,7 +137,7 @@ unless Admin.first
   Category.create!(
     name: "Home",
     description: "The \"main\" starting page",
-    privacy: 0,
+    visibility: 0,
     position: 0,
   )
   puts "A default category created."
@@ -661,7 +661,7 @@ THESTRING
     Category.create!(
       name: category,
       description: "Automatically generated category for tests",
-      privacy: [0, 0, 1].sample(random: rng),
+      visibility: [0, 0, 1].sample(random: rng),
     )
     puts "A default category created."
   end
