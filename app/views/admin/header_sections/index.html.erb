@@ -4,13 +4,14 @@
 <% if @header_sections %>
 <table>
   <tr>
-    <th>Id</th><th>Position</th><th></th><th></th>
+    <th>Id</th><th>Position</th><th>Contains</th><th></th><th></th>
   </tr>
   <%= will_paginate @header_sections %>
   <% @header_sections.each do |header_section| %>
   <tr>
     <td><%= header_section.id %></td>
     <td><%= header_section.position %></td>
+    <td><%= header_section.content.truncate(60) %></td>
     <td><%= link_to 'Edit', edit_admin_header_section_path(header_section) if policy([:admin, header_section]).update? %></td>
     <td><%= link_to 'Delete', delete_admin_header_section_path(header_section) if policy([:admin, header_section]).destroy? %></td>
   </tr>
