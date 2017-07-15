@@ -1,14 +1,14 @@
 <div>
   <article class="article">
-    <header class="article_header">
-      <h1 class="current_page_header"><%= @article.title %></h1>
-      <footer>
-	<p class="article_header__tags">
-	  <%= "Category".pluralize(@article.categories.size) %>:
-	  <%= @article.categories.map{ |c| link_to(c.name, category_articles_path(c)) }.to_sentence(two_words_connector: ", ", last_word_connector: ", ").html_safe %>
-	</p>
-      </footer>
-    </header>
+
+    <div class="article_categories" >
+      <span class="article_categories__title">
+      	<%= "Category".pluralize(@article.categories.size) %>:
+      </span>
+      <ul class="article_categories__list">
+      	<%= category_items @article.categories.map{ |c| c.name}, @article.categories, class:"article_categories__item", link_class:"article_categories__link" %>
+      </ul>
+    </div>
 
     <div class="js_markdown article_body"><%= raw @article.content %></div>
 

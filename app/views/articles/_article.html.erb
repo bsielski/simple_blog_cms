@@ -5,10 +5,11 @@
     </h1>
     <div class="article_categories" >
       <span class="article_categories__title">
-	<%= "Category".pluralize(article.categories.size) %>:
+      	<%= "Category".pluralize(article.categories.size) %>:
       </span>
       <ul class="article_categories__list">
-	<%= category_items article.categories.map{ |c| c.name}, article.categories, class:"article_categories__item", link_class:"article_categories__link" %>
+      	<%= category_items article.categories.map{ |c| c.name}, article.categories, class:"article_categories__item", link_class:"article_categories__link" %>
+      </ul>
     </div>
 
     <section class="article_body"><%= article.content.html_safe %></section>

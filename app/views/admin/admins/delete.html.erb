@@ -1,16 +1,14 @@
 <div>
   <article class="article">
-    <header class="article_header"><h1>Deleting admin</h1></header>
-    
     <div class="article_body">
       <p>
-	It will delete the admin with email: <%= @admin.email %>
+      	It will delete the admin with email: <%= @admin.email %>
       </p>
       <p>
-	Are you sure?
+      	Are you sure?
       </p>
     </div>
-    
+
     <div class="form_group">
       <%= link_to 'Delete', admin_admin_path(@admin), method: :delete %>
     </div>
@@ -19,5 +17,5 @@
     </div>
 
   </article>
-  
+
 </div>

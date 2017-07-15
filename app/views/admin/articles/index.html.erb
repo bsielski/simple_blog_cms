@@ -1,27 +1,26 @@
-<header class="current_page_header"><h1>Manage articles</h1></header>
 <p>
   <%= link_to 'Create a new article', new_admin_article_path if policy([:admin, :article]).create? %>
 </p>
 <% if @articles %>
-<table>
-  <tr>
-    <th>Id</th><th>Title</th><th>Status</th><th>Admin</th><th>Author</th><th>Categories</th><th></th><th></th>
-  </tr>
+  <table>
+    <tr>
+      <th>Id</th><th>Title</th><th>Status</th><th>Admin</th><th>Author</th><th>Categories</th><th></th><th></th>
+    </tr>
+    <%= will_paginate @articles %>
+    <% @articles.each do |article| %>
+    <tr>
+      <td><%= article.id %></td>
+      <td><%= link_to article.title, article %></td>
+      <td><%= article.substatus.titleize %></td>
+      <td><%= article.author.admin.email %></td>
+      <td><%= article.author.name %></td>
+      <td><%= article.categories.map{|category| category.name}.join(", ") %></td>
+      <td><%= link_to 'Edit', edit_admin_article_path(article) if policy([:admin, article]).update? %></td>
+      <td><%= link_to 'Delete', delete_admin_article_path(article) if policy([:admin, article]).destroy? %></td>
+    </tr>
+    <% end %>
+  </table>
   <%= will_paginate @articles %>
-  <% @articles.each do |article| %>
-  <tr>
-    <td><%= article.id %></td>
-    <td><%= link_to article.title, article %></td>
-    <td><%= article.substatus.titleize %></td>
-    <td><%= article.author.admin.email %></td>
-    <td><%= article.author.name %></td>
-    <td><%= article.categories.map{|category| category.name}.join(", ") %></td>
-    <td><%= link_to 'Edit', edit_admin_article_path(article) if policy([:admin, article]).update? %></td>
-    <td><%= link_to 'Delete', delete_admin_article_path(article) if policy([:admin, article]).destroy? %></td>
-  </tr>
-  <% end %>
-</table>
-<%= will_paginate @articles %>
 <% else %>
-<p>No articles</p>
+  <p>No articles</p>
 <% end %>

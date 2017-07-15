@@ -1,17 +1,19 @@
 class Admin::AuthorsController < ApplicationController
 
+  before_action :authenticate_admin!
   before_action :set_author, only: [:edit, :update, :delete, :destroy]
   before_action :description_to_markdown, only: :edit
-  before_action :authenticate_admin!
+  before_action :set_current_header_for_index, only: :index
+  before_action :set_current_header_for_show, only: :show
+  before_action :set_current_header_for_new, only: :new
+  before_action :set_current_header_for_edit, only: :edit
+  before_action :set_current_header_for_delete, only: :delete
 
   def index
-
     if params[:admin_id]
       @admin = Admin.find(params[:admin_id])
-      @header = "My authors"
       @authors = @admin.authors.includes(:admin, :articles)
     else
-      @header = "All authors"
       @authors = Author.includes(:admin, :articles)
     end
     @authors = @authors.paginate(:page => params[:page], :per_page => 100)
@@ -65,6 +67,30 @@ class Admin::AuthorsController < ApplicationController
 
   def author_params
     params.require(:author).permit(:name, :description, :admin_id)
+  end
+
+  def set_current_header_for_index
+    if params[:admin_id] and params[:admin_id].to_i == current_admin.id
+      @current_page_header = "Manage my authors"
+    else
+      @current_page_header = "Manage authors"
+    end
+  end
+
+  def set_current_header_for_show
+    @current_page_header = "Author: #{@author.name}"
+  end
+
+  def set_current_header_for_new
+    @current_page_header = "New author"
+  end
+
+  def set_current_header_for_edit
+    @current_page_header = "Edit author: #{@author.name}"
+  end
+
+  def set_current_header_for_delete
+    @current_page_header = "Delete author: #{@author.name}"
   end
 
 end

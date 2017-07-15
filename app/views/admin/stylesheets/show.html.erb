@@ -1,8 +1,5 @@
-<header class="current_page_header"><h1>Show stylesheet</h1></header>
 <div>
-
   <%= form_for [:admin, @stylesheet] do |f| %>
-
     <div class="form_group form_group--stylesheet_name">
       <%= f.label :name %>
       <%= f.text_field :name, class: "form_group__input form_group__input--stylesheet_name", readonly: true %>
@@ -12,9 +9,7 @@
       <%= f.label :content %>
       <%= f.text_area :content, class: "form_group__input form_group__input--stylesheet_content", readonly: true %>
     </div>
-
   <% end %>
-
 </div>
 
 <div class="form_group">

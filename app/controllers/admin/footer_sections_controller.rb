@@ -1,8 +1,13 @@
 class Admin::FooterSectionsController < ApplicationController
 
+  before_action :authenticate_admin!
   before_action :set_footer_section, only: [:edit, :update, :delete, :destroy]
   before_action :content_to_markdown, only: :edit
-  before_action :authenticate_admin!
+  before_action :set_current_header_for_index, only: :index
+  before_action :set_current_header_for_show, only: :show
+  before_action :set_current_header_for_new, only: :new
+  before_action :set_current_header_for_edit, only: :edit
+  before_action :set_current_header_for_delete, only: :delete
 
   def index
     @footer_sections = FooterSection.order(:position).paginate(:page => params[:page], :per_page => 100)
@@ -57,6 +62,26 @@ class Admin::FooterSectionsController < ApplicationController
 
   def footer_section_params
     params.require(:footer_section).permit(:position, :content)
+  end
+
+  def set_current_header_for_index
+    @current_page_header = "Manage footer section"
+  end
+
+  def set_current_header_for_show
+    @current_page_header = "Footer Section: #{@footer_section.position}"
+  end
+
+  def set_current_header_for_new
+    @current_page_header = "New footer section"
+  end
+
+  def set_current_header_for_edit
+    @current_page_header = "Edit footer section: #{@footer_section.position}"
+  end
+
+  def set_current_header_for_delete
+    @current_page_header = "Delete footer section: #{@footer_section.position}"
   end
 
 end

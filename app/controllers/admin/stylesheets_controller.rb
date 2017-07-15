@@ -1,7 +1,12 @@
 class Admin::StylesheetsController < ApplicationController
 
-  before_action :set_stylesheet, only: [:show, :edit, :update, :delete, :destroy, :activate]
   before_action :authenticate_admin!
+  before_action :set_stylesheet, only: [:show, :edit, :update, :delete, :destroy, :activate]
+  before_action :set_current_header_for_index, only: :index
+  before_action :set_current_header_for_show, only: :show
+  before_action :set_current_header_for_new, only: :new
+  before_action :set_current_header_for_edit, only: :edit
+  before_action :set_current_header_for_delete, only: :delete
 
   def index
     @stylesheets = Stylesheet.paginate(:page => params[:page], :per_page => 100)
@@ -60,5 +65,26 @@ class Admin::StylesheetsController < ApplicationController
   def stylesheet_params
     params.require(:stylesheet).permit(:name, :content)
   end
+
+  def set_current_header_for_index
+    @current_page_header = "Manage stylesheets"
+  end
+
+  def set_current_header_for_show
+    @current_page_header = "Stylesheet: #{@stylesheet.name}"
+  end
+
+  def set_current_header_for_new
+    @current_page_header = "New stylesheet"
+  end
+
+  def set_current_header_for_edit
+    @current_page_header = "Edit stylesheet: #{@stylesheet.name}"
+  end
+
+  def set_current_header_for_delete
+    @current_page_header = "Delete stylesheet: #{@stylesheet.name}"
+  end
+
 
 end

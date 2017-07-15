@@ -1,8 +1,13 @@
 class Admin::HeaderSectionsController < ApplicationController
 
+  before_action :authenticate_admin!
   before_action :set_header_section, only: [:edit, :update, :delete, :destroy]
   before_action :content_to_markdown, only: :edit
-  before_action :authenticate_admin!
+  before_action :set_current_header_for_index, only: :index
+  before_action :set_current_header_for_show, only: :show
+  before_action :set_current_header_for_new, only: :new
+  before_action :set_current_header_for_edit, only: :edit
+  before_action :set_current_header_for_delete, only: :delete
 
   def index
     @header_sections = HeaderSection.order(:position).paginate(:page => params[:page], :per_page => 100)
@@ -57,6 +62,26 @@ class Admin::HeaderSectionsController < ApplicationController
 
   def header_section_params
     params.require(:header_section).permit(:position, :content)
+  end
+
+  def set_current_header_for_index
+    @current_page_header = "Manage header section"
+  end
+
+  def set_current_header_for_show
+    @current_page_header = "Header Section: #{@header_section.position}"
+  end
+
+  def set_current_header_for_new
+    @current_page_header = "New header section"
+  end
+
+  def set_current_header_for_edit
+    @current_page_header = "Edit header section: #{@header_section.position}"
+  end
+
+  def set_current_header_for_delete
+    @current_page_header = "Delete header section: #{@header_section.position}"
   end
 
 end

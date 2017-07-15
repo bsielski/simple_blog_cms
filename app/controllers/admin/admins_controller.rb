@@ -1,8 +1,12 @@
 class Admin::AdminsController < ApplicationController
-  
-  before_action :set_admin, only: [:edit, :update, :delete, :destroy]
-  before_action :authenticate_admin!
 
+  before_action :authenticate_admin!
+  before_action :set_admin, only: [:edit, :update, :delete, :destroy]
+  before_action :set_current_header_for_index, only: :index
+  before_action :set_current_header_for_show, only: :show
+  before_action :set_current_header_for_new, only: :new
+  before_action :set_current_header_for_edit, only: :edit
+  before_action :set_current_header_for_delete, only: :delete
 
   def index
     @admins = Admin.includes(:authors, :roles).paginate(:page => params[:page], :per_page => 100)
@@ -24,7 +28,7 @@ class Admin::AdminsController < ApplicationController
   def delete
 
   end
-  
+
   def destroy
     @admin.destroy
     redirect_to admin_admins_path, notice: 'Admin was successfully destroyed.'
@@ -35,9 +39,29 @@ class Admin::AdminsController < ApplicationController
   def set_admin
     @admin = Admin.find(params[:id])
   end
-    
+
   def admin_params
     params.require(:admin).permit(:email, role_ids: [])
+  end
+
+  def set_current_header_for_index
+    @current_page_header = "Manage admins"
+  end
+
+  def set_current_header_for_show
+    @current_page_header = "Admin: #{@admin.email}"
+  end
+
+  def set_current_header_for_new
+    @current_page_header = "New admin"
+  end
+
+  def set_current_header_for_edit
+    @current_page_header = "Edit admin: #{@admin.email}"
+  end
+
+  def set_current_header_for_delete
+    @current_page_header = "Delete admin: #{@admin.email}"
   end
 
 end
