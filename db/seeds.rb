@@ -250,10 +250,11 @@ unless Admin.first
 
     .current_page_header {
       text-align: center;
-    }
-    .current_page_header > h1 {
+      color: #8b0000;
+      font-size: 32px;
       font-family: 'Ubuntu', sans-serif;
-      font-size: 28px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #8b0000;
     }
 
     /* PAGINATION */
@@ -320,12 +321,13 @@ unless Admin.first
     /* ARTICLE_TITLE */
 
     .article_title {
+      text-align: center;
       margin-bottom: 5px;
     }
     .article_title__link {
       text-decoration: none;
       color: black;
-      font-size: 28px;
+      font-size: 30px;
       font-family: 'Ubuntu', sans-serif;
       margin: 0;
     }
@@ -336,7 +338,7 @@ unless Admin.first
 
     }
     .article_categories__title {
-      font-size: 13px;
+      font-size: 15px;
       color: #111111;
     }
     .article_categories__list {
@@ -348,7 +350,7 @@ unless Admin.first
     .article_categories__item {
       display: inline;
       margin-left: 1px;
-      font-size: 13px;
+      font-size: 14px;
     }
     .article_categories__link {
       text-decoration: underline;
@@ -363,28 +365,52 @@ unless Admin.first
       margin: 15px 0;
     }
     .article_body > h1 {
-      margin-top: 10px ;
+      margin-top: 10px;
+      margin-left: 0;
       margin-bottom: 10px;
       font-family: 'Ubuntu', sans-serif;
-      font-size: 16px;
+      font-size: 18px;
     }
     .article_body > h2 {
-      margin-top: 10px ;
+      margin-top: 10px;
+      margin-left: 0;
       margin-bottom: 10px;
       font-family: 'Ubuntu', sans-serif;
-      font-size: 14px;
+      font-weight: normal;
+      font-size: 18px;
+    }
+    .article_body > h2:before {
+      content: "● ";
     }
     .article_body > h3 {
-      margin-top: 10px ;
+      margin-top: 10px;
+      margin-left: 0;
       margin-bottom: 10px;
       font-family: 'Ubuntu', sans-serif;
-      font-size: 12px;
+      font-weight: normal;
+      font-size: 18px;
+    }
+    .article_body > h3:before {
+      content: "○ ○ ";
+    }
+    .article_body > h4 {
+      margin-top: 10px;
+      margin-left: 0;
+      margin-bottom: 10px;
+      font-family: 'Ubuntu', sans-serif;
+      font-weight: normal;
+      font-style: oblique;
+      font-size: 18px;
+    }
+    .article_body > h4:before {
+      content: "– – – ";
     }
     .article_body > p {
       margin-top: 10px;
       margin-bottom: 10px;
       font-family: 'Noticia Text', serif;
       text-align: justify;
+      text-indent: 10px;
     }
 
     figcaption {
