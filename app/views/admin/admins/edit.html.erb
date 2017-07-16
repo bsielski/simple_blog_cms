@@ -15,25 +15,59 @@
 
   <div class="form_group form_group--admin_email">
     <%= f.label :email %><br />
-    <%= f.text_field :email, autofocus: true, class: "form_group__input form_group__input--admin_email" %>
+    <%= f.text_field :email, autofocus: true, disabled: policy([:admin, @admin]).change_email? ? false : true, class: "form_group__input form_group__input--admin_email" %>
   </div>
 
+  <% if policy([:admin, @admin]).change_roles? %>
+    <div class="form_group form_group--admin_roles">
+      <%= label_tag :roles, nil, class: "form_group__label form_group__label--admin_roles" %><br />
+      <div class="checkbox_group chexbox_group--admin_roles">
+        <%= hidden_field_tag "admin[role_ids][]", nil %>
+        <% Role.all.each do |role| %>
+          <% if policy(ChangingRoles.new(@admin.has_role?(role.name) ? [role] : [], [@admin.has_role?(role.name) ? "" : role.id.to_s ])).change_roles? %>
+              <span class="form_group__checkbox_group form_group__checkbox_group--admin_roles ">
+      	         <%= check_box_tag "admin[role_ids][]",
+      	                           role.id,
+      	                           @admin.role_ids.include?(role.id),
+      	                           id: dom_id(role)
+                 %>
+                 <%= label_tag dom_id(role), role.name %>
+               </span>
+          <% else %>
+            <span class="form_group__checkbox_group form_group__checkbox_group--admin_roles form_group__checkbox_group--hidden">
+               <%= check_box_tag "admin[role_ids][]",
+                                 role.id,
+                                 @admin.role_ids.include?(role.id),
+                                 id: dom_id(role)
+               %>
+               <%= label_tag dom_id(role), role.name %>
+             </span>
+             <span class="form_group__checkbox_group form_group__checkbox_group--admin_roles form_group__checkbox_group--disabled">
+                <%= check_box_tag "admin[role_ids][]",
+                                  role.id,
+                                  @admin.role_ids.include?(role.id),
+                                  id: dom_id(role),
+                                  disabled: true
+                %>
+                <%= label_tag dom_id(role), role.name %>
+             </span>
+           <% end %>
+         <% end %>
+       </div>
+     </div>
+  <% else %>
   <div class="form_group form_group--admin_roles">
-    <%= label_tag :roles, nil, class: "form_group__label form_group__label--admin_roles" %><br />
-    <div class="checkbox_group chexbox_group--admin_roles">
-      <%= hidden_field_tag "admin[role_ids][]", nil %>
-      <% Role.all.each do |role| %>
-        <span class="form_group__checkbox_group form_group__checkbox_group--admin_roles">
-	         <%= check_box_tag "admin[role_ids][]",
-	                           role.id,
-	                           @admin.role_ids.include?(role.id),
-	                           id: dom_id(role)
-           %>
-           <%= label_tag dom_id(role), role.name %>
-         </span>
-      <% end %>
+     <%= label_tag :roles, nil, class: "form_group__label form_group__label--admin_roles" %><br />
     </div>
-  </div>
+    <% @admin.roles.each do |role| %>
+      <span class="form_group__checkbox_group form_group__checkbox_group--admin_roles">
+         <%= label_tag dom_id(role), role.name %><br>
+      </span>
+    <% end %>
+
+  <% end %>
+
+
 
   <div class="form_group form_group--admin_submit">
     <%= f.submit("Save", class: "form_group__input form_group__input--admin_submit") %>

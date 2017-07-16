@@ -28,6 +28,12 @@
   display: flex;
   flex-flow: column wrap;
 }
+.form_group__checkbox_group--hidden {
+  display: none;
+}
+.form_group__checkbox_group--disabled {
+  color: gray;
+}
 .form_group__input--category_description {
   width: 100%;
   height: 40px;

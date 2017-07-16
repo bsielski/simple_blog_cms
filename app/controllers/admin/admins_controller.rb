@@ -10,13 +10,21 @@ class Admin::AdminsController < ApplicationController
 
   def index
     @admins = Admin.includes(:authors, :roles).paginate(:page => params[:page], :per_page => 100)
-
   end
 
   def edit
+
   end
 
   def update
+    @change = ChangingRoles.new(@admin.roles, params[:admin][:role_ids])
+    if params[:admin] and params[:admin][:email]
+      authorize [:admin, @admin], :change_email?
+    end
+    if params[:admin][:role_ids]
+      authorize [:admin, @admin], :change_roles?
+      authorize @change, :change_roles?
+    end
     if @admin.update(admin_params)
       redirect_to edit_admin_admin_path, notice: 'Admin was successfully updated.'
     else

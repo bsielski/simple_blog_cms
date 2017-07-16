@@ -50,6 +50,9 @@ unless Admin.first
   Role.create! name: "can_give_roles"
   Role.create! name: "can_take_away_roles"
 
+  Role.create! name: "can_edit_admins'_emails"
+  Role.create! name: "can_delete_admins"
+
   Role.create! name: "can_edit_own_authors"
   Role.create! name: "can_delete_own_authors"
   Role.create! name: "can_edit_others'_authors"
@@ -156,6 +159,10 @@ unless Admin.first
     article: Article.first
   )
   puts "Categorization done."
+
+
+
+
 
   Stylesheet.create!(
     name: "Default style",
