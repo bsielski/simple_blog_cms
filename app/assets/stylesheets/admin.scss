@@ -155,9 +155,13 @@
 .login_field__input--submit {
 
 }
- .table_cel {
+.admin_panel_table__cell {
+  border-bottom: 1px solid #dddddd;
+}
 
- }
- .table_cell--date {
+.table_cel {
+
+}
+.table_cell--date {
    font-size: 12px;
- }
+}
