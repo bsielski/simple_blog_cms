@@ -11,6 +11,14 @@
     </div>
   <% end %>
 
+  <% if @author.new_record? %>
+    <p>Admin id: <%= current_admin.id %></p>
+    <p>Admin email: <%= current_admin.email %></p>
+  <% else %>
+    <p>Admin id: <%= @author.admin.id %></p>
+    <p>Admin email: <%= @author.admin.email %></p>
+  <% end %>
+
   <div class="form_group form_group--author_name">
     <%= f.label :name %><br />
     <%= f.text_field :name, autofocus: true, class: "form_group__input form_group__input--author_name" %>

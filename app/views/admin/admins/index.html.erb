@@ -1,17 +1,17 @@
 <% if @admins %>
 <table>
-  <tr>
+  <tr class="admin_panel_table__row">
     <th>Id</th><th>Email</th><th>Authors</th><th>Roles</th><th></th><th></th>
   </tr>
   <%= will_paginate @admins %>
   <% @admins.each do |admin| %>
-  <tr>
-    <td><%= admin.id %></td>
-    <td><%= admin.email %></td>
-    <td><%= admin.authors.size %></td>
-    <td><%= admin.roles.map{|role| role.name.humanize}.join(", ") %></td>
-    <td><%= link_to 'Edit', edit_admin_admin_path(admin) %></td>
-    <td><%= link_to 'Delete', delete_admin_admin_path(admin) %></td>
+  <tr class="admin_panel_table__row">
+    <td class="admin_panel_table__cell"><%= admin.id %></td>
+    <td class="admin_panel_table__cell"><%= admin.email %></td>
+    <td class="admin_panel_table__cell"><%= admin.authors.size %></td>
+    <td class="admin_panel_table__cell"><%= admin.roles.map{|role| role.name.humanize}.join(", ") %></td>
+    <td class="admin_panel_table__cell"><%= link_to 'Edit', edit_admin_admin_path(admin) %></td>
+    <td class="admin_panel_table__cell"><%= link_to 'Delete', delete_admin_admin_path(admin) %></td>
   </tr>
   <% end %>
 </table>

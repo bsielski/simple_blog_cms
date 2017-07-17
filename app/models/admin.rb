@@ -1,5 +1,5 @@
 class Admin < ApplicationRecord
-  rolify #after_add: :remove_role_if_super_admin
+  rolify
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -11,22 +11,16 @@ class Admin < ApplicationRecord
 
   private
 
-  def remove_role_if_super_admin(role)
-    if self.has_role? :super_admin
-      roles = self.roles.to_a.map{|role| role.name}
-      roles.delete "super_admin"
-      roles.each do |role|
-        self.remove_role role
-      end
-    end
-  end
-
   def set_roles_for_a_new_admin
-    unless self.has_role? :super_admin
+    unless self.id == 1
       self.add_role :can_create_stylesheets
       self.add_role :can_create_header_sections
       self.add_role :can_create_footer_sections
 
+      self.add_role :can_create_articles
+      self.add_role :can_edit_own_articles
+      self.add_role :can_create_own_authors
+      self.add_role :can_edit_own_authors
     end
   end
 

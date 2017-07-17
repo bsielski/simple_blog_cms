@@ -22,7 +22,7 @@ class Admin::AdminsController < ApplicationController
       authorize [:admin, @admin], :change_email?
     end
     if params[:admin][:role_ids]
-      authorize [:admin, @admin], :change_roles?
+      authorize [:admin, @admin], :dont_want_to_change_his_own_roles?
       authorize @change, :change_roles?
     end
     if @admin.update(admin_params)

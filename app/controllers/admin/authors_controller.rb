@@ -10,12 +10,7 @@ class Admin::AuthorsController < ApplicationController
   before_action :set_current_header_for_delete, only: :delete
 
   def index
-    if params[:admin_id]
-      @admin = Admin.find(params[:admin_id])
-      @authors = @admin.authors.includes(:admin, :articles)
-    else
-      @authors = Author.includes(:admin, :articles)
-    end
+    @authors = Author.includes(:admin, :articles)
     @authors = @authors.paginate(:page => params[:page], :per_page => 100)
   end
 
@@ -24,10 +19,10 @@ class Admin::AuthorsController < ApplicationController
   end
 
   def create
-    @author = current_admin.authors.new(author_params)
+    @author = Author.new(author_params)
     authorize [:admin, @author]
     if @author.save
-      redirect_to admin_authors_path(@author), notice: 'Author was successfully created.'
+      redirect_to admin_authors_path, notice: 'Author was successfully created.'
     else
       render :new
     end
@@ -70,11 +65,7 @@ class Admin::AuthorsController < ApplicationController
   end
 
   def set_current_header_for_index
-    if params[:admin_id] and params[:admin_id].to_i == current_admin.id
-      @current_page_header = "Manage my authors"
-    else
-      @current_page_header = "Manage authors"
-    end
+    @current_page_header = "Manage authors"
   end
 
   def set_current_header_for_show
@@ -82,7 +73,7 @@ class Admin::AuthorsController < ApplicationController
   end
 
   def set_current_header_for_new
-    @current_page_header = "New author"
+    @current_page_header = "Create a new author"
   end
 
   def set_current_header_for_edit

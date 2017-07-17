@@ -1,7 +1,15 @@
 class Admin::AuthorPolicy < ApplicationPolicy
 
   def create?
-    admin.has_role? :super_admin
+    if admin.has_role? :super_admin
+      true
+    elsif not record.admin.has_role?(:super_admin)
+      if admin.has_role?(:"can_create_others'_authors") and admin != record.admin
+        true
+      elsif admin.has_role?(:"can_create_own_authors") and admin == record.admin
+        true
+      end
+    end
   end
 
   def update?

@@ -10,7 +10,7 @@ class Admin::AdminPolicy < ApplicationPolicy
     end
   end
 
-  def change_roles?
+  def dont_want_to_change_his_own_roles?
     if admin == record
       return false
     else

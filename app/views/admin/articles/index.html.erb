@@ -9,14 +9,14 @@
     <%= will_paginate @articles %>
     <% @articles.each do |article| %>
     <tr>
-      <td><%= article.id %></td>
-      <td><%= link_to article.title, article %></td>
-      <td><%= article.substatus.titleize %></td>
-      <td><%= article.author.admin.email %></td>
-      <td><%= article.author.name %></td>
-      <td><%= article.categories.map{|category| category.name}.join(", ") %></td>
-      <td><%= link_to 'Edit', edit_admin_article_path(article) if policy([:admin, article]).update? %></td>
-      <td><%= link_to 'Delete', delete_admin_article_path(article) if policy([:admin, article]).destroy? %></td>
+      <td class="admin_panel_table__cell"><%= article.id %></td>
+      <td class="admin_panel_table__cell"><%= link_to article.title, article %></td>
+      <td class="admin_panel_table__cell"><%= article.substatus.titleize %></td>
+      <td class="admin_panel_table__cell"><%= article.author.admin.email %></td>
+      <td class="admin_panel_table__cell"><%= article.author.name %></td>
+      <td class="admin_panel_table__cell"><%= article.categories.map{|category| category.name}.join(", ") %></td>
+      <td class="admin_panel_table__cell"><%= link_to 'Edit', edit_admin_article_path(article) if policy([:admin, article]).update? %></td>
+      <td class="admin_panel_table__cell"><%= link_to 'Delete', delete_admin_article_path(article) if policy([:admin, article]).destroy? %></td>
     </tr>
     <% end %>
   </table>

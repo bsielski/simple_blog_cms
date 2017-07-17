@@ -18,7 +18,7 @@
     <%= f.text_field :email, autofocus: true, disabled: policy([:admin, @admin]).change_email? ? false : true, class: "form_group__input form_group__input--admin_email" %>
   </div>
 
-  <% if policy([:admin, @admin]).change_roles? %>
+  <% if policy([:admin, @admin]).dont_want_to_change_his_own_roles? %>
     <div class="form_group form_group--admin_roles">
       <%= label_tag :roles, nil, class: "form_group__label form_group__label--admin_roles" %><br />
       <div class="checkbox_group chexbox_group--admin_roles">

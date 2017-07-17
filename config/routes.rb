@@ -39,7 +39,6 @@ Rails.application.routes.draw do
       member do
         get 'delete'
       end
-      resources :authors, only: [:index]
     end
   end
 
