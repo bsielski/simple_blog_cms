@@ -27,7 +27,7 @@ class ArticlesController < ApplicationController
       @author = Author.find(params[:author_id])
       @published_articles = @author.articles.includes(:author, :categories)
     else
-      @published_articles = Article.includes(:author, :categories)
+      @published_articles = Article.from_visible_category.includes(:author, :categories)
     end
   end
 

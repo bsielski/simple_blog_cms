@@ -33,6 +33,10 @@ class Article < ApplicationRecord
     end
   end
 
+  def self.from_visible_category
+    Article.where(id: Categorization.where(category_id: Category.visible.ids).pluck(:article_id).uniq)
+  end
+
   private
 
   def set_status_to_unpublished
