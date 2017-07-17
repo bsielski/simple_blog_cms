@@ -9,6 +9,10 @@ class Admin < ApplicationRecord
   has_many :articles, through: :authors
   after_create :set_roles_for_a_new_admin
 
+  scope :without_role, ->(role) do
+    where.not(id: Role.find_by(name: role.to_s).admins.pluck(:id))
+  end
+
   private
 
   def set_roles_for_a_new_admin

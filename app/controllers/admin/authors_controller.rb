@@ -10,7 +10,7 @@ class Admin::AuthorsController < ApplicationController
   before_action :set_current_header_for_delete, only: :delete
 
   def index
-    @authors = Author.includes(:admin, :articles)
+    @authors = policy_scope([:admin, Author]).includes(:admin, :articles)
     @authors = @authors.paginate(:page => params[:page], :per_page => 100)
   end
 
