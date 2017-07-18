@@ -129,7 +129,7 @@ unless Admin.first
 
 This is a demo of the betha version of a blog CMS called "Simple Blog CMS".
 
-1. Add go to the /admin subpage and login. The login is: “admin@example.com” and password is: “qwerty”.
+1. Add go to the [/admin](/admin) subpage and login. The login is: “admin@example.com” and password is: “qwerty”.
 2. In the Admin Panel choose “Manage articles”, find articles with “The Manual” and read them.
 
 THESTRING
@@ -149,7 +149,7 @@ THESTRING
 
 # The most important page
 
-The `/admin` path. It is used to access log-in page and the Admin Panel page.
+The most important page is the [/admin](/admin) page. It is used to access log-in page and the Admin Panel page.
 
 # Admin Panel sub-sections
 
