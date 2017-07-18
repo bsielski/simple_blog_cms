@@ -218,7 +218,7 @@ THESTRING
   ),
     url_title: "about-the-admin-panel",
     author: author
-  )
+  ).published!
 
   Categorization.create!(
     category_id: 4,
