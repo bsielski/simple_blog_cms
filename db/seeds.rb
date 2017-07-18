@@ -115,7 +115,6 @@ unless Admin.first
     name: "About this blog",
     description: "An articles about his blog. Its functions, authors, changes, plans, etc.",
     visibility: "visible",
-    #position: 0,
   )
 
   puts "A default categories created."
