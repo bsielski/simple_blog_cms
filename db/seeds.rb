@@ -17,7 +17,6 @@ unless Admin.first
   Role.create! name: "can_edit_site_settings"
 
   Role.create! name: "can_activate_stylesheets"
-
   Role.create! name: "can_create_stylesheets"
   Role.create! name: "can_edit_stylesheets"
   Role.create! name: "can_delete_stylesheets"
@@ -32,7 +31,6 @@ unless Admin.first
   Role.create! name: "can_read_others'_unpublished_articles"
 
   Role.create! name: "can_create_articles"
-
   Role.create! name: "can_publish_own_articles"
   Role.create! name: "can_unpublish_own_articles"
   Role.create! name: "can_publish_others'_articles"
