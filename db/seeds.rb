@@ -110,7 +110,6 @@ unless Admin.first
     name: "Everything",
     description: "An articles about philosophy.",
     visibility: "visible",
-    #position: 0,
   )
   Category.create!(
     name: "About this blog",
@@ -213,7 +212,6 @@ Lorem ipsum
 
 ## Page footer
 
-
 THESTRING
   ),
     url_title: "about-the-admin-panel",
@@ -239,7 +237,6 @@ THESTRING
     stylesheet: Stylesheet.first
   )
   puts "Site atributes created."
-
 
 else
   puts "The database is not empty. Nothing was seeded."
