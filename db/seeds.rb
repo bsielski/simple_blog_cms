@@ -1,110 +1,86 @@
-# coding: utf-8
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+unless Admin.first # because the db must be empty
+  puts "-----------------------------------------\n \
+Type your EMAIL for super admin. It will not be use for verification \
+and it can be changed anytime. It has to have a proper email format."
+  admin_login = STDIN.gets.chomp
+  puts "Type your PASSWORD for super admin. It must be at least 6 characters long. It can be changed anytime, \
+so it don't have to be super-strong, especially if you want just play and test this CMS."
+  admin_password = STDIN.gets.chomp
 
-default_login = "admin@example.com"
-default_password = "qwerty"
-
-unless Admin.first
-
+  puts "Creating roles..."
   Role.create! name: "super_admin"
-
   Role.create! name: "can_edit_site_settings"
-
   Role.create! name: "can_activate_stylesheets"
-
   Role.create! name: "can_create_stylesheets"
   Role.create! name: "can_edit_stylesheets"
   Role.create! name: "can_delete_stylesheets"
-
   Role.create! name: "can_create_header_sections"
   Role.create! name: "can_edit_header_sections"
   Role.create! name: "can_delete_header_sections"
   Role.create! name: "can_create_footer_sections"
   Role.create! name: "can_edit_footer_sections"
   Role.create! name: "can_delete_footer_sections"
-
   Role.create! name: "can_read_others'_unpublished_articles"
-
   Role.create! name: "can_create_articles"
-
   Role.create! name: "can_publish_own_articles"
   Role.create! name: "can_unpublish_own_articles"
   Role.create! name: "can_publish_others'_articles"
   Role.create! name: "can_unpublish_others'_articles"
-
   Role.create! name: "can_edit_own_articles"
   Role.create! name: "can_delete_own_articles"
   Role.create! name: "can_edit_others'_articles"
   Role.create! name: "can_delete_others'_articles"
-
   Role.create! name: "can_create_categories"
   Role.create! name: "can_edit_categories"
   Role.create! name: "can_delete_categories"
-
   Role.create! name: "can_give_roles"
   Role.create! name: "can_take_away_roles"
-
   Role.create! name: "can_edit_admins'_emails"
   Role.create! name: "can_delete_admins"
-
   Role.create! name: "can_create_own_authors"
   Role.create! name: "can_edit_own_authors"
   Role.create! name: "can_delete_own_authors"
   Role.create! name: "can_edit_others'_authors"
   Role.create! name: "can_delete_others'_authors"
 
+  puts "Creating the super admin..."
   admin = Admin.create!(
-    email: default_login,
-    password: default_password,
-    password_confirmation: default_password
+    email: admin_login,
+    password: admin_password,
+    password_confirmation: admin_password
   )
-  puts "A default Admin created. Login: #{default_login}, password: #{default_password}"
-
   admin.add_role :super_admin
-
   author = Author.create!(
     name: "Admin",
     admin: admin
   )
-  puts "A default author for the admin created."
 
+  puts "Creating the page headers..."
   HeaderSection.create!(
     position: 1,
     content: Convert.to_html("![](https://dummyimage.com/60x55/000000/ffffff.png&text=Logo)")
   )
-  puts "A header section with logo created."
-
   HeaderSection.create!(
     position: 2,
     content: Convert.to_html("# A demo blog\n\nto demonstrate Simple Blog CMS")
   )
-  puts "A header section with the site's title created."
 
+  puts "Creating the page footers..."
   FooterSection.create!(
     position: 1,
     content: Convert.to_html("Powered by Simple Blog CMS (betha)\n\nwhich is powered by Ruby on Rails")
   )
 
-  puts "A default footers created."
-
-
+  puts "Creating some categories..."
   Category.create!(
     name: "Life",
     description: "An articles about biological and artificial life",
     visibility: "visible",
-    #position: 0,
   )
   Category.create!(
     name: "The Universe",
     description: "An articles about physics and space.",
     visibility: "visible",
-    #position: 0,
   )
   Category.create!(
     name: "Everything",
@@ -112,39 +88,34 @@ unless Admin.first
     visibility: "visible",
   )
   Category.create!(
-    name: "About this blog",
-    description: "An articles about his blog. Its functions, authors, changes, plans, etc.",
+    name: "The Manual",
+    description: "How to use this blog.",
     visibility: "visible",
   )
 
-  puts "A default categories created."
-
+  puts "Create default articles..."
   Article.create!(
     title: "Welcome",
     content: Convert.to_html(<<-THESTRING
-
 # Hello, Admin!
 
 This is a demo of the betha version of a blog CMS called "Simple Blog CMS".
 
-1. Add go to the [/admin](/admin) subpage and login. The login is: “admin@example.com” and password is: “qwerty”.
-2. In the Admin Panel choose “Manage articles”, find articles with “The Manual” and read them.
-
+1. Add go to the [/admin](/admin) subpage and login.
+2. Read more articles from []“The Manual”](/category/4/articles) category.
 THESTRING
   ),
     url_title: "welcome",
     author: author
   ).published!
-
   Categorization.create!(
     category_id: 4,
-    article: Article.first
+    article: Article.last
   )
 
   Article.create!(
     title: "About the Admin Panel",
     content: Convert.to_html(<<-THESTRING
-
 # The most important page
 
 The most important page is the [/admin](/admin) page. It is used to access log-in page and the Admin Panel page.
@@ -216,18 +187,18 @@ THESTRING
     url_title: "about-the-admin-panel",
     author: author
   ).published!
-
   Categorization.create!(
     category_id: 4,
-    article_id: 2
+    article: Article.last
   )
 
+  puts "Create the default stylesheet..."
   Stylesheet.create!(
     name: "Default style",
     content: Stylesheet::DefaultStylesheet.content
   )
-  puts "A stylesheet created."
 
+  puts "Create the default site settings..."
   Site.create!(
     title: "Simple Blog CMS",
     author: "",
@@ -235,12 +206,11 @@ THESTRING
     description: "A demo of the betha version of a blog CMS called \"Simple Blog CMS\".",
     stylesheet: Stylesheet.first
   )
-  puts "Site atributes created."
 
   answer = nil
   until answer == "y" or answer == "n"
-    puts "----------------"
-    puts "Create a default style? (y/n)"
+    puts "-------------------------------------"
+    puts "Create a testing stuff (more admins, categories, articles)? (y/n)"
     answer = STDIN.gets.chomp
   end
   if answer == "y"
@@ -251,21 +221,18 @@ THESTRING
         password: "qwerty",
         password_confirmation: "qwerty"
       )
-      puts "A second Admin created."
       second.add_role :can_edit_own_authors
       second.add_role :can_delete_own_authors
       second_author = Author.create!(
         name: "Second",
         admin: second
       )
-      puts "A second author for the second admin created."
     ## Editor ADMIN FOR TESTS ONLY
       editor = Admin.create!(
         email: "editor@example.com",
         password: "qwerty",
         password_confirmation: "qwerty"
       )
-      puts "A editor Admin created."
       Author.create!(
         name: "Editor",
         admin: editor
@@ -280,7 +247,6 @@ THESTRING
       editor.add_role :"can_create_footer_sections"
       editor.add_role :"can_edit_footer_sections"
       editor.add_role :"can_delete_footer_sections"
-      puts "A Editor author for the editor admin created."
     #############################
       categories = ["Scottish Football League players", "Weather", "Movies", "Fictional Ninjutsu practitioners", "Books", "Music", "News", "Blog", "Programming", "Humor", "Contact", "The Evening Air", "All Your Base Are Belong To Us"]
       paragraphs = ["In the next season he was transferred to another Lombard club Varese, also in the same level as Pergocrema. He won promotion to Serie B with Varese in June 2010.", "It was attached to the Kiev Special Military District/Soviet Southwestern Front at the outbreak of World War II, as part of the 15th Rifle Corps, 5th Army. Under Colonel V.P. Solokov, it was earmarked to defend the mid-Volga River islands behind the hard-pressed 62nd Army on 7 October 1942. However it was deployed in the Battle of Stalingrad proper on 26 October 1942, being ferried over from the east to the west bank of the Volga River to take up positions between the Red October and the Barrikady factories.", "In October 2004, a third song from Cartañá, \"Lost Your Mind\", was due for release, however the song was cancelled two weeks prior to the due date. This would be her last piece of music to be released under the EMI label, as difficulties in decision-making towards her second solo single, would start to take artist and label, as well as her then management in different directions, also triggering uncertainty amongst all of those involved.", "It is the only surviving significant remnant of Hardyville, a once-thriving shipping port for steamboats (on the Colorado River) and had served as the county seat of Mohave County. It contains 17 graves, each covered with a pile of cobble stones, as originally created.", "Panda was born in a Utkal (Oriya) Brahmin family. His father was Devendra Nath Panda and mother Niradabala Panda. He graduated in arts from the Dantan Bhattar College, which was then affiliated with the prestigious and historic University of Calcutta.", "In his diocese he showed great severity to nonconformists, and rigidly enforced the act prohibiting conventicles. He spent a great deal of money on the restoration of the cathedrals of Worcester and Salisbury. He died at Knightsbridge on 6 January 1689.", "Kobo-chan began publication in the newspaper Yomiuri Shimbun on April 1, 1982. Beginning in December of that year, Soyosha published the series in book form. Nippon Television began airing the Kobo-chan strip on television on September 15, 1990. The weekly anime series ran on that channel from October 19, 1992, to March 21, 1994. Yomiuri had published 6,000 Kobo-chan strips by March 1999. Soyosha published Volume 60 on October 22, 2003. Houbunsha began publishing volumes on May 6, 2004. Its most recently volume, the 37th, was published on February 7, 2017.", "On 11 December 2013 Bocão signed for Avaí. He made his professional debut on 19 April of the following year, starting in a 1–3 away loss against América-RN for the Série B championship.", "Schwarzenburg District was one of the 26 administrative districts in the Canton of Bern, Switzerland. Its capital was the town of Schwarzenburg, located in the municipality of Wahlern.", "She competed at world championships, including at the 2015 World Rhythmic Gymnastics Championships where she won the bronze medal in the all-around event. She participated at the 2015 European Games in Baku.", "USS Volunteer has been the name of more than one United States Navy ship.", "In 2007, Russo won Best Director for her short, Taste of Kream, in the New Orleans Film Festival.", "Mitsuru: The main character. A young boy who befriends an apatosaurus.", "This species was described by Telford and Telford in 2003.", "When Lardé was a child, her father traveled to the United States a few times before deciding to move the family there permanently in 1944.", "Veng Sereyvuth is a Cambodian politician. He belongs to Funcinpec and was elected to represent Prey Veng Province in the National Assembly of Cambodia in 2003.", "Mimudea longipalpalis is a moth in the Crambidae family. It was described by Hampson in 1903. It is found in Kashmir.", "Mucin 3A is a protein that in humans is encoded by the MUC3A gene.", "Nonius Software is a Portuguese organization that works in the telecommunications field. Its headquarters are in Porto.", "The book collects ten novelettes and short stories by various science fiction authors.", "\"Sweet Surrender\" also did well internationally. It was a Top 10 hit in Canada (#4) and New Zealand (#7).", "The idea for the story came from the haberdashery business run by the Sallambiers on the maternal side of Balzac's family.", "Federal cooperators Michael Blutrich and Lyle Pfeffer received reduced sentences of 200 months and served their terms in the Federal Witness Security Program.", "With his father in pursuit, Schreiber and his mother were trailed by private detectives in various states; when he was three, his father kidnapped him from an upstate New York commune to which Heather had decamped.", "He also played List A cricket for Minor Counties South, first appearing for the team in the 1972 Benson & Hedges Cup against Somerset.", "The show also shows some cartoons like Kabouter Plop, Piet Piraat and Bumba.", "In geometric topology, Busemann functions are used to study the large-scale geometry of geodesics in Hadamard spaces and in particular Hadamard manifolds (simply connected complete Riemannian manifolds of nonpositive curvature).", "Margolskee’s first faculty appointment was in Neuroscience at the Roche Institute of Molecular Biology, where he also held an adjunct appointment in the Department of Biological Sciences of Columbia University.", "The tournament was hosted in Pakistan from 11 to 21 November 2014.", "In 2009 Wasiak represented Australia in Lithuanian World Games competing in women's basketball.", "The entire building is designed in typical Hundertwasser style, with wavy, undulating floors and a notable lack of straight lines.", "Quentin Aanenson Field covers an area of 85 acres (34 ha) at an elevation of 1,435 feet (437 m) above mean sea level.", "Pločnik is a village in the municipality of Ćićevac, Serbia. According to the 2002 census, the village has a population of 593 people.", "Alv Knutsson held over 276 farms in east and south Norway. He held important Norwegian fiefs including Solør and was one of the largest property holders in Norway inheriting part of the knight and Norwegian National Councilor Sigurd Jonsson’s vast properties, including Sørum the estate (Sudrheim) in Romerike and Giske estate in Sunnmøre.", "Chryseobacterium shandongense is a Gram-negative, rod-shaped, non-spore-forming and non-motile bacteria from the genus of Chryseobacterium which has been isolated from soil.", "NAF was created by philanthropist Sanford I. Weill. His proposal was accepted by the New York City Board of Education to open the first Academy of Finance in a Brooklyn public high school, John Dewey High School, in 1982.", "Between 1993 and 2004, the award voting panel comprised variously fans; sportswriters and broadcasters, sports executives, and retired sportspersons, termed collectively experts; and retired sportspersons, but balloting thereafter has been exclusively by fans over the Internet from amongst choices selected by the ESPN Select Nominating Committee.", "Composition for the Axemen is a public artwork by American sculptor Ken Wyten, located at Union Center Plaza at 840 First Street NE in Washington, D.C., United States.", "The Foro Italico is a lawn along the seafront of Palermo, Sicily, Italy.", "In 1994, he moved to the German Football League where he was the defensive coordinator of the Hamburg Blue Devils before becoming head coach of the Stuttgart Scorpions in 1996." ]
@@ -451,7 +417,6 @@ THESTRING
           description: "Automatically generated category for tests",
           visibility: [0, 0, 1].sample(random: rng),
         )
-        puts "A default category created."
       end
 
       articles = []
@@ -483,7 +448,6 @@ THESTRING
 
       end
       Article.create! articles
-      puts "Articles created"
 
       categorizations = []
 
