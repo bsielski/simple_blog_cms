@@ -221,11 +221,24 @@ THESTRING
     category_id: 4,
     article_id: 2
   )
+  answer = nil
+  until answer == "y" or answer == "n"
+    puts "----------------"
+    puts "Create a default style? (y/n)"
+    answer = gets.chomp
+  do
+  if answer == "y"
+    Stylesheet.create!(
+      name: "Default style",
+      content: Stylesheet::DefaultStylesheet.content
+    )
+  else
+    Stylesheet.create!(
+      name: "Default style",
+      content: ""
+    )
+  end
 
-  Stylesheet.create!(
-    name: "Default style",
-    content: Stylesheet::DefaultStylesheet.content
-  )
   puts "A stylesheet created."
 
   Site.create!(
