@@ -226,7 +226,7 @@ THESTRING
     puts "----------------"
     puts "Create a default style? (y/n)"
     answer = gets.chomp
-  do
+  end
   if answer == "y"
     Stylesheet.create!(
       name: "Default style",
