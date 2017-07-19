@@ -225,7 +225,7 @@ THESTRING
   until answer == "y" or answer == "n"
     puts "----------------"
     puts "Create a default style? (y/n)"
-    answer = gets.chomp
+    answer = STDIN.gets.chomp
   end
   if answer == "y"
     Stylesheet.create!(
