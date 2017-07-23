@@ -102,7 +102,7 @@ so it don't have to be super-strong, especially if you want just play and test t
 This is a demo of the betha version of a blog CMS called "Simple Blog CMS".
 
 1. Add go to the [/admin](/admin) subpage and login.
-2. Read more articles from []“The Manual”](/category/4/articles) category.
+2. Read more articles from [“The Manual”](/category/4/articles) category.
 THESTRING
   ),
     url_title: "welcome",
@@ -156,31 +156,43 @@ Here you can change your email or password. It is possible to delete your accoun
 
 ## Logout
 
-Sign out. You don;t have to logout just for checking how the regular users see the site.
+Sign out. You don't have to logout just for checking how the regular users see the site.
 The admin see the regular pages (without /admin/ in the address) same as not logged user.
-The only dofference is the admin footer at the very bottom.
+The only difference is the admin footer at the very bottom.
 
 ## All accounts
 
-Lorem ipsum
+It shows a list of admins and action you can make on them besed on your permissions.
 
 ## Manage authors
 
-Lorem ipsum
+Same as "All acounts" but about authors. Each admin should have one or more authors.
+Each author can have only one admin.
 
 ## Manage styles
 
-Lorem ipsum
+Here you can create, edit, activate and delete stylesheets.
+Those stylesheets are css documents that changes the look of the site.
+
+The first default stylesheet can't be edited nor deleted.
 
 ## Site settings
 
-Lorem ipsum
+Here are just HTML meta tags.
+
+- **Title** - the HTML document title. It shows itself on the browser's tab.
+- **Author** - the HTML document author. It has no important usage.
+- **Keywords** - it has no important usage.
+- **Description** - some search engines can show this text as the site description.
 
 ## Page header
 
-Lorem ipsum
+Here you can create, edit and delete things that are displayed above the main menu.
+It should be writen in Markdown language. Styling is made in [Manage styles](/admin/stylesheets) subsection.
 
 ## Page footer
+
+Same as "Page header" but for the page footer.
 
 THESTRING
   ),
@@ -248,7 +260,11 @@ THESTRING
       editor.add_role :"can_edit_footer_sections"
       editor.add_role :"can_delete_footer_sections"
     #############################
-      categories = ["Scottish Football League players", "Weather", "Movies", "Fictional Ninjutsu practitioners", "Books", "Music", "News", "Blog", "Programming", "Humor", "Contact", "The Evening Air", "All Your Base Are Belong To Us"]
+      categories = ["Nuclear Warheads", "Aliens", "Guns",
+                    "Swords", "Robots", "Generators", "Computers", "Programming",
+                    "Anti-Personnel Mines", "Humor", "Tanks", "Games",
+                    "The Evening Air", "All Your Base Are Belong To Us"
+                   ]
       paragraphs = ["In the next season he was transferred to another Lombard club Varese, also in the same level as Pergocrema. He won promotion to Serie B with Varese in June 2010.", "It was attached to the Kiev Special Military District/Soviet Southwestern Front at the outbreak of World War II, as part of the 15th Rifle Corps, 5th Army. Under Colonel V.P. Solokov, it was earmarked to defend the mid-Volga River islands behind the hard-pressed 62nd Army on 7 October 1942. However it was deployed in the Battle of Stalingrad proper on 26 October 1942, being ferried over from the east to the west bank of the Volga River to take up positions between the Red October and the Barrikady factories.", "In October 2004, a third song from Cartañá, \"Lost Your Mind\", was due for release, however the song was cancelled two weeks prior to the due date. This would be her last piece of music to be released under the EMI label, as difficulties in decision-making towards her second solo single, would start to take artist and label, as well as her then management in different directions, also triggering uncertainty amongst all of those involved.", "It is the only surviving significant remnant of Hardyville, a once-thriving shipping port for steamboats (on the Colorado River) and had served as the county seat of Mohave County. It contains 17 graves, each covered with a pile of cobble stones, as originally created.", "Panda was born in a Utkal (Oriya) Brahmin family. His father was Devendra Nath Panda and mother Niradabala Panda. He graduated in arts from the Dantan Bhattar College, which was then affiliated with the prestigious and historic University of Calcutta.", "In his diocese he showed great severity to nonconformists, and rigidly enforced the act prohibiting conventicles. He spent a great deal of money on the restoration of the cathedrals of Worcester and Salisbury. He died at Knightsbridge on 6 January 1689.", "Kobo-chan began publication in the newspaper Yomiuri Shimbun on April 1, 1982. Beginning in December of that year, Soyosha published the series in book form. Nippon Television began airing the Kobo-chan strip on television on September 15, 1990. The weekly anime series ran on that channel from October 19, 1992, to March 21, 1994. Yomiuri had published 6,000 Kobo-chan strips by March 1999. Soyosha published Volume 60 on October 22, 2003. Houbunsha began publishing volumes on May 6, 2004. Its most recently volume, the 37th, was published on February 7, 2017.", "On 11 December 2013 Bocão signed for Avaí. He made his professional debut on 19 April of the following year, starting in a 1–3 away loss against América-RN for the Série B championship.", "Schwarzenburg District was one of the 26 administrative districts in the Canton of Bern, Switzerland. Its capital was the town of Schwarzenburg, located in the municipality of Wahlern.", "She competed at world championships, including at the 2015 World Rhythmic Gymnastics Championships where she won the bronze medal in the all-around event. She participated at the 2015 European Games in Baku.", "USS Volunteer has been the name of more than one United States Navy ship.", "In 2007, Russo won Best Director for her short, Taste of Kream, in the New Orleans Film Festival.", "Mitsuru: The main character. A young boy who befriends an apatosaurus.", "This species was described by Telford and Telford in 2003.", "When Lardé was a child, her father traveled to the United States a few times before deciding to move the family there permanently in 1944.", "Veng Sereyvuth is a Cambodian politician. He belongs to Funcinpec and was elected to represent Prey Veng Province in the National Assembly of Cambodia in 2003.", "Mimudea longipalpalis is a moth in the Crambidae family. It was described by Hampson in 1903. It is found in Kashmir.", "Mucin 3A is a protein that in humans is encoded by the MUC3A gene.", "Nonius Software is a Portuguese organization that works in the telecommunications field. Its headquarters are in Porto.", "The book collects ten novelettes and short stories by various science fiction authors.", "\"Sweet Surrender\" also did well internationally. It was a Top 10 hit in Canada (#4) and New Zealand (#7).", "The idea for the story came from the haberdashery business run by the Sallambiers on the maternal side of Balzac's family.", "Federal cooperators Michael Blutrich and Lyle Pfeffer received reduced sentences of 200 months and served their terms in the Federal Witness Security Program.", "With his father in pursuit, Schreiber and his mother were trailed by private detectives in various states; when he was three, his father kidnapped him from an upstate New York commune to which Heather had decamped.", "He also played List A cricket for Minor Counties South, first appearing for the team in the 1972 Benson & Hedges Cup against Somerset.", "The show also shows some cartoons like Kabouter Plop, Piet Piraat and Bumba.", "In geometric topology, Busemann functions are used to study the large-scale geometry of geodesics in Hadamard spaces and in particular Hadamard manifolds (simply connected complete Riemannian manifolds of nonpositive curvature).", "Margolskee’s first faculty appointment was in Neuroscience at the Roche Institute of Molecular Biology, where he also held an adjunct appointment in the Department of Biological Sciences of Columbia University.", "The tournament was hosted in Pakistan from 11 to 21 November 2014.", "In 2009 Wasiak represented Australia in Lithuanian World Games competing in women's basketball.", "The entire building is designed in typical Hundertwasser style, with wavy, undulating floors and a notable lack of straight lines.", "Quentin Aanenson Field covers an area of 85 acres (34 ha) at an elevation of 1,435 feet (437 m) above mean sea level.", "Pločnik is a village in the municipality of Ćićevac, Serbia. According to the 2002 census, the village has a population of 593 people.", "Alv Knutsson held over 276 farms in east and south Norway. He held important Norwegian fiefs including Solør and was one of the largest property holders in Norway inheriting part of the knight and Norwegian National Councilor Sigurd Jonsson’s vast properties, including Sørum the estate (Sudrheim) in Romerike and Giske estate in Sunnmøre.", "Chryseobacterium shandongense is a Gram-negative, rod-shaped, non-spore-forming and non-motile bacteria from the genus of Chryseobacterium which has been isolated from soil.", "NAF was created by philanthropist Sanford I. Weill. His proposal was accepted by the New York City Board of Education to open the first Academy of Finance in a Brooklyn public high school, John Dewey High School, in 1982.", "Between 1993 and 2004, the award voting panel comprised variously fans; sportswriters and broadcasters, sports executives, and retired sportspersons, termed collectively experts; and retired sportspersons, but balloting thereafter has been exclusively by fans over the Internet from amongst choices selected by the ESPN Select Nominating Committee.", "Composition for the Axemen is a public artwork by American sculptor Ken Wyten, located at Union Center Plaza at 840 First Street NE in Washington, D.C., United States.", "The Foro Italico is a lawn along the seafront of Palermo, Sicily, Italy.", "In 1994, he moved to the German Football League where he was the defensive coordinator of the Hamburg Blue Devils before becoming head coach of the Stuttgart Scorpions in 1996." ]
       titles = [
         "Who Else Is Lying To Us About Games?",
@@ -289,21 +305,19 @@ THESTRING
         "Robots - Dead Or Alive?",
         "Who Else Wants To Learn About Generators?",
         "The Chronicles Of Robots",
-        "Understanding Universe",
-        "Universe Help!",
-        "Discover What Universe Is",
-        "Choosing Good Universe",
-        "Choosing Universe",
-        "Choosing Universe Is Simple",
-        "Finding The Best Universe",
-        "How To Choose Universe",
-        "Introducing Universe",
-        "The Most Popular Universe",
-        "Top Choices Of Universe",
-        "Top Guide Of Universe",
-        "Top Universe Reviews!",
-        "Top Universe Tips!",
-        "Universe Reviews & Guide",
+        "Understanding the Universe",
+        "The Universe Help!",
+        "Discover What the Universe Is",
+        "Choosing the Universe Good",
+        "Choosing the Universe",
+        "Choosing the Universe Is Simple",
+        "How To Choose the Universe",
+        "The Most Popular the Universe",
+        "Top Choices Of the Universe",
+        "Top Guide Of the Universe",
+        "Top Reviews of the Universe !",
+        "The Universe Top Tips!",
+        "The Universe Reviews & Guide",
         "Top Life Guide!",
         "The Key To Successful Life",
         "What Makes A Life?",
@@ -323,7 +337,7 @@ THESTRING
         "The Appeal Of Life",
         "The Hidden Gem Of Life",
         "The Meaning Of life",
-         ]
+      ].shuffle
 
       headers = [
         "# Plot\n\n",
@@ -415,13 +429,14 @@ THESTRING
         Category.create!(
           name: category,
           description: "Automatically generated category for tests",
-          visibility: [0, 0, 1].sample(random: rng),
+          visibility: "visible",
         )
       end
 
       articles = []
 
-      50.times do |i|
+      titles.each do |title|
+        puts title
         article_content = ""
         how_long_article = [3,4,5,6,7,8,9,5,6,7,10].sample(random: rng)
         old_what = nil
@@ -436,7 +451,7 @@ THESTRING
           old_what = what
         end
 
-        article_title = titles.sample(random: rng)
+        article_title = title
 
         article = { title: article_title,
                     content: Convert.to_html(article_content),
@@ -453,16 +468,23 @@ THESTRING
 
       Article.all.each do |article|
         how_many_categories = [1,1,1,2,3].sample(random: rng)
-        article_categories = Category.all.sample(how_many_categories, random: rng)
-        article_categories.each do |category|
-          categorizations << {category: category, article: article}
+        Category.all.each do |category|
+          if article.title.downcase.include? category.name.downcase
+            Categorization.create(category: category, article: article)
+          end
+        end
+        if article.categories.empty?
+          article_categories = Category.all.sample(how_many_categories, random: rng)
+          article_categories.each do |category|
+            categorizations << {category: category, article: article}
+          end
         end
       end
       Categorization.create! categorizations
 
       Article.all.each do |article|
         fake_time = Time.at(rng.rand(1.year.ago.to_i..Time.now.to_i))
-        article.update_columns created_at: fake_time, status: [0,1,1,1,1].sample(random: rng)
+        article.update_columns created_at: fake_time, status: [0,1,1,1,1,1].sample(random: rng)
         if article.published?
           article.update_columns published_at: fake_time + 10.minutes
         end
