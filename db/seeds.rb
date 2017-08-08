@@ -182,7 +182,6 @@ Here are just HTML meta tags.
 
 - **Title** - the HTML document title. It shows itself on the browser's tab.
 - **Author** - the HTML document author. It has no important usage.
-- **Keywords** - it has no important usage.
 - **Description** - some search engines can show this text as the site description.
 
 ## Page header
@@ -214,7 +213,6 @@ THESTRING
   Site.create!(
     title: "Simple Blog CMS",
     author: "",
-    keywords: "CMS",
     description: "A demo of the betha version of a blog CMS called \"Simple Blog CMS\".",
     stylesheet: Stylesheet.first
   )

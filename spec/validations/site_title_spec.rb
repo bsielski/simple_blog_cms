@@ -23,7 +23,6 @@ THESTRING
     Site.new(
       title: "Some Title",
       author: "",
-      keywords: "",
       description: nil,
       stylesheet: Stylesheet.last
     )

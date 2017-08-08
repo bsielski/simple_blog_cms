@@ -34,7 +34,7 @@ class Admin::SitesController < ApplicationController
   end
 
   def site_params
-    params.require(:site).permit(:title, :author, :keywords, :description)
+    params.require(:site).permit(:title, :author, :description)
   end
 
   def set_current_header_for_edit
