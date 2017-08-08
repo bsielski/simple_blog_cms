@@ -290,6 +290,9 @@ pre > code {
 .article_footer {
   font-size: 13px;
   margin: 13px 0 13px 0;
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
 }
 .article_footer__created {
   margin: 3px 0 3px 0;
@@ -298,7 +301,7 @@ pre > code {
 }
 .article_footer__author {
   margin: 3px 0 3px 0;
-  display: block;
+  /*display: block;*/
   color: #111111;
 }
 
@@ -336,6 +339,7 @@ pre > code {
   max-width: 750px;
   margin: 0 auto;
 }
+
 
 THESTRING
 
