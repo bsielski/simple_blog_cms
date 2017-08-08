@@ -24,7 +24,7 @@ THESTRING
       title: "Some Title",
       author: "",
       keywords: "",
-      description: nil,
+      description: "Some description",
       stylesheet: Stylesheet.last
     )
   end
@@ -33,30 +33,30 @@ THESTRING
     expect(subject).to be_valid
   end
 
-  it "fails with an author longer than 56 characters" do
-    subject.author = "C" * 57
+  it "fails with a description longer than 150 characters" do
+    subject.description = "C" * 151
     expect(subject).to be_invalid
   end
 
-  it "is valid with an author 56 characters long" do
-    subject.author = "C" * 56
+  it "is valid with a description 150 characters long" do
+    subject.description = "C" * 150
     expect(subject).to be_valid
   end
 
-  it "is valid when an author is an empty string" do
-    subject.author = ""
+  it "fails when a description is an empty string" do
+    subject.description = ""
+    expect(subject).to be_invalid
+  end
+
+  it "is valid when a description is nil" do
+    subject.description = nil
     expect(subject).to be_valid
   end
 
-  it "is valid when an author is nil" do
-    subject.author = nil
-    expect(subject).to be_valid
-  end
-
-  it "is stripped and squeeze whiespaces in the author before validation" do
-    subject.author = "\t\t\n\t   \nJohn  \n\t\  \n Smith  \n\n\n"
+  it "is stripped and squeeze whiespaces in the description before validation" do
+    subject.description = "\t    \n\n   \nSuper  \t\n\ site\n\n\n\n"
     subject.save!
-    expect(Site.last.author).to be == "John Smith"
+    expect(Site.last.description).to be == "Super site"
   end
 
   after(:context) do

@@ -24,7 +24,7 @@ THESTRING
       title: "Some Title",
       author: "",
       keywords: "",
-      description: "",
+      description: nil,
       stylesheet: Stylesheet.last
     )
   end
