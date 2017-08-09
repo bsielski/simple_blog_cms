@@ -1,24 +1,22 @@
-# README
+# Simple Blog CMS
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a simple CMS made in RoR. It is best suited to create blog sites.
 
-Things you may want to cover:
+## Features
 
-* Ruby version
+- Articles are writing in Markdown.
+- Site header, footer and CSS is editable from the admin panel.
 
-* System dependencies
+# Installation
 
-* Configuration
+Ruby version: 2.4.1
 
-* Database creation
+Do  `rails db:seed` to create admin user and basic records.
 
-* Database initialization
+# Demo
 
-* How to run the test suite
+Online demo: http://pure-castle-70671.herokuapp.com/
 
-* Services (job queues, cache servers, search engines, etc.)
+# Example blog
 
-* Deployment instructions
-
-* ...
+http://notes.testingmagic.ovh/
