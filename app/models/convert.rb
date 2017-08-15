@@ -9,7 +9,7 @@ module Convert
 
   def self.to_html(markdown)
     if markdown
-      return Markdown.new(markdown).to_html.gsub(/<!--[^>]*-->/, "").strip.gsub("\n\n","\n")
+      return Markdown.new(markdown).to_html.gsub(/<!--[^>]*-->/, "").strip#.gsub("\n\n","\n")
     else
       return ""
     end
