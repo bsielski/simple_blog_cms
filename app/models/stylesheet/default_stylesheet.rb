@@ -267,7 +267,7 @@ code {
   padding-left: 2px;
   padding-right: 2px;
 }
-code {
+.article_body > code {
   /*border: 2px solid grey;*/
   padding: 2px 3px;
   /*margin: 5px;*/
@@ -276,7 +276,10 @@ code {
   color: #dddddd;
   font-weight: bold;
 }
-pre > code {
+.article_body > pre {
+  overflow: auto;
+}
+.article_body > pre > code {
   border: 5px solid #3c4049;
   padding: 3px 7px;
   margin: 1px 0px;;
@@ -296,15 +299,16 @@ pre > code {
 }
 .article_footer__created {
   margin: 3px 0 3px 0;
-  display: block;
+  color: #111111;
+}
+.article_footer__published {
+  margin: 3px 0 3px 0;
   color: #111111;
 }
 .article_footer__author {
   margin: 3px 0 3px 0;
-  /*display: block;*/
   color: #111111;
 }
-
 
 /* PAGE_FOOTER */
 
