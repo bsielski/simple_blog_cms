@@ -1,3 +1,4 @@
+# coding: utf-8
 class Stylesheet::DefaultStylesheet
 
   def self.content
@@ -79,8 +80,8 @@ body {
   text-decoration: inherit;
   color: inherit;
   margin: 0;
-  cursor: auto;
-  text-align: center
+  cursor: pointer;
+  text-align: center;
 }
 .main_navigation__link--active {
   background-color: darkred;
