@@ -33,3 +33,6 @@
 # Ignore design docs
 *.org
 *.org#
+
+# Ignore env
+.env
