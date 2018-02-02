@@ -2,10 +2,10 @@ unless Admin.first # because the db must be empty
   puts "-----------------------------------------\n \
 Type your EMAIL for super admin. It will not be use for verification \
 and it can be changed anytime. It has to have a proper email format."
-  admin_login = STDIN.gets.chomp
+  admin_login = "admin@example.com"
   puts "Type your PASSWORD for super admin. It must be at least 6 characters long. It can be changed anytime, \
 so it don't have to be super-strong, especially if you want just play and test this CMS."
-  admin_password = STDIN.gets.chomp
+  admin_password = "aaaaaa"
 
   puts "Creating roles..."
   Role.create! name: "super_admin"
@@ -221,7 +221,7 @@ THESTRING
   until answer == "y" or answer == "n"
     puts "-------------------------------------"
     puts "Create a testing stuff (more admins, categories, articles)? (y/n)"
-    answer = STDIN.gets.chomp
+    answer = "y"
   end
   if answer == "y"
     ##### TEST STUFF
