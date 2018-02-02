@@ -1,0 +1,11 @@
+version: '3'
+services:
+  simple_blog_cms:
+    build: .
+    ports:
+    - "3000:3000"
+    volumes:
+    - .:/usr/src/app
+    env_file: .env
+    stdin_open: true
+    #tty: true
