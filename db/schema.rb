@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20170808154946) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -30,8 +33,8 @@ ActiveRecord::Schema.define(version: 20170808154946) do
   end
 
   create_table "admins_roles", id: false, force: :cascade do |t|
-    t.integer "admin_id"
-    t.integer "role_id"
+    t.bigint "admin_id"
+    t.bigint "role_id"
     t.index ["admin_id", "role_id"], name: "index_admins_roles_on_admin_id_and_role_id"
     t.index ["admin_id"], name: "index_admins_roles_on_admin_id"
     t.index ["role_id"], name: "index_admins_roles_on_role_id"
@@ -42,7 +45,7 @@ ActiveRecord::Schema.define(version: 20170808154946) do
     t.integer "status"
     t.text "content"
     t.string "url_title"
-    t.integer "author_id"
+    t.bigint "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "published_at"
@@ -52,7 +55,7 @@ ActiveRecord::Schema.define(version: 20170808154946) do
 
   create_table "authors", force: :cascade do |t|
     t.string "name"
-    t.integer "admin_id"
+    t.bigint "admin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "description"
@@ -69,8 +72,8 @@ ActiveRecord::Schema.define(version: 20170808154946) do
   end
 
   create_table "categorizations", force: :cascade do |t|
-    t.integer "category_id"
-    t.integer "article_id"
+    t.bigint "category_id"
+    t.bigint "article_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["article_id"], name: "index_categorizations_on_article_id"
@@ -101,7 +104,7 @@ ActiveRecord::Schema.define(version: 20170808154946) do
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "resource_type"
-    t.integer "resource_id"
+    t.bigint "resource_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
@@ -113,7 +116,7 @@ ActiveRecord::Schema.define(version: 20170808154946) do
     t.string "title"
     t.string "author"
     t.text "description"
-    t.integer "stylesheet_id"
+    t.bigint "stylesheet_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["stylesheet_id"], name: "index_sites_on_stylesheet_id"
@@ -126,4 +129,9 @@ ActiveRecord::Schema.define(version: 20170808154946) do
     t.string "name"
   end
 
+  add_foreign_key "articles", "authors"
+  add_foreign_key "authors", "admins"
+  add_foreign_key "categorizations", "articles"
+  add_foreign_key "categorizations", "categories"
+  add_foreign_key "sites", "stylesheets"
 end
