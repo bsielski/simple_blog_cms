@@ -1,5 +1,7 @@
-FROM ruby:2.5.0
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
+FROM ruby:2.4
+RUN apt-get update
+# RUN apt-get install -y build-essential libpq-dev
+RUN apt-get install -y nodejs
 COPY Gemfile* /usr/src/app/
 WORKDIR /usr/src/app
 RUN bundle install
