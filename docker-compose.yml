@@ -1,8 +1,10 @@
 version: "2"
 services:
-  simple_blog_cms_db:
-    image: postgres
-  simple_blog_cms:
+  db:
+    image: postgres:10.1
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+  app:
     build: .
     ports:
     - "3000:3000"
@@ -12,4 +14,8 @@ services:
     stdin_open: true
     tty: true
     depends_on:
-      - simple_blog_cms_db
+      - db
+    # environment:
+    #   - ENV['DATABASE_URL'] = postgresql://simple_blog_cms_db/postgres_development?pool=5
+volumes:
+  postgres-data:
