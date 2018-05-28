@@ -1,6 +1,6 @@
-# Simple Blog CMS
+# Simple Site CMS
 
-This is a simple CMS made in RoR. It is best suited to create blog sites.
+This is a simple CMS made in RoR. It is best suited to create simple sites or blogs.
 
 ## Features
 
@@ -12,9 +12,9 @@ This is a simple CMS made in RoR. It is best suited to create blog sites.
 
 # Installation
 
-Ruby version: 2.4.1
+Ruby version: 2.4.x
 
-Do  `rails db:seed` to create admin user and basic records.
+Do  `rails db:seed` to create admin user and basic stylesheet and example articles.
 
 # Demo
 
@@ -22,10 +22,10 @@ Demo: http://pure-castle-70671.herokuapp.com/
 
 Admin panel: http://pure-castle-70671.herokuapp.com/admin
 
-Admin login:
+Admin login: admin@example.com
 
-Admin password: 
+Admin password: qwerty
 
-# Example blog
+# Example site on production
 
 http://notes.testingmagic.ovh/
