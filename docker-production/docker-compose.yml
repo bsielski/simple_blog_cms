@@ -6,8 +6,6 @@ services:
     image: bsielski/simple-site-cms:1.0.0
     expose:
       - 3000
-    volumes:
-      - assets:/usr/share/nginx/html
     env_file: ./.env-app
     networks:
       - net-pg
@@ -16,7 +14,6 @@ services:
   webserver:
     image: nginx:1.13.12-alpine
     volumes:
-      - assets:/usr/share/nginx/html
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
     env_file: ./.env-webserver
     networks:
@@ -24,9 +21,6 @@ services:
       - default
     depends_on:
       - app
-
-volumes:
-  assets:
 
 networks:
   rev-proxy:
