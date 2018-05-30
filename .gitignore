@@ -27,6 +27,7 @@
 
 # Ignore Emacs garbage
 *~
+.*~
 \#*.*#
 .#*.*
 
@@ -36,3 +37,7 @@
 
 # Ignore env
 .env
+.env-app
+.env-webserver
+
+nginx.conf
