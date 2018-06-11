@@ -35,9 +35,5 @@
 *.org
 *.org#
 
-# Ignore env
-.env
-.env-app
-.env-webserver
-
-nginx.conf
+# Ignore docker
+/docker-development
