@@ -37,3 +37,4 @@
 
 # Ignore docker
 /docker-development
+/docker-production
