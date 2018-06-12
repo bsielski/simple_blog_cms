@@ -53,7 +53,7 @@
   </div>
 
   <% end %>
-
+  
   <div class="form_group form_group--article_change_status">
     <% unless @article.new_record? %>
       <p>This article is <%= @article.substatus %>.</p>
@@ -62,11 +62,15 @@
       <% elsif @article.published? %>
         <%= link_to('Unpublish (withdraw) this article', admin_article_path(@article, status: :unpublished), method: :patch) if policy([:admin, @article]).change_status? %>
       <% end %>
+  <div class="form_group form_group--article_change_status">
+    <%= link_to 'Show article', article_path(@article) %>
+  </div>
+
     <% else %>
       <p>This article is not created yet.</p>
     <% end %>
   </div>
-
+  
 <div class="form_group form_group--article_delete">
   <% unless @article.new_record? %>
   <%= link_to 'Delete this article', delete_admin_article_path(@article) if policy([:admin, @article]).destroy? %>
