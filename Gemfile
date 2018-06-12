@@ -29,6 +29,9 @@ gem "trailblazer-cells", "~> 0.0.3"
 gem "cells-rails", "~> 0.0.8"
 gem "cells-erb", "~> 0.1.0"
 
+gem "dry-validation", "~> 0.12.0"
+gem "trailblazer-rails", "~> 2.1.4"
+
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
