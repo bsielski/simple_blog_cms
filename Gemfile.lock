@@ -57,6 +57,17 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (>= 2.0, < 4.0)
+    cells (4.1.7)
+      declarative-builder (< 0.2.0)
+      declarative-option (< 0.2.0)
+      tilt (>= 1.4, < 3)
+      uber (< 0.2.0)
+    cells-erb (0.1.0)
+      cells (~> 4.0)
+      erbse (>= 0.1.1)
+    cells-rails (0.0.9)
+      actionpack (>= 3.0)
+      cells (>= 4.1.6, < 5.0.0)
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
     coderay (1.1.2)
@@ -69,6 +80,9 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
+    declarative-builder (0.1.0)
+      declarative-option (< 0.2.0)
+    declarative-option (0.1.0)
     devise (4.4.3)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -76,6 +90,8 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.3)
+    erbse (0.1.3)
+      temple
     erubi (1.7.1)
     execjs (2.7.0)
     ffi (1.9.23)
@@ -161,6 +177,9 @@ GEM
     reverse_markdown (1.1.0)
       nokogiri
     rolify (5.2.0)
+    rspec-cells (0.3.4)
+      cells (>= 4.0.0, < 6.0.0)
+      rspec-rails (~> 3.2)
     rspec-core (3.7.1)
       rspec-support (~> 3.7.0)
     rspec-expectations (3.7.0)
@@ -206,6 +225,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    temple (0.8.0)
     textutils (1.4.0)
       activesupport
       logutils (>= 0.6.1)
@@ -214,11 +234,14 @@ GEM
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
+    trailblazer-cells (0.0.3)
+      cells (>= 4.1.0.rc1, < 5.0.0)
     turbolinks (5.1.1)
       turbolinks-source (~> 5.1)
     turbolinks-source (5.1.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
+    uber (0.1.0)
     uglifier (4.1.10)
       execjs (>= 0.3.0, < 3)
     unicorn (5.4.0)
@@ -246,6 +269,8 @@ DEPENDENCIES
   acts_as_list
   byebug
   capybara (~> 2.18)
+  cells-erb (~> 0.1.0)
+  cells-rails (~> 0.0.8)
   coffee-rails (~> 4.2)
   devise (~> 4.3)
   jbuilder (~> 2.6)
@@ -258,11 +283,13 @@ DEPENDENCIES
   rails (~> 5.1.5)
   reverse_markdown
   rolify
+  rspec-cells (~> 0.3.4)
   rspec-rails (~> 3.7.2)
   sass-rails (~> 5.0)
   selenium-webdriver (~> 3.11.0)
   spring
   spring-watcher-listen (~> 2.0.0)
+  trailblazer-cells (~> 0.0.3)
   turbolinks (~> 5.1.0)
   tzinfo-data
   uglifier (>= 4.1.0)
