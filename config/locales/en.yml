@@ -31,3 +31,8 @@
 
 en:
   hello: "Hello world"
+
+  errors:
+    unique_name?: "name must be unique"
+    
+  
