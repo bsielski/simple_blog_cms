@@ -13,14 +13,21 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def new
-    @category = Category.new
+    # short way
+    # run Category::Create::Present
+
+    # long way
+    result = Category::Create::Present.(params: params, current_user: current_admin)
+    #@form = result["contract.default"]
+    @model = result[:model]
   end
 
   def create
-    @category = Category.new(category_params)
-    authorize [:admin, @category]
-    if @category.save
-      redirect_to edit_admin_category_path(@category), notice: 'Category was successfully created.'
+    result = Category::Create.(params: params, current_user: current_admin)
+    #@form = result["contract.default"]
+    @model = result[:model]
+    if result.success?
+      redirect_to edit_admin_category_path(@model), notice: 'Category was successfully created.'
     else
       render :new
     end
@@ -30,9 +37,9 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def update
-    authorize [:admin, @category]
-    if @category.update(category_params)
-      redirect_to edit_admin_category_path(@category), notice: 'Category was successfully updated.'
+    authorize [:admin, @model]
+    if @model.update(category_params)
+      redirect_to edit_admin_category_path(@model), notice: 'Category was successfully updated.'
     else
       render :edit
     end
@@ -44,15 +51,15 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def destroy
-    authorize [:admin, @category]
-    @category.destroy
+    authorize [:admin, @model]
+    @model.destroy
     redirect_to admin_categories_path, notice: 'Category was successfully destroyed.'
   end
 
   private
 
   def set_category
-    @category = Category.find(params[:id])
+    @model = Category.find(params[:id])
   end
 
   def category_params
@@ -64,7 +71,7 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def set_current_header_for_show
-    @current_page_header = "Category: #{@category.name}"
+    @current_page_header = "Category: #{@model.name}"
   end
 
   def set_current_header_for_new
@@ -72,11 +79,11 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def set_current_header_for_edit
-    @current_page_header = "Edit category: #{@category.name}"
+    @current_page_header = "Edit category: #{@model.name}"
   end
 
   def set_current_header_for_delete
-    @current_page_header = "Delete category: #{@category.name}"
+    @current_page_header = "Delete category: #{@model.name}"
   end
 
 end

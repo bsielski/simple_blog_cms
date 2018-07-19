@@ -18,11 +18,7 @@
   <body>
     <div class="page_container">
       <header class="page_header" >
-	  <% @header_sections.each do |section| %>
-	  <a href="<%= root_path  %>" class="page_header__section">
-	    <%= section.content.html_safe %>
-	  </a>
-	  <% end %>
+	<%= cell(HeaderSection::Cell::Sections, nil, current_admin: current_admin) %>
       </header>
 
       <nav class="main_navigation">
@@ -40,10 +36,7 @@
       </main>
 
       <footer class="page_footer">
-
-	<% @footer_sections.each do |section| %>
-	<section class="page_footer__section"><%= section.content.html_safe %></section>
-	<% end %>
+	<%= cell(FooterSection::Cell::Sections, nil, current_admin: current_admin) %>
       </footer>
 
     </div>
