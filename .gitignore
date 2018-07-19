@@ -34,7 +34,3 @@
 # Ignore design docs
 *.org
 *.org#
-
-# Ignore docker
-/docker-development
-/docker-production
