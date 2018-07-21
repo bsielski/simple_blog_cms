@@ -11,7 +11,6 @@ class ApplicationController < ActionController::Base
   private
 
   def set_everything
-    @visible_categories = Category.visible.order(:position)
     @current_style = Site.first.stylesheet.content
   end
 end
