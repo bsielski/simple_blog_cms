@@ -22,7 +22,7 @@
       </header>
 
       <nav class="main_navigation">
-	<%= cell(MainNavigation::Cell::Container, nil) %>
+	<%= cell(MainNavigation::Cell::Container, nil, url: request.original_url) %>
 
       </nav>
 
