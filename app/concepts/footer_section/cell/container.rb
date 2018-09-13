@@ -1,5 +1,5 @@
 module FooterSection::Cell
-  class Sections < Trailblazer::Cell
+  class Container < Trailblazer::Cell
     def model
       FooterSection.order(:position)
     end
