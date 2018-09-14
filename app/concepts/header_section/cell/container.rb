@@ -1,5 +1,5 @@
 module HeaderSection::Cell
-  class Sections < Trailblazer::Cell
+  class Container < Trailblazer::Cell
     def model
       HeaderSection.order(:position)
     end
