@@ -3,5 +3,9 @@ module HeaderSection::Cell
     def model
       HeaderSection.order(:position)
     end
+    
+    def root_path
+      options[:root_path]
+    end
   end
 end
