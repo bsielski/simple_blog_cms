@@ -1,6 +1,10 @@
 require "rails_helper"
 
 describe FooterSection::Create do
+  subject (:result) {
+    described_class.(params: params, current_user: user)
+  }
+
   let (:user_with_role) do
     Role.create! name: "can_create_footer_sections"
     user = Admin.new(email: "withrole@example.com", password: "ihavearole123", password_confirmation: "ihavearole123")
@@ -24,84 +28,120 @@ describe FooterSection::Create do
   let (:position) { 1 }
   
   let (:params) do
-    {category: {content: content, position: position}}
+    {footer_section: {content: content, position: position}}
   end
 
-  it "works for user with role" do
-    result = FooterSection::Create.(params: params, current_user: user_with_role)
-    expect(result).to be_success
-    expect(result[:model]).to be_persisted
-    expect(result[:model].content).to eq "Copyright 5000 BC"
-    expect(result[:model].position).to eq 1
-    expect(result["result.policy.default"]).to be_success
+  context "with user with role" do
+    let (:user) { user_with_role }
+    it "works" do
+      expect(result).to be_success
+      expect(result[:model]).to be_persisted
+      expect(result["result.policy.default"]).to be_success
+    end
+    it "has proper content" do
+      expect(result[:model].content).to eq "<p>Copyright 5000 BC</p>"
+    end
+    it "has proper position" do
+      expect(result[:model].position).to eq 1
+    end    
   end
 
-  it "works for superadmin" do
-    result = FooterSection::Create.(params: params, current_user: super_admin_user)
-    expect(result).to be_success
-    expect(result[:model]).to be_persisted
-    expect(result[:model].content).to eq "Copyright 5000 BC"
-    expect(result[:model].position).to eq 1
-    expect(result["result.policy.default"]).to be_success
+  context "with superadmin" do
+    let (:user) { super_admin_user }
+    it "works" do
+      expect(result).to be_success
+      expect(result[:model]).to be_persisted
+      expect(result["result.policy.default"]).to be_success
+    end
+
+    it "has proper content" do
+      expect(result[:model].content).to eq "<p>Copyright 5000 BC</p>"
+    end
+    
+    it "has proper position" do
+      expect(result[:model].position).to eq 1
+    end    
   end
 
-  it "doesn't work for user without role" do
-    result = FooterSection::Create.(params: params, current_user: user_without_role)
-    expect(result).to be_failure
-    expect(result["result.policy.default"]).to be_failure
-  end
-  
-  context "user not logged" do
-    it "fails" do
-      result = FooterSection::Create.(params: params, current_user: nil)
+  context "with user without role" do
+    let (:user) { user_without_role }
+    it "doesn't work" do
       expect(result).to be_failure
       expect(result[:model]).to_not be_persisted
       expect(result["result.policy.default"]).to be_failure
     end
   end
 
+  context "user not logged" do
+    let (:user) { nil }
+    it "fails" do
+      expect(result).to be_failure
+      expect(result[:model]).to_not be_persisted
+      expect(result["result.policy.default"]).to be_failure
+    end
+  end    
+  
   context "input is missing" do
     let (:params) { {} }
+    let (:user) { super_admin_user }
     it "doesn't work" do
-      result = FooterSection::Create.(params: params, current_user: super_admin_user)
       expect(result).to be_failure
       expect(result[:model]).to_not be_persisted
     end
   end
 
-  context "description is an empty string" do
-    let (:description) { "" }
+  
+
+  context "content is an empty string" do
+    let (:user) { super_admin_user }
+    let (:content) { "" }
     it "is valid" do
-      result = FooterSection::Create.(params: params, current_user: super_admin_user)
       expect(result).to be_success
       expect(result[:model]).to be_persisted
-      expect(result[:model].content).to eq ""
-      expect(result[:model].position).to eq 1
       expect(result["result.policy.default"]).to be_success
     end
+
+    it "has proper content" do
+      expect(result[:model].content).to eq ""
+    end
+
+    it "has proper position" do
+      expect(result[:model].position).to eq 1
+    end    
   end
 
-  context "description is nil" do
-    let (:description) { nil }
-    it "create empty description" do
-      result = FooterSection::Create.(params: params, current_user: super_admin_user)
+  context "content is nil" do
+    let (:user) { super_admin_user }
+    let (:content) { nil }
+    it "create empty content" do
       expect(result).to be_success
       expect(result[:model]).to be_persisted
-      expect(result[:model].content).to eq ""
-      expect(result[:model].position).to eq 1
       expect(result["result.policy.default"]).to be_success
     end
+
+    it "has proper content" do
+      expect(result[:model].content).to eq ""
+    end
+
+    it "has proper position" do
+      expect(result[:model].position).to eq 1
+    end    
   end
 
   context "position is nil" do
+    let (:user) { super_admin_user }
     let (:position) { nil }
-    it "create empty description" do
-      result = FooterSection::Create.(params: params, current_user: super_admin_user)
+    it "create empty content" do
       expect(result).to be_success
       expect(result[:model]).to be_persisted
-      expect(result[:model].content).to eq "Copyright 5000 BC"
-      expect(result[:model].position).to eq 1
       expect(result["result.policy.default"]).to be_success
     end
+    it "has proper content" do
+      expect(result[:model].content).to eq "<p>Copyright 5000 BC</p>"
+    end
+
+    it "has proper position" do
+      expect(result[:model].position).to eq 1
+    end    
   end
 end
