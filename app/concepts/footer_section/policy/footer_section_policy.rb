@@ -8,4 +8,9 @@ class FooterSectionPolicy
     return false if @admin.nil?
     @admin.has_role? :super_admin or @admin.has_role? :can_create_footer_sections
   end
+
+  def destroy?
+    return false if @admin.nil?
+    @admin.has_role? :super_admin or @admin.has_role? :can_destroy_footer_sections
+  end
 end
