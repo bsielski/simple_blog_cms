@@ -1,13 +1,12 @@
 <p>
   <%= link_to 'Create a new footer section', new_admin_footer_section_path if policy([:admin, :footer_section]).create? %>
 </p>
-<% if @footer_sections %>
+<% if @model %>
 <table>
   <tr>
     <th>Id</th><th>Position</th><th>Contains</th><th></th><th></th>
   </tr>
-  <%= will_paginate @footer_sections %>
-  <% @footer_sections.each do |footer_section| %>
+  <% @model.each do |footer_section| %>
   <tr>
     <td><%= footer_section.id %></td>
     <td><%= footer_section.position %></td>
@@ -17,7 +16,6 @@
   </tr>
   <% end %>
 </table>
-<%= will_paginate @footer_sections %>
 <% else %>
 <p>No footer sections</p>
 <% end %>

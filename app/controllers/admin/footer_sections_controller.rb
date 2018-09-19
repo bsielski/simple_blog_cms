@@ -10,7 +10,7 @@ class Admin::FooterSectionsController < ApplicationController
   before_action :set_current_header_for_delete, only: :delete
 
   def index
-    @footer_sections = FooterSection.order(:position).paginate(:page => params[:page], :per_page => 100)
+    run FooterSection::Index
   end
 
   def new
