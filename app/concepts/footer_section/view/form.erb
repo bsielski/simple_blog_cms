@@ -1,0 +1,38 @@
+<%= form_for [:admin, model] do |f| %>
+
+<% unless errors.empty? %>
+<div id="error_explanation">
+  <h2>Errors prohibited this footer_section from being saved:</h2>
+  <ul>
+    <% if errors[:content] %>
+    <li><%= errors[:content] %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+  <div class="form_group form_group--footer_section_position">
+    <%= f.label :position %><br />
+    <% if model.new_record? %>
+      <%= f.select :position, 1..FooterSection.all.size + 1 %>
+    <% else %>
+      <%= f.select :position, 1..FooterSection.all.size %>
+    <% end %>
+  </div>
+
+  <div class="form_group form_group--footer_section_content">
+    <%= f.label :content %>
+    <%= f.text_area :content, class: "form_group__input form_group__input--footer_section_content" %>
+  </div>
+
+  <div class="form_group form_group--footer_section_submit">
+    <%= f.submit("Save", class: "form_group__input form_group__input--footer_section_submit") %>
+  </div>
+
+  <% end %>
+
+<div class="form_group form_group--footer_section_delete">
+  <% unless model.new_record? %>
+  <%= link_to 'Delete this footer section', delete_admin_footer_section_path(model) if can_destroy %>
+  <% end %>
+</div>
