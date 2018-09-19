@@ -14,17 +14,15 @@ class Admin::FooterSectionsController < ApplicationController
   end
 
   def new
-    @footer_section = FooterSection.new
+    run FooterSection::Create::Present
+    render cell(FooterSection::Cell::New, @model, form: @form)
   end
 
   def create
-    @footer_section = FooterSection.new(footer_section_params)
-    authorize [:admin, @footer_section]
-    if @footer_section.save
-      redirect_to admin_footer_sections_path, notice: 'Footer section was successfully created.'
-    else
-      render :new
+    create_op = run FooterSection::Create do
+      return redirect_to admin_footer_sections_path
     end
+    render cell(FooterSection::Cell::New, @model, form: @form, policy: create_op["policy.default"])
   end
 
   def edit
