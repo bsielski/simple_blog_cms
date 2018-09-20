@@ -10,8 +10,11 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def _run_options(options)
+    options.merge( current_user: current_admin )
+  end
+
   def set_everything
-    @visible_categories = Category.visible.order(:position)
     @current_style = Site.first.stylesheet.content
   end
 end
