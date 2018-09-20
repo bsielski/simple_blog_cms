@@ -149,20 +149,11 @@ describe FooterSection::Create do
   context "position is nil" do
     let (:user) { super_admin_user }
     let (:position) { nil }
-    it "create empty content" do
-      expect(result).to be_success
+    it "doesn't work" do
+      expect(result).to be_failure
     end
-    it "persists model" do
-      expect(result[:model]).to be_persisted
+    it "doesn't persists model" do
+      expect(result[:model]).to_not be_persisted
     end
-    it "passes policies" do
-      expect(result["result.policy.default"]).to be_success
-    end
-    it "has proper content" do
-      expect(result[:model].content).to eq "<p>Copyright 5000 BC</p>"
-    end
-    it "has proper position" do
-      expect(result[:model].position).to eq 1
-    end    
   end
 end
