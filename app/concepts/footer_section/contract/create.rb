@@ -13,6 +13,7 @@ module FooterSection::Contract
         config.messages_file = File.join(Rails.root, "config", "locales", "en.yml")
       end
       required(:content) { str? }
+      required(:position) { int? }
     end
   end
 end
