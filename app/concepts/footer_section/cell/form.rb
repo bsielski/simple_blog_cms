@@ -12,7 +12,7 @@ module FooterSection::Cell
     end
 
     def can_destroy
-      options[:destroying_policy].destroy?
+      options[:policy].destroy?
     end
   end
 end

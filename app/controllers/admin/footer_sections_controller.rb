@@ -20,20 +20,20 @@ class Admin::FooterSectionsController < ApplicationController
     create_op = run FooterSection::Create do
       return redirect_to admin_footer_sections_path
     end
-    render cell(FooterSection::Cell::New, @model, form: @form, creating_policy: create_op["policy.default"])
+    render cell(FooterSection::Cell::New, @model, form: @form, policy: FooterSectionPolicy.new(current_admin, @model))
   end
 
   def edit
     update_op = run FooterSection::Update::Present
     @current_page_header = "Edit footer section: #{@model.position}"
-    render cell(FooterSection::Cell::New, @model, form: @form, updating_policy: update_op["policy.updating"], destroying_policy: update_op["policy.destroying"])
+    render cell(FooterSection::Cell::New, @model, form: @form, policy: FooterSectionPolicy.new(current_admin, @model))
   end
 
   def update
     update_op = run FooterSection::Update do
       return redirect_to admin_footer_sections_path
     end
-    render cell(FooterSection::Cell::New, @model, form: @form, updating_policy: update_op["policy.updating"], destroying_policy: update_op["policy.destroying"])
+    render cell(FooterSection::Cell::New, @model, form: @form, policy: FooterSectionPolicy.new(current_admin, @model))
   end
 
   def delete
