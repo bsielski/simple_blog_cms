@@ -1,12 +1,10 @@
 class Admin::FooterSectionsController < ApplicationController
 
   before_action :authenticate_admin!
-  before_action :set_footer_section, only: [:edit, :update, :delete, :destroy]
-  before_action :content_to_markdown, only: :edit
+  before_action :set_footer_section, only: [:delete, :destroy]
   before_action :set_current_header_for_index, only: :index
   before_action :set_current_header_for_show, only: :show
   before_action :set_current_header_for_new, only: :new
-  before_action :set_current_header_for_edit, only: :edit
   before_action :set_current_header_for_delete, only: :delete
 
   def index
@@ -26,16 +24,16 @@ class Admin::FooterSectionsController < ApplicationController
   end
 
   def edit
+    update_op = run FooterSection::Update::Present
+    @current_page_header = "Edit footer section: #{@model.position}"
+    render cell(FooterSection::Cell::New, @model, form: @form, policy: update_op["policy.default"])
   end
 
   def update
-    authorize [:admin, @footer_section]
-    if @footer_section.update(footer_section_params)
-      redirect_to admin_footer_sections_path, notice: 'Footer section was successfully updated.'
-    else
-      render :edit
+    create_op = run FooterSection::Update do
+      return redirect_to admin_footer_sections_path
     end
-
+    render cell(FooterSection::Cell::New, @model, form: @form, policy: create_op["policy.default"])
   end
 
   def delete
@@ -75,11 +73,10 @@ class Admin::FooterSectionsController < ApplicationController
   end
 
   def set_current_header_for_edit
-    @current_page_header = "Edit footer section: #{@footer_section.position}"
+    @current_page_header = "Edit footer section: #{@model.position}"
   end
 
   def set_current_header_for_delete
     @current_page_header = "Delete footer section: #{@footer_section.position}"
   end
-
 end
