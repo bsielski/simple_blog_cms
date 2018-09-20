@@ -5,8 +5,16 @@ module FooterSection::Cell
       options[:form].errors
     end
 
-    def policy
-      options[:policy]
+    def creating_policy
+      options[:creating_policy]
+    end
+
+    def updating_policy
+      options[:updating_policy]
+    end
+
+    def destroying_policy
+      options[:destroying_policy]
     end
   end
 end

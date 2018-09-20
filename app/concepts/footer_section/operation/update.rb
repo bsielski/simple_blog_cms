@@ -2,7 +2,7 @@ class FooterSection::Update < Trailblazer::Operation
   class Present < Trailblazer::Operation
     step Model(FooterSection, :find_by)
     success :convert_to_markdown
-    success Policy::Pundit(FooterSectionPolicy, :destroy?, name: "deleting")
+    success Policy::Pundit(FooterSectionPolicy, :destroy?, name: "destroying")
     step Contract::Build(constant: FooterSection::Contract::Create)  
 
     def convert_to_markdown(options, params:, **)
