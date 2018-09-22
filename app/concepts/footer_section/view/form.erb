@@ -31,8 +31,3 @@
 
   <% end %>
 
-<div class="form_group form_group--footer_section_delete">
-  <% unless model.new_record? %>
-  <%= link_to 'Delete this footer section', delete_admin_footer_section_path(model) if can_destroy %>
-  <% end %>
-</div>
