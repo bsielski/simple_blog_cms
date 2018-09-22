@@ -1,3 +1,5 @@
+<%= cell(PageHeadline::Cell::Item, nil, text: "Edit admin: #{@admin.email}") %>
+
 <div>
 
   <%= form_for [:admin, @admin] do |f| %>

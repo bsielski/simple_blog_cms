@@ -1,3 +1,4 @@
+<%= cell(PageHeadline::Cell::Item, nil, text: "Manage footer section") %>
 <p>
   <%= link_to 'Create a new footer section', new_admin_footer_section_path if policy([:admin, :footer_section]).create? %>
 </p>

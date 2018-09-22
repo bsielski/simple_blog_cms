@@ -1,3 +1,4 @@
+<%= cell(PageHeadline::Cell::Item, nil, text: "Manage header section") %>
 <p>
   <%= link_to 'Create a new header section', new_admin_header_section_path if policy([:admin, :header_section]).create? %>
 </p>

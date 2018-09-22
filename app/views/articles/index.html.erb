@@ -1,3 +1,4 @@
+<%= cell(PageHeadline::Cell::Item, nil, text: "All articles") %>
 <%= will_paginate @published_articles %>
 <% @published_articles.each do |article| %>
 <%= render article %>

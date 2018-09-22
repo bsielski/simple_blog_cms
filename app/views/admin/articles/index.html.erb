@@ -1,3 +1,4 @@
+<%= cell(PageHeadline::Cell::Item, nil, text: "Manage articles") %>
 <p>
   <%= link_to 'Create a new article', new_admin_article_path if policy([:admin, :article]).create? %>
 </p>
