@@ -1,0 +1,14 @@
+<div class="">
+  <%= cell(PageHeadline::Cell::Item, nil, text: page_headline_text) %>
+  <%= cell(FooterSection::Cell::Form, model, errors: errors) %>
+</div>
+
+<div class="form_group form_group--footer_section_delete">
+  <% unless model.new_record? %>
+  <%= link_to 'Delete this footer section', delete_admin_footer_section_path(model) if can_destroy %>
+  <% end %>
+</div>
+
+<div class="">
+  <%= link_to 'Back', admin_footer_sections_path %>
+</div>
