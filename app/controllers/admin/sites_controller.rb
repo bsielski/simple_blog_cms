@@ -3,8 +3,6 @@ class Admin::SitesController < ApplicationController
   before_action :authenticate_admin!
   before_action :set_site, only: [:edit, :update]
 
-  before_action :set_current_header_for_edit, only: :edit
-
   def edit
   end
 
@@ -36,9 +34,4 @@ class Admin::SitesController < ApplicationController
   def site_params
     params.require(:site).permit(:title, :author, :description)
   end
-
-  def set_current_header_for_edit
-    @current_page_header = "Edit site settings"
-  end
-
 end

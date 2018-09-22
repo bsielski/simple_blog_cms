@@ -2,11 +2,6 @@ class Admin::CategoriesController < ApplicationController
 
   before_action :authenticate_admin!
   before_action :set_category, only: [:edit, :update, :delete, :destroy]
-  before_action :set_current_header_for_index, only: :index
-  before_action :set_current_header_for_show, only: :show
-  before_action :set_current_header_for_new, only: :new
-  before_action :set_current_header_for_edit, only: :edit
-  before_action :set_current_header_for_delete, only: :delete
 
   def index
     @categories = Category.order :position
@@ -65,25 +60,4 @@ class Admin::CategoriesController < ApplicationController
   def category_params
     params.require(:category).permit(:name, :visibility, :description, :position)
   end
-
-  def set_current_header_for_index
-    @current_page_header = "Manage categories"
-  end
-
-  def set_current_header_for_show
-    @current_page_header = "Category: #{@model.name}"
-  end
-
-  def set_current_header_for_new
-    @current_page_header = "New category"
-  end
-
-  def set_current_header_for_edit
-    @current_page_header = "Edit category: #{@model.name}"
-  end
-
-  def set_current_header_for_delete
-    @current_page_header = "Delete category: #{@model.name}"
-  end
-
 end
