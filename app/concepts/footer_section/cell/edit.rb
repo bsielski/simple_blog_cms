@@ -6,7 +6,7 @@ module FooterSection::Cell
     end
 
     def page_headline_text
-      "Edit footer section: #{model.id}"
+      "Edit footer section: #{model.position}"
     end
 
     def policy
