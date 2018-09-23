@@ -344,6 +344,13 @@ code {
   max-width: 750px;
   margin: 0 auto;
 }
+.version_number {
+  display: block;
+  background-color: black;
+  color: #ffffee;
+  max-width: 750px;
+  margin: 0 auto;
+}
 
 
 THESTRING
