@@ -1,10 +1,8 @@
 class Admin::FooterSectionsController < ApplicationController
 
-  before_action :authenticate_admin!
-  before_action :set_footer_section, only: [:delete, :destroy]
-
   def index
     run FooterSection::Index
+    render cell(FooterSection::Cell::Index, @model, policy: FooterSectionPolicy.new(current_admin, @model))
   end
 
   def new
@@ -21,7 +19,6 @@ class Admin::FooterSectionsController < ApplicationController
 
   def edit
     update_op = run FooterSection::Update::Present
-    @current_page_header = "Edit footer section: #{@model.position}"
     render cell(FooterSection::Cell::Edit, @model, form: @form, policy: FooterSectionPolicy.new(current_admin, @model))
   end
 
@@ -33,26 +30,15 @@ class Admin::FooterSectionsController < ApplicationController
   end
 
   def delete
+    run FooterSection::Destroy::Present
+    render cell(FooterSection::Cell::Delete, @model, policy: FooterSectionPolicy.new(current_admin, @model))
 
   end
 
   def destroy
-    authorize [:admin, @footer_section]
-    @footer_section.destroy
-    redirect_to admin_footer_sections_path, notice: 'Footer section was successfully destroyed.'
-  end
-
-  private
-
-  def set_footer_section
-    @footer_section = FooterSection.find(params[:id])
-  end
-
-  def content_to_markdown
-    @footer_section.convert_content_to_markdown
-  end
-
-  def footer_section_params
-    params.require(:footer_section).permit(:position, :content)
+    run FooterSection::Destroy do
+      return redirect_to admin_footer_sections_path
+    end
+    render cell(FooterSection::Cell::Delete, @model, policy: FooterSectionPolicy.new(current_admin, @model))
   end
 end
