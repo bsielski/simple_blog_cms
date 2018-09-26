@@ -5,7 +5,7 @@ describe FooterSection::Cell::Delete, type: :cell do
 
   subject { cell(FooterSection::Cell::Index, model, policy: policy).(:show) }
 
-  let! (:footer_sections) do
+  before do
     FooterSection.create!(
       position: 1,
       content: Convert.to_html("Powered by")
