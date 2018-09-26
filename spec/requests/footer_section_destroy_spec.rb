@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Delete FooterSection", :type => :request do
+RSpec.describe "Destroy FooterSection", :type => :request do
   include Devise::Test::IntegrationHelpers
 
   before do
