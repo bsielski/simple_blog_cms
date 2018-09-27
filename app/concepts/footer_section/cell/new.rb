@@ -1,12 +1,12 @@
 module FooterSection::Cell
   class New < Trailblazer::Cell
 
-    def errors
-      options[:form].errors
+    def page_headline_text
+      "New footer section"
     end
 
-    def policy
-      options[:policy]
+    def errors
+      options[:form].errors
     end
   end
 end

@@ -1,5 +1,6 @@
 <div class="">
-  <%= cell(FooterSection::Cell::Form, model, errors: errors, policy: policy) %>
+  <%= cell(PageHeadline::Cell::Item, nil, text: page_headline_text) %>
+  <%= cell(FooterSection::Cell::Form, model, errors: errors) %>
 </div>
 
 <div class="">

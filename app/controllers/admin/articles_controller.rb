@@ -4,11 +4,6 @@ class Admin::ArticlesController < ApplicationController
   before_action :set_article, only: [:edit, :update, :delete, :destroy]
   before_action :content_to_markdown, only: :edit
   before_action :check_author, only: [:create]
-  before_action :set_current_header_for_index, only: :index
-  before_action :set_current_header_for_show, only: :show
-  before_action :set_current_header_for_new, only: :new
-  before_action :set_current_header_for_edit, only: :edit
-  before_action :set_current_header_for_delete, only: :delete
 
   def index
     if params[:category_id]
@@ -86,25 +81,4 @@ class Admin::ArticlesController < ApplicationController
   def article_params
     params.require(:article).permit(:title, :content, :published_at, :author_id, category_ids: [])
   end
-
-  def set_current_header_for_index
-    @current_page_header = "Manage articles"
-  end
-
-  def set_current_header_for_show
-    @current_page_header = "#{@article.title}"
-  end
-
-  def set_current_header_for_new
-    @current_page_header = "New article"
-  end
-
-  def set_current_header_for_edit
-    @current_page_header = "Edit article: #{@article.title}"
-  end
-
-  def set_current_header_for_delete
-    @current_page_header = "Delete article: #{@article.title}"
-  end
-
 end

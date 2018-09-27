@@ -10,9 +10,5 @@ module FooterSection::Cell
     def content_errors
       errors[:content].first
     end
-
-    def can_destroy
-      options[:policy].destroy?
-    end
   end
 end

@@ -1,5 +1,7 @@
 <div>
   <article class="article">
+    <%= cell(PageHeadline::Cell::Item, nil, text: "Delete admin: #{@admin.email}") %>
+
     <div class="article_body">
       <p>
       	It will delete the admin with email: <%= @admin.email %>

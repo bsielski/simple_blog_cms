@@ -6,16 +6,16 @@ class FooterSectionPolicy
 
   def create?
     return false if @admin.nil?
-    @admin.has_role? :super_admin or @admin.has_role? :can_create_footer_sections
+    @admin.has_role?(:super_admin) || @admin.has_role?(:can_create_footer_sections)
   end
 
   def update?
     return false if @admin.nil?
-    @admin.has_role? :super_admin or @admin.has_role? :can_update_footer_sections
+    @admin.has_role?(:super_admin) || @admin.has_role?(:can_update_footer_sections) || @admin.has_role?(:can_edit_footer_sections)
   end
 
   def destroy?
     return false if @admin.nil?
-    @admin.has_role? :super_admin or @admin.has_role? :can_destroy_footer_sections
+    @admin.has_role?(:super_admin) || @admin.has_role?(:can_destroy_footer_sections) || @admin.has_role?(:can_delete_footer_sections)
   end
 end

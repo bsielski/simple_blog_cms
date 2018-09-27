@@ -3,11 +3,6 @@ class Admin::AuthorsController < ApplicationController
   before_action :authenticate_admin!
   before_action :set_author, only: [:edit, :update, :delete, :destroy]
   before_action :description_to_markdown, only: :edit
-  before_action :set_current_header_for_index, only: :index
-  before_action :set_current_header_for_show, only: :show
-  before_action :set_current_header_for_new, only: :new
-  before_action :set_current_header_for_edit, only: :edit
-  before_action :set_current_header_for_delete, only: :delete
 
   def index
     @authors = policy_scope([:admin, Author]).includes(:admin, :articles)
@@ -63,25 +58,4 @@ class Admin::AuthorsController < ApplicationController
   def author_params
     params.require(:author).permit(:name, :description, :admin_id)
   end
-
-  def set_current_header_for_index
-    @current_page_header = "Manage authors"
-  end
-
-  def set_current_header_for_show
-    @current_page_header = "Author: #{@author.name}"
-  end
-
-  def set_current_header_for_new
-    @current_page_header = "Create a new author"
-  end
-
-  def set_current_header_for_edit
-    @current_page_header = "Edit author: #{@author.name}"
-  end
-
-  def set_current_header_for_delete
-    @current_page_header = "Delete author: #{@author.name}"
-  end
-
 end

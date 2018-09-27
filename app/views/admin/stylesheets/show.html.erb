@@ -1,3 +1,5 @@
+<%= cell(PageHeadline::Cell::Item, nil, text: "Stylesheet: #{@stylesheet.name}") %>
+
 <div>
   <%= form_for [:admin, @stylesheet] do |f| %>
     <div class="form_group form_group--stylesheet_name">
