@@ -15,7 +15,7 @@ gem 'jbuilder', '~> 2.6'
 
 
 # My gems
-gem 'devise', '~> 4.3'
+gem 'devise', '~> 4.7'
 gem 'markdown'
 gem 'reverse_markdown'
 gem 'acts_as_list'
