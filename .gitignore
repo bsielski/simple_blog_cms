@@ -28,3 +28,7 @@
 # Ignore design docs
 *.org
 *.org#
+
+# Envs etc.
+.ruby-version
+.envrc
